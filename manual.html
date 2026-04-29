@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>たい焼きタイム 使用説明書 ver.1.1s</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <style>
+    /* ========== ピクトグラム中心 CSS ========== */
+    :root {
+      --pc-bg:       #FFFFFF;
+      --pc-text:     #0E1116;
+      --pc-text-sub: #4A4E55;
+      --pc-surface:  #F6F6F7;
+      --pc-border:   #D0D2D6;
+      --pc-red:    #D32F2F;
+      --pc-yellow: #F9A825;
+      --pc-green:  #388E3C;
+      --pc-blue:   #1976D2;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--pc-bg);
+      color: var(--pc-text);
+      font-family: 'Inter', 'Helvetica Neue', 'Noto Sans JP', sans-serif;
+      font-weight: 500;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 { font-weight: 700; word-break: keep-all; overflow-wrap: break-word; }
+    p { margin-bottom: 0.75rem; }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 700; }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 0.65rem 2rem;
+      background: var(--pc-bg);
+      border-bottom: 1px solid var(--pc-border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+    .nav__brand {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--pc-text);
+      margin-right: 2rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav__links {
+      display: flex;
+      overflow-x: auto;
+      gap: 0;
+      scrollbar-width: none;
+    }
+    .nav__links::-webkit-scrollbar { display: none; }
+    .nav a {
+      color: var(--pc-text);
+      text-decoration: none;
+      margin-right: 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .nav a:hover { color: var(--pc-blue); }
+
+    /* ===== Sections ===== */
+    .section {
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--pc-border);
+    }
+    .section:first-of-type { border-top: none; }
+    .section__inner { max-width: 1200px; margin: 0 auto; }
+    .section__title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--pc-text);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section__title .material-symbols-outlined { font-size: 1.75rem; color: var(--pc-blue); flex-shrink: 0; }
+    .section__lead {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--pc-text-sub);
+    }
+
+    /* ===== Hero ===== */
+    .section--hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 6rem;
+      gap: 1.25rem;
+      border-top: none;
+    }
+    .section--hero .hero-icon {
+      font-size: clamp(5rem, 9vw, 7rem);
+      color: var(--pc-blue);
+      line-height: 1;
+    }
+    .section--hero .section__title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      justify-content: center;
+    }
+    .section--hero .section__lead { font-size: 1.15rem; max-width: 52ch; margin: 0 auto; }
+
+    .hero-badge {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 0.25rem 0.85rem;
+      font-size: 0.8rem;
+      color: var(--pc-text-sub);
+      display: inline-block;
+    }
+    .hero-toc {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .hero-toc a {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.875rem;
+      color: var(--pc-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: background 0.2s ease;
+    }
+    .hero-toc a:hover { background: #EEEFF1; }
+    .hero-toc a .material-symbols-outlined { font-size: 1rem; color: var(--pc-blue); }
+
+    /* ===== Material Symbols ===== */
+    .material-symbols-outlined {
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      color: var(--pc-text);
+      filter: none;
+      line-height: 1;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .ico { font-size: 1.25rem; color: var(--pc-text); vertical-align: middle; }
+    .ico--blue   { color: var(--pc-blue); }
+    .ico--green  { color: var(--pc-green); }
+    .ico--red    { color: var(--pc-red); }
+    .ico--yellow { color: var(--pc-yellow); }
+    .ico--sub    { color: var(--pc-text-sub); }
+
+    /* ===== Pictogram (large icons for cards) ===== */
+    .pico {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      line-height: 1;
+      display: block;
+    }
+    .pico--blue   { color: var(--pc-blue); }
+    .pico--green  { color: var(--pc-green); }
+    .pico--red    { color: var(--pc-red); }
+    .pico--yellow { color: var(--pc-yellow); }
+    .pico--purple { color: #7B1FA2; }
+    .pico--sub    { color: var(--pc-text-sub); }
+
+    /* ===== Grid ===== */
+    .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
+    .mt1 { margin-top: 1rem; }
+    .mt2 { margin-top: 2rem; }
+    .mt25 { margin-top: 2.5rem; }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+      box-shadow: none;
+      transition: background 0.2s ease;
+    }
+    .card:hover { background: #EEEFF1; }
+    .card--left { align-items: flex-start; text-align: left; }
+    .card__title { font-size: 1rem; font-weight: 700; color: var(--pc-text); }
+    .card__desc { font-size: 0.875rem; color: var(--pc-text-sub); line-height: 1.6; }
+    .card__badge {
+      background: var(--pc-bg);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.75rem;
+      color: var(--pc-text-sub);
+    }
+
+    /* ===== Layer badges ===== */
+    .lb {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .lb-1 { background: var(--pc-blue); color: #fff; }
+    .lb-2 { background: var(--pc-green); color: #fff; }
+    .lb-3 { background: #7B1FA2; color: #fff; }
+    .lb-4 { background: #E65100; color: #fff; }
+    .lb-0 { background: #4A4E55; color: #fff; }
+
+    /* ===== Table ===== */
+    .table-wrap { overflow-x: auto; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.925rem; }
+    th { background: var(--pc-text); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--pc-border); color: var(--pc-text); vertical-align: top; line-height: 1.5; }
+    tr:nth-child(even) td { background: var(--pc-surface); }
+
+    /* ===== Info / Callout boxes ===== */
+    .box {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+    .box--blue  { border-left: 3px solid var(--pc-blue); }
+    .box--green { border-left: 3px solid var(--pc-green); }
+    .box--yellow{ border-left: 3px solid var(--pc-yellow); }
+    .box--red   { border-left: 3px solid var(--pc-red); }
+    .box__label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .box__label--blue   { color: var(--pc-blue); }
+    .box__label--green  { color: var(--pc-green); }
+    .box__label--yellow { color: var(--pc-yellow); }
+
+    .principles {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+    }
+    .principles__title {
+      font-weight: 700;
+      color: var(--pc-blue);
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .principles ol { padding-left: 1.4rem; }
+    .principles li { margin-bottom: 0.4rem; font-size: 0.95rem; }
+
+    /* ===== Do / Don't ===== */
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+    .do-box, .dont-box {
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 1.25rem;
+    }
+    .do-box   { border-left: 3px solid var(--pc-green); }
+    .dont-box { border-left: 3px solid var(--pc-red); }
+    .do-box__label, .dont-box__label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .do-box__label   { color: var(--pc-green); }
+    .dont-box__label { color: var(--pc-red); }
+    .do-box ul, .dont-box ul { padding-left: 1.2rem; }
+    .do-box li, .dont-box li { color: var(--pc-text-sub); font-size: 0.875rem; margin-bottom: 0.35rem; }
+
+    /* ===== Scenario card ===== */
+    .sc-card {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+    }
+    .sc-card__header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .sc-label {
+      background: var(--pc-text);
+      color: #fff;
+      border-radius: 4px;
+      padding: 0.2rem 0.75rem;
+      font-weight: 700;
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+    .sc-title { font-size: 1.15rem; font-weight: 700; }
+    .sc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .sc-meta__item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--pc-text-sub);
+    }
+    .sc-meta__item .material-symbols-outlined { font-size: 1rem; color: var(--pc-text-sub); }
+
+    /* ===== Steps ===== */
+    .steps { display: flex; flex-direction: column; gap: 0.85rem; }
+    .step { display: flex; gap: 1rem; align-items: flex-start; }
+    .step__num {
+      width: 2.5rem; height: 2.5rem; min-width: 2.5rem;
+      background: var(--pc-text);
+      color: #fff;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .step__body {
+      flex: 1;
+      background: var(--pc-bg);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 0.85rem 1.25rem;
+    }
+    .step__label { font-weight: 700; color: var(--pc-blue); font-size: 0.82rem; margin-bottom: 0.25rem; }
+    .step__text  { font-size: 0.9rem; color: var(--pc-text); line-height: 1.55; }
+
+    /* ===== Misconception ===== */
+    .mis {
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .mis__wrong {
+      background: #FFF5F5;
+      border-bottom: 1px solid var(--pc-border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .mis__ok {
+      background: var(--pc-surface);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .mis__ico { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .mis__wrong .mis__ico { color: var(--pc-red); }
+    .mis__ok   .mis__ico { color: var(--pc-green); }
+    .mis__title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .mis__wrong .mis__title { color: var(--pc-red); }
+    .mis__ok    .mis__title { color: var(--pc-green); }
+    .mis__body { font-size: 0.875rem; color: var(--pc-text); line-height: 1.55; }
+
+    /* ===== Char card ===== */
+    .char-card {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.2s ease;
+    }
+    .char-card:hover { background: #EEEFF1; }
+    .char-card__head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .char-card__ico { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+    .char-card__name { font-weight: 700; font-size: 1rem; }
+    .char-card__role { font-size: 0.8rem; color: var(--pc-text-sub); font-weight: 700; }
+    .char-card__desc { font-size: 0.85rem; color: var(--pc-text-sub); line-height: 1.55; }
+    .char-card__q { font-size: 0.8rem; color: var(--pc-blue); font-style: italic; }
+
+    /* ===== Unit card row ===== */
+    .unit-row {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .unit-row__icon-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      width: 3.5rem;
+    }
+    .unit-row__content { flex: 1; }
+    .unit-row__title { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+    .unit-row__desc { font-size: 0.875rem; color: var(--pc-text-sub); line-height: 1.5; }
+
+    /* ===== CTA ===== */
+    .section--cta { text-align: center; }
+    .section--cta .section__inner {
+      background: var(--pc-surface);
+      border: 1px solid var(--pc-border);
+      border-radius: 4px;
+      padding: 4rem 2rem;
+    }
+    .section--cta .section__title { justify-content: center; }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--pc-bg);
+      border-top: 1px solid var(--pc-border);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      color: var(--pc-text-sub);
+      font-size: 0.875rem;
+    }
+
+    /* ===== Fade-in ===== */
+    .fi { opacity: 0; transition: opacity 0.3s ease; }
+    .fi.is-visible { opacity: 1; }
+
+    /* ===== Chapter headings ===== */
+    .ch-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--pc-text-sub);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .grid-5 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 3.5rem 1.25rem; }
+      .section--hero { min-height: 60vh; padding-top: 5.5rem; }
+      .grid-auto { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .grid-2 { grid-template-columns: 1fr; gap: 1rem; }
+      .do-dont { grid-template-columns: 1fr; }
+      .nav { padding: 0.65rem 1rem; }
+      .nav__brand { margin-right: 1rem; }
+    }
+    @media (max-width: 540px) {
+      .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav class="nav">
+  <a href="#hero" class="nav__brand">🐟 たい焼きタイム</a>
+  <div class="nav__links">
+    <a href="#overview">概要</a>
+    <a href="#map">全体マップ</a>
+    <a href="#base">ベース</a>
+    <a href="#units">ユニット</a>
+    <a href="#characters">10キャラクター</a>
+    <a href="#scenarios">シナリオA〜D</a>
+    <a href="#misconceptions">誤解と対処</a>
+    <a href="#quickref">クイックリファレンス</a>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="section section--hero" id="hero">
+  <div class="section__inner">
+    <span class="material-symbols-outlined hero-icon">auto_stories</span>
+    <div class="hero-badge">ver.1.1s &nbsp;·&nbsp; 2026年4月</div>
+    <h1 class="section__title">たい焼きタイム 使用説明書</h1>
+    <p class="section__lead">
+      教師の授業改善を支えるAI思考支援ツール<br>
+      ベース＋ユニットで授業デザインを広げる
+    </p>
+    <div class="hero-toc">
+      <a href="#overview"><span class="material-symbols-outlined ico ico--blue">lightbulb</span>基本コンセプト</a>
+      <a href="#map"><span class="material-symbols-outlined ico ico--blue">map</span>全体マップ</a>
+      <a href="#base"><span class="material-symbols-outlined ico ico--blue">login</span>ベースの使い方</a>
+      <a href="#units"><span class="material-symbols-outlined ico ico--blue">widgets</span>ユニット一覧</a>
+      <a href="#characters"><span class="material-symbols-outlined ico ico--blue">meeting_room</span>10キャラクター</a>
+      <a href="#scenarios"><span class="material-symbols-outlined ico ico--blue">route</span>シナリオA〜D</a>
+      <a href="#misconceptions"><span class="material-symbols-outlined ico ico--blue">quiz</span>よくある誤解</a>
+      <a href="#quickref"><span class="material-symbols-outlined ico ico--blue">quick_reference_all</span>クイックリファレンス</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第1章：たい焼きタイムとは ===== -->
+<section class="section" id="overview">
+  <div class="section__inner">
+    <div class="ch-label">第1章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">lightbulb</span>
+      たい焼きタイムとは何か
+    </h2>
+    <p class="section__lead">
+      <strong>たい焼きタイムは、教師の授業改善を支えるAI思考支援ツールです。</strong><br>
+      教師の「願い」「子どもの事実」「困り感」を受け取り、今扱うべき授業改善上の課題を整理して、次の最小作業へ導くことを目的としています。
+    </p>
+
+    <div class="principles">
+      <div class="principles__title">
+        <span class="material-symbols-outlined ico ico--blue">verified</span>
+        たい焼きタイムの3つの原則
+      </div>
+      <ol>
+        <li>AIは授業を代行しない。教師の思考を構造化する。</li>
+        <li>手立てに飛ぶ前に、今扱う授業改善上の課題を見立てる。</li>
+        <li>学びの中心は、子どものエージェンシーにある。</li>
+      </ol>
+    </div>
+
+    <!-- たい焼きのたとえ -->
+    <h3 style="margin-top:2.5rem; margin-bottom:1rem; font-size:1.15rem;">たい焼きのたとえ ── なぜ「たい焼き」という名前なのか</h3>
+    <div class="grid-3 fi">
+      <div class="card">
+        <span class="material-symbols-outlined pico pico--sub">crop_square</span>
+        <div class="card__title">型（外側の生地）</div>
+        <div class="card__desc"><strong>ベース</strong>（たい焼きタイムベース）<br>全体を受け取り、交通整理をする</div>
+      </div>
+      <div class="card">
+        <span class="material-symbols-outlined pico pico--yellow">circle</span>
+        <div class="card__title">あんこ（中身）</div>
+        <div class="card__desc"><strong>ユニット</strong><br>目的別に専門処理をする部品（複数の種類あり）</div>
+      </div>
+      <div class="card">
+        <span class="material-symbols-outlined pico pico--green">dashboard_customize</span>
+        <div class="card__title">あんこの組み合わせ</div>
+        <div class="card__desc"><strong>ユニットの組み合わせ</strong><br>多様な授業デザインへ対応できる</div>
+      </div>
+    </div>
+
+    <!-- Do/Don't -->
+    <h3 style="margin-top:2.5rem; margin-bottom:0.75rem; font-size:1.15rem;">AIは授業を代行しない</h3>
+    <div class="do-dont fi">
+      <div class="do-box">
+        <div class="do-box__label">
+          <span class="material-symbols-outlined ico ico--green">check_circle</span>
+          たい焼きタイムがすること
+        </div>
+        <ul>
+          <li>教師の思考を整理・構造化する</li>
+          <li>授業改善上の課題を仮に見立てる</li>
+          <li>次の最小作業を示す</li>
+          <li>適切なユニットへ橋渡しする</li>
+          <li>たたき台として教師が選び直せる形で出す</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dont-box__label">
+          <span class="material-symbols-outlined ico ico--red">cancel</span>
+          たい焼きタイムがしないこと
+        </div>
+        <ul>
+          <li>授業を勝手に完成させる</li>
+          <li>子どもの内面・性格を断定する</li>
+          <li>手立てに早飛びする</li>
+          <li>各ユニットの専門処理を代行する</li>
+          <li>提出用の完成版として固定する</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第2章：全体マップ ===== -->
+<section class="section" id="map">
+  <div class="section__inner">
+    <div class="ch-label">第2章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">map</span>
+      全体マップ（ベース＋ユニット）
+    </h2>
+
+    <!-- レイヤー表 -->
+    <h3 style="margin-bottom:0.75rem; font-size:1.1rem;">番号レイヤー構造</h3>
+    <div class="table-wrap fi">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:4rem;">番号</th>
+            <th style="width:8rem;">レイヤー名</th>
+            <th>役割</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="lb lb-1">①</span></td>
+            <td>ベース・対話層</td>
+            <td>玄関口＋語りをほどく（ベース・傾聴対話ユニット）</td>
+          </tr>
+          <tr>
+            <td><span class="lb lb-2">②</span></td>
+            <td>コア設計層</td>
+            <td>授業・探究・自由進度・特支・AIの核をつくる</td>
+          </tr>
+          <tr>
+            <td><span class="lb lb-3">③</span></td>
+            <td>成果物整形層</td>
+            <td>指導案・板書として形にする</td>
+          </tr>
+          <tr>
+            <td><span class="lb lb-4">④</span></td>
+            <td>サポート層</td>
+            <td>根拠検索・変換など、設計を支える</td>
+          </tr>
+          <tr>
+            <td><span class="lb lb-0">⓪</span></td>
+            <td>協議・俯瞰層</td>
+            <td>10キャラクターが多角的に見直す（特別枠）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ユニット一覧カード -->
+    <h3 style="margin-top:2.5rem; margin-bottom:0.75rem; font-size:1.1rem;">ユニット一覧</h3>
+    <div class="grid-auto fi">
+      <div class="card">
+        <span class="lb lb-1">①B</span>
+        <span class="material-symbols-outlined pico pico--blue">record_voice_over</span>
+        <div class="card__title">傾聴・対話ユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">教師の語り・願い・困り感をほどいて、授業改善の課題を見えるようにする</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-2">②</span>
+        <span class="material-symbols-outlined pico pico--green">school</span>
+        <div class="card__title">授業づくりコアユニット</div>
+        <div class="card__badge">ver.1.1s_patch_01</div>
+        <div class="card__desc">授業の核・主眼・中心発問・活動構成・見取りのたたき台をつくる</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-2">②</span>
+        <span class="material-symbols-outlined pico pico--green">explore</span>
+        <div class="card__title">探究コアユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">問い・情報・整理・表現・ふり返り・再探究の流れをデザインする</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-2">②</span>
+        <span class="material-symbols-outlined pico pico--green">self_improvement</span>
+        <div class="card__title">自由進度コアユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">学習計画・進度管理・自己評価・再調整を扱う授業をデザインする</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-2">②</span>
+        <span class="material-symbols-outlined pico pico--green">accessibility_new</span>
+        <div class="card__title">特別支援教育コアユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">参加保障・環境調整・課題調整・関係性支援を授業に組み込む</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-2">②</span>
+        <span class="material-symbols-outlined pico pico--green">smart_toy</span>
+        <div class="card__title">生成AI授業活用コアユニット</div>
+        <div class="card__badge">ver.1.0</div>
+        <div class="card__desc">Gemini / NotebookLMを授業のどこにどう使うかを判断・設計する</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-3">③</span>
+        <span class="material-symbols-outlined pico pico--purple">article</span>
+        <div class="card__title">指導案デザインユニット</div>
+        <div class="card__badge">ver.1.1st</div>
+        <div class="card__desc">授業構想を固定の指導案形式へ整形し、主眼・展開・評価の整合を監査する</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-3">③</span>
+        <span class="material-symbols-outlined pico pico--purple">space_dashboard</span>
+        <div class="card__title">板書デザインユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">中心発問または授業の核をもとに板書案を5案で出す</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-4">④</span>
+        <span class="material-symbols-outlined pico pico--yellow">public</span>
+        <div class="card__title">Web検索・ICT情報教育ユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">根拠・一次資料・ICT活用・情報モラルに必要な情報を検索・整理する</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-4">④</span>
+        <span class="material-symbols-outlined pico pico--yellow">transform</span>
+        <div class="card__title">写真・データ・文体変換ユニット</div>
+        <div class="card__badge">ver.1.1s</div>
+        <div class="card__desc">写真・手書き・表・記録・文章を目的に合わせて変換・整形する</div>
+      </div>
+      <div class="card">
+        <span class="lb lb-0">⓪</span>
+        <span class="material-symbols-outlined pico pico--sub">meeting_room</span>
+        <div class="card__title">キャラクター会議室ユニット</div>
+        <div class="card__badge">ver.0.5.1c</div>
+        <div class="card__desc">授業構想や指導案を10のキャラクターが多角的に見直す（協議・俯瞰レイヤ）</div>
+      </div>
+    </div>
+
+    <!-- バージョン管理体系 -->
+    <h3 style="margin-top:2.5rem; margin-bottom:0.75rem; font-size:1.1rem;">バージョン管理体系</h3>
+    <div class="box box--blue fi">
+      <div class="box__label box__label--blue">識別子の読み方</div>
+      各ユニットのファイル名に付いているバージョン識別子の意味です。ファイルを呼び出すとき・更新確認するときに参照してください。
+    </div>
+    <div class="table-wrap fi">
+      <table>
+        <thead>
+          <tr><th style="width:9rem;">識別子</th><th>意味</th><th>例</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ver.1.1s</strong></td>
+            <td>標準版（Standard）。通常使用するメインバージョン。</td>
+            <td>傾聴・対話ユニット ver.1.1s</td>
+          </tr>
+          <tr>
+            <td><strong>ver.1.1st</strong></td>
+            <td>特定機能版（Specific Type）。特定の書式・用途に対応した版。</td>
+            <td>指導案デザインユニット ver.1.1st</td>
+          </tr>
+          <tr>
+            <td><strong>_patch_01</strong></td>
+            <td>修正適用済み。標準版に追加パッチが当たったバージョン。</td>
+            <td>授業づくりコアユニット ver.1.1s_patch_01</td>
+          </tr>
+          <tr>
+            <td><strong>ver.1.0</strong></td>
+            <td>初期版。まだ1.1系への更新が行われていないユニット。</td>
+            <td>生成AI授業活用コアユニット ver.1.0</td>
+          </tr>
+          <tr>
+            <td><strong>ver.0.5.1c</strong></td>
+            <td>開発途上版。キャラクター会議室は独自バージョン管理中。</td>
+            <td>キャラクター会議室ユニット ver.0.5.1c</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box box--yellow" style="margin-top:0.75rem;">
+      <strong>倉庫フォルダについて：</strong>旧バージョンや補助テンプレートは「倉庫フォルダ」に保管されています。過去の資産を参照したいときはそちらを確認してください。
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第3章：ベースの使い方 ===== -->
+<section class="section" id="base">
+  <div class="section__inner">
+    <div class="ch-label">第3章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">login</span>
+      ベースの使い方
+    </h2>
+    <p class="section__lead">
+      ベースは、たい焼きタイムの<strong>「玄関口」</strong>（ユニット番号：①A）です。すべての相談はまずベースへ届けます。<br>
+      自動で「授業相談モード」と「成果物作成モード」を判断します。
+    </p>
+
+    <div class="grid-2 mt2">
+      <!-- 授業相談モード -->
+      <div>
+        <h3 style="font-size:1.05rem; margin-bottom:0.85rem; color:var(--pc-blue); display:flex; align-items:center; gap:0.4rem;">
+          <span class="material-symbols-outlined ico ico--blue">chat</span>
+          授業相談モード（困り感・改善したい場合）
+        </h3>
+        <p style="font-size:0.875rem; color:var(--pc-text-sub); margin-bottom:0.85rem;">次の4点を意識して話しかけると整理しやすくなります（全部そろわなくてもOK）</p>
+        <div class="card card--left" style="gap:0.6rem; margin-bottom:1rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.875rem;">
+            <span class="material-symbols-outlined ico ico--red">favorite</span>
+            <span><strong>教師の願い：</strong>「こんな子どもの姿を目指したい」</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.875rem;">
+            <span class="material-symbols-outlined ico ico--blue">child_care</span>
+            <span><strong>子どもの事実：</strong>「実際に子どもはこういう行動/発言をしている」</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.875rem;">
+            <span class="material-symbols-outlined ico ico--yellow">report_problem</span>
+            <span><strong>困り感：</strong>「うまくいっていないのはここ」</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.875rem;">
+            <span class="material-symbols-outlined ico ico--blue">menu_book</span>
+            <span><strong>教科・学年・単元：</strong>「何年生の何の授業か」</span>
+          </div>
+        </div>
+        <div class="box box--blue">
+          <div class="box__label box__label--blue">話しかけ例（授業相談モード）</div>
+          「3年生の国語で物語文の授業をしています。子どもに登場人物の気持ちを考えてほしいのですが、毎回「分からない」で止まってしまいます。一文引用して終わりの子が多くて…どこを変えたらいいか相談したいです。」
+        </div>
+      </div>
+
+      <!-- 成果物作成モード -->
+      <div>
+        <h3 style="font-size:1.05rem; margin-bottom:0.85rem; color:var(--pc-green); display:flex; align-items:center; gap:0.4rem;">
+          <span class="material-symbols-outlined ico ico--green">article</span>
+          成果物作成モード（指導案・板書などを作りたい場合）
+        </h3>
+        <p style="font-size:0.875rem; color:var(--pc-text-sub); margin-bottom:0.85rem;">何を作りたいかと、授業の核を伝えるとスムーズです</p>
+        <div class="box box--green" style="margin-bottom:1rem;">
+          <div class="box__label box__label--green">話しかけ例（成果物作成モード）</div>
+          「5年生・社会・食料生産の指導案を作りたいです。授業の核は「なぜ食料自給率が下がり続けているのか、子どもが自分事として捉える」です。」
+        </div>
+
+        <h3 style="font-size:1rem; margin-bottom:0.6rem;">ベースが返してくること</h3>
+        <div class="grid-2 mt1" style="gap:0.75rem;">
+          <div class="card card--left" style="padding:1rem; gap:0.4rem;">
+            <div class="card__title" style="color:var(--pc-blue); font-size:0.82rem;">授業相談モードの返答</div>
+            <div class="card__desc">
+              ① 今扱う授業改善上の課題（仮）<br>
+              ② 方向性<br>
+              ③ 次の最小作業<br>
+              ④ 根拠が薄い点・次に見る子どもの姿
+            </div>
+          </div>
+          <div class="card card--left" style="padding:1rem; gap:0.4rem;">
+            <div class="card__title" style="color:var(--pc-green); font-size:0.82rem;">成果物作成モードの返答</div>
+            <div class="card__desc">
+              ① 出力目的（何を作るか）<br>
+              ② 接続先ユニット<br>
+              ③ 不足している材料（あれば）
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box--yellow mt2 fi">
+      <strong>注意：ユニットは別プロンプトです</strong><br>
+      たい焼きタイムは複数のプロンプトが連携するシステムです。「授業づくりユニット」を使うときは、そのユニットのプロンプトをAIに読み込ませてから話しかけてください。ベースから「では授業づくりユニットへ進んでください」と一言言うだけでスムーズに接続（handoff）できます。
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第4章：各ユニットの使い方 ===== -->
+<section class="section" id="units">
+  <div class="section__inner">
+    <div class="ch-label">第4章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">widgets</span>
+      各ユニットの使い方
+    </h2>
+
+    <!-- 傾聴対話 -->
+    <div class="unit-row fi">
+      <div class="unit-row__icon-wrap">
+        <span class="lb lb-1">①B</span>
+        <span class="material-symbols-outlined pico pico--blue" style="font-size:2rem;">record_voice_over</span>
+      </div>
+      <div class="unit-row__content">
+        <div class="unit-row__title">傾聴・対話ユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+        <div class="unit-row__desc" style="margin-bottom:0.75rem;">役割：教師の語りをほどいて、授業改善の課題が見える状態へ整理する。「うまく言えないけど何かが違う…」と感じているときに特に有効。</div>
+        <div class="do-dont" style="margin-top:0;">
+          <div class="do-box">
+            <div class="do-box__label">こんな時に使う</div>
+            <ul>
+              <li>困り感はあるが、何が問題か分からない</li>
+              <li>授業改善の課題が言語化できていない</li>
+              <li>今の授業の状況をとにかく話したい</li>
+            </ul>
+          </div>
+          <div class="do-box" style="border-left-color:var(--pc-blue);">
+            <div class="do-box__label" style="color:var(--pc-blue);">このユニットがすること</div>
+            <ul>
+              <li>願い・事実・解釈・困り感を分ける</li>
+              <li>子どもの事実と教師の解釈を分ける</li>
+              <li>授業改善の課題候補を見えるようにする</li>
+              <li>次に見るとよい子どもの姿を示す</li>
+            </ul>
+          </div>
+        </div>
+        <div class="box box--blue" style="margin-top:0.75rem;">
+          <div class="box__label box__label--blue">このユニットが返す「問い返し」の例（1〜3個に絞って返す）</div>
+          <ul style="padding-left:1.2rem; font-size:0.875rem; margin-top:0.4rem;">
+            <li>その場面で、子どもは具体的に何と言っていましたか。</li>
+            <li>その困り感は、どの子どものどの姿から見えましたか。</li>
+            <li>教師の願いと、今見えている子どもの姿はどこでずれていますか。</li>
+            <li>次にもう一度見るなら、どの場面を見ますか。</li>
+            <li>子ども同士の関わりの中で、何が起きていましたか。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 授業づくりコア -->
+    <div class="unit-row fi">
+      <div class="unit-row__icon-wrap">
+        <span class="lb lb-2">②</span>
+        <span class="material-symbols-outlined pico pico--green" style="font-size:2rem;">school</span>
+      </div>
+      <div class="unit-row__content">
+        <div class="unit-row__title">授業づくりコアユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s_patch_01</span></div>
+        <div class="unit-row__desc" style="margin-bottom:0.6rem;">役割：授業の核・主眼・中心発問・活動構成・見取りのたたき台をつくる。「完成版」ではなく「教師が選び直せるたたき台」を出します。<br><span style="font-size:0.82rem; color:var(--pc-text-sub);">patch_01：授業を「発問・活動から組む」のではなく、子どもが情報に出会い、意味づけ、他者と関係づけ、言語活動を通して見方・考え方をつくり直す過程として設計する判断原理を追加。</span></div>
+        <div class="box box--yellow mt1">
+          <strong style="color:var(--pc-yellow);">「弱い授業の核」に注意</strong><br>
+          「主体的に考える」「友だちの考えを大切にする」だけでは授業の核として弱いです。子どもが「何を対象に」「どのように考えるか」が具体的に見えているかを確認しましょう。
+        </div>
+        <div class="box box--blue" style="margin-top:0.6rem;">
+          <div class="box__label box__label--blue">授業が弱いときの戻り先（patch_01）</div>
+          <div class="table-wrap" style="margin-top:0.4rem;">
+            <table>
+              <thead><tr><th>こんな弱さが出たら…</th><th>まず戻る場所</th></tr></thead>
+              <tbody>
+                <tr><td>中心発問が弱い</td><td>すぐ作り直す前に「子どもの現在の意味づけが見えているか」へ</td></tr>
+                <tr><td>活動が弱い</td><td>活動を増やす前に「出会わせる情報やひっかかりがあるか」へ</td></tr>
+                <tr><td>話し合いが浅い</td><td>話型を足す前に「聞き合う必然や他者との関係づけがあるか」へ</td></tr>
+                <tr><td>振り返りが薄い</td><td>書かせ方を変える前に「授業中に見方・考え方が動いた場面があったか」へ</td></tr>
+                <tr><td>見取りが曖昧</td><td>「授業後に子どもが何を言い直せるか、何を次に使えるか」へ</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指導案デザイン -->
+    <div class="unit-row fi">
+      <div class="unit-row__icon-wrap">
+        <span class="lb lb-3">③</span>
+        <span class="material-symbols-outlined pico pico--purple" style="font-size:2rem;">article</span>
+      </div>
+      <div class="unit-row__content">
+        <div class="unit-row__title">指導案デザインユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1st</span></div>
+        <div class="unit-row__desc" style="margin-bottom:0.75rem;">役割：授業構想を固定の指導案形式（見出し0〜7）へ整形し、主眼・展開・評価の整合を監査する</div>
+
+        <!-- 主眼の定型 -->
+        <div class="box box--blue" style="margin-bottom:0.85rem;">
+          <div class="box__label box__label--blue">主眼（本時の目標）の定型</div>
+          <p style="font-size:0.875rem; margin-bottom:0.5rem;"><em>〜という子どもたちが、〜という授業場面で、<br>〜を〜することを通して、〜という気づきを得る（または〜を大事にする）。</em></p>
+          <div class="table-wrap" style="margin-top:0.5rem;">
+            <table>
+              <thead><tr><th>4要素</th><th>内容</th></tr></thead>
+              <tbody>
+                <tr><td><strong>①子どもの実態</strong></td><td>授業前の子どもの見方、感じ方、困り、傾向</td></tr>
+                <tr><td><strong>②授業場面</strong></td><td>どの教材・資料・活動場面で考えるのか</td></tr>
+                <tr><td><strong>③学習活動</strong></td><td>子どもが何をすることを通して学ぶのか</td></tr>
+                <tr><td><strong>④気づき・価値</strong></td><td>子どもが得る気づき、または大事にする見方</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>出力モード</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td><strong style="color:var(--pc-blue);">提出用</strong></td><td>固定見出し0〜7を出す。監査欄・修正候補は非表示。提出可能な形。</td></tr>
+              <tr><td><strong style="color:var(--pc-green);">研究用</strong></td><td>提出用に加え、主眼の4要素監査・整合チェックを添付する。授業研究向け。</td></tr>
+              <tr><td><strong style="color:var(--pc-yellow);">調整用</strong></td><td>本文の前に修正候補を短く出す。教師が採用した部分だけ本文へ反映。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板書デザイン -->
+    <div class="unit-row fi">
+      <div class="unit-row__icon-wrap">
+        <span class="lb lb-3">③</span>
+        <span class="material-symbols-outlined pico pico--purple" style="font-size:2rem;">space_dashboard</span>
+      </div>
+      <div class="unit-row__content">
+        <div class="unit-row__title">板書デザインユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+        <div class="unit-row__desc" style="margin-bottom:0.75rem;">役割：中心発問または授業の核をもとに板書案を必ず5案出す。「見た目が違う5案」ではなく「思考の流れが違う5案」です。</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>5案の型</th><th>特徴</th></tr></thead>
+            <tbody>
+              <tr><td><strong style="color:var(--pc-blue);">比較型</strong></td><td>複数の考え・立場・方法を並べて比べる</td></tr>
+              <tr><td><strong style="color:var(--pc-green);">変化型</strong></td><td>授業前後の考えの変化を見える化する</td></tr>
+              <tr><td><strong style="color:var(--pc-yellow);">根拠型</strong></td><td>考えと根拠のつながりを見える化する</td></tr>
+              <tr><td><strong style="color:#7B1FA2;">問い深化型</strong></td><td>最初の問いから次の問いへ深まる流れを示す</td></tr>
+              <tr><td><strong style="color:var(--pc-red);">共有焦点型</strong></td><td>子どもの発言や気づきを共通の焦点へ集める</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- その他のユニット -->
+    <h3 style="margin-top:2rem; margin-bottom:0.75rem; font-size:1.1rem;">その他のユニット</h3>
+    <div class="grid-2 fi">
+      <div class="unit-row" style="margin-bottom:0;">
+        <div class="unit-row__icon-wrap">
+          <span class="lb lb-2">②</span>
+          <span class="material-symbols-outlined pico pico--green" style="font-size:1.75rem;">explore</span>
+        </div>
+        <div class="unit-row__content">
+          <div class="unit-row__title">探究コアユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+          <div class="unit-row__desc" style="margin-bottom:0.6rem;">問い・情報収集・整理・表現・ふり返り・再探究の流れをデザイン。探究が「調べ学習・発表づくり・作業消化」で終わらないように整えます。</div>
+          <!-- 探究の3つの型 -->
+          <div class="grid-3" style="gap:0.6rem; margin-bottom:0.6rem;">
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">🔧 行動系</div>
+              <div class="card__desc" style="font-size:0.75rem;"><strong>現実の困りや課題を変える探究</strong><br>問い：誰の何を、どうよくするか<br>注意：企画倒れ・根拠の薄さを避ける</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">🔍 研究系</div>
+              <div class="card__desc" style="font-size:0.75rem;"><strong>理由・違い・仕組みを調べ考える探究</strong><br>問い：なぜか、どう違うか、何が関係しているか<br>注意：引用倒れ・感想化を避ける</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">🎨 創作系</div>
+              <div class="card__desc" style="font-size:0.75rem;"><strong>表現したい価値やメッセージを形にする探究</strong><br>問い：何を、誰に、どのように伝えるか<br>注意：作りっぱなし・意図不明を避ける</div>
+            </div>
+          </div>
+          <div class="box box--green" style="padding:0.6rem 0.85rem;">
+            <span style="font-size:0.78rem; color:var(--pc-green); font-weight:700;">戦略的特徴：</span>
+            <span style="font-size:0.8rem;">問いの洗練・仮説構築・調査プロセスの構造化支援。3つの型は子どもの問いを分類するためではなく、次に必要な支援を選ぶために仮に使います。</span>
+          </div>
+        </div>
+      </div>
+      <div class="unit-row" style="margin-bottom:0;">
+        <div class="unit-row__icon-wrap">
+          <span class="lb lb-2">②</span>
+          <span class="material-symbols-outlined pico pico--green" style="font-size:1.75rem;">self_improvement</span>
+        </div>
+        <div class="unit-row__content">
+          <div class="unit-row__title">自由進度コアユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+          <div class="unit-row__desc" style="margin-bottom:0.6rem;">子どもが自分で学習計画を立て、進度を管理し、自己評価・再調整しながら進む授業をデザイン。自由進度の質は「自由を増やすだけ」では決まりません。</div>
+          <!-- 3分類 -->
+          <div class="grid-3" style="gap:0.6rem; margin-bottom:0.6rem;">
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem; border-left:3px solid var(--pc-blue);">
+              <div class="card__title" style="font-size:0.82rem; color:var(--pc-blue);">子どもに委ねること</div>
+              <div class="card__desc" style="font-size:0.75rem;">順番・方法・ペース・使う資料・協力の仕方・表現の仕方</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem; border-left:3px solid var(--pc-red);">
+              <div class="card__title" style="font-size:0.82rem; color:var(--pc-red);">固定すること</div>
+              <div class="card__desc" style="font-size:0.75rem;">学習の核・到達の目安・必ず扱う内容・安全・時間・提出条件・教師が見るポイント</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem; border-left:3px solid var(--pc-green);">
+              <div class="card__title" style="font-size:0.82rem; color:var(--pc-green);">共有すること</div>
+              <div class="card__desc" style="font-size:0.75rem;">進度の見える化・困ったときの戻り方・友だちと相談できる場・途中で見直すタイミング</div>
+            </div>
+          </div>
+          <div class="box box--green" style="padding:0.6rem 0.85rem;">
+            <span style="font-size:0.78rem; color:var(--pc-green); font-weight:700;">戦略的特徴：</span>
+            <span style="font-size:0.8rem;">学習者の自律性を尊重した進捗管理と、自己調整学習の環境提供。停滞は失敗ではなく再調整の入口として扱います（reloopモード）。</span>
+          </div>
+        </div>
+      </div>
+      <div class="unit-row" style="margin-bottom:0;">
+        <div class="unit-row__icon-wrap">
+          <span class="lb lb-2">②</span>
+          <span class="material-symbols-outlined pico pico--green" style="font-size:1.75rem;">accessibility_new</span>
+        </div>
+        <div class="unit-row__content">
+          <div class="unit-row__title">特別支援教育コアユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+          <div class="unit-row__desc" style="margin-bottom:0.6rem;">参加保障・環境調整・課題調整・関係性支援を授業に組み込む。診断的判断はせず、授業改善の文脈での支援設計を扱います。</div>
+          <!-- 4層で見る -->
+          <div class="grid-4" style="gap:0.6rem; margin-bottom:0.6rem;">
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">🏠 1. 環境</div>
+              <div class="card__desc" style="font-size:0.75rem;">座席・音・光・刺激・板書・掲示・道具の扱いやすさ</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">📋 2. 課題</div>
+              <div class="card__desc" style="font-size:0.75rem;">指示の量・手順の見えやすさ・課題の分量・選択肢・取りかかりやすさ</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">🤝 3. 関係</div>
+              <div class="card__desc" style="font-size:0.75rem;">相談できる相手・ペア・グループ・失敗して戻れる雰囲気・助けを求める方法</div>
+            </div>
+            <div class="card card--left" style="padding:0.75rem; gap:0.3rem;">
+              <div class="card__title" style="font-size:0.82rem;">👁 4. 見取り</div>
+              <div class="card__desc" style="font-size:0.75rem;">参加できている姿・困りが出る場面・支援後に変わった行動・次に観察する姿</div>
+            </div>
+          </div>
+          <div class="box box--green" style="padding:0.6rem 0.85rem;">
+            <span style="font-size:0.78rem; color:var(--pc-green); font-weight:700;">戦略的特徴：</span>
+            <span style="font-size:0.8rem;">個々の特性に応じた環境調整と、学びの障壁を取り除く個別最適化。合理的配慮を「特別な対応」ではなく「授業設計の一部」として扱います。個別支援はできるだけ学級全体にも効く授業構造として広げます。</span>
+          </div>
+        </div>
+      </div>
+      <div class="unit-row" style="margin-bottom:0;">
+        <div class="unit-row__icon-wrap">
+          <span class="lb lb-2">②</span>
+          <span class="material-symbols-outlined pico pico--green" style="font-size:1.75rem;">smart_toy</span>
+        </div>
+        <div class="unit-row__content">
+          <div class="unit-row__title">生成AI授業活用コアユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.0（運用正本候補）</span></div>
+          <div class="unit-row__desc" style="margin-bottom:0.6rem;">Gemini / NotebookLMをどこにどう使うかを授業設計に組み込む。AI活用を目的化せず、授業の主眼・子どもの思考に接続して判断します。</div>
+
+          <!-- Gemini vs NotebookLM -->
+          <div class="grid-2" style="gap:0.75rem; margin-bottom:0.6rem;">
+            <div class="card card--left" style="padding:0.85rem; gap:0.35rem;">
+              <div class="card__title" style="color:var(--pc-blue); font-size:0.85rem; display:flex; align-items:center; gap:0.3rem;"><span class="material-symbols-outlined ico ico--blue">smart_toy</span>Gemini の役割</div>
+              <div class="card__desc" style="font-size:0.78rem;">問いを広げる・別の観点を出す・考えを整理する・構成案を出す・表現を見直す。ただし根拠確認なしに正解扱いしない。</div>
+            </div>
+            <div class="card card--left" style="padding:0.85rem; gap:0.35rem;">
+              <div class="card__title" style="color:var(--pc-green); font-size:0.85rem; display:flex; align-items:center; gap:0.3rem;"><span class="material-symbols-outlined ico ico--green">book</span>NotebookLM の役割</div>
+              <div class="card__desc" style="font-size:0.78rem;">教師が指定した資料に基づいて調べる・出典に戻る・複数資料を比較する・ファクトチェックに使う。ただし要約だけで読んだつもりにさせない。</div>
+            </div>
+          </div>
+
+          <!-- 学年段階 -->
+          <div class="table-wrap" style="margin-bottom:0.6rem;">
+            <table>
+              <thead><tr><th>学年段階</th><th>活用の目安</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1・2年</strong></td><td>原則として児童は直接操作しない。教師提示でAIも間違えること・確かめる必要があることを知る。</td></tr>
+                <tr><td><strong>3・4年</strong></td><td>教師の指導のもとで使う。NotebookLMを主力にし、教師が用意した資料に戻って確かめる。AI案をそのまま使わず自分の言葉に直す。</td></tr>
+                <tr><td><strong>5・6年</strong></td><td>目的に応じてGeminiとNotebookLMを選ぶ。複数資料でファクトチェック。使用を明示。AI案をもとに自分の考えを再構成する。</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="box box--red" style="padding:0.6rem 0.85rem;">
+            <span style="font-size:0.78rem; color:var(--pc-red); font-weight:700;">使わない方がよい場面：</span>
+            <span style="font-size:0.8rem;">子どもの初発の考えを出す場面 / 感想文・詩・作文など個人の表現が本質の場面 / 道徳・学活など価値判断を育てる場面 / テスト・評価 / AI案の方が整いすぎて子どもの言葉を奪う場面</span>
+          </div>
+        </div>
+      </div>
+      <div class="unit-row" style="margin-bottom:0;">
+        <div class="unit-row__icon-wrap">
+          <span class="lb lb-4">④</span>
+          <span class="material-symbols-outlined pico pico--yellow" style="font-size:1.75rem;">public</span>
+        </div>
+        <div class="unit-row__content">
+          <div class="unit-row__title">Web検索・ICT情報教育ユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+          <div class="unit-row__desc" style="margin-bottom:0.6rem;">授業で使う根拠・一次資料・ICT活用・情報モラルに必要な情報を検索・整理。結果を「benchmark / gap / evidence」の3種に分けて渡します。</div>
+          <div class="box box--blue" style="padding:0.6rem 0.85rem; margin-bottom:0.5rem;">
+            <div style="font-size:0.78rem; color:var(--pc-blue); font-weight:700; margin-bottom:0.35rem;">情報源の優先順位</div>
+            <div style="font-size:0.78rem; display:grid; grid-template-columns:auto 1fr; gap:0.2rem 0.5rem;">
+              <span style="font-weight:700;">①</span><span>一次資料（法令・学習指導要領・統計原表・公式発表）</span>
+              <span style="font-weight:700;">②</span><span>公的資料（文科省・文化庁・総務省等の省庁・自治体）</span>
+              <span style="font-weight:700;">③</span><span>大学・学会・研究機関（査読論文・学会資料）</span>
+              <span style="font-weight:700;">④</span><span>信頼できる報道・専門媒体（一次情報へのリンクが明確なもの）</span>
+              <span style="font-weight:700;">⑤</span><span>民間・個人サイト（根拠・出典が明確な場合のみ参考）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="unit-row" style="margin-bottom:0;">
+        <div class="unit-row__icon-wrap">
+          <span class="lb lb-4">④</span>
+          <span class="material-symbols-outlined pico pico--yellow" style="font-size:1.75rem;">transform</span>
+        </div>
+        <div class="unit-row__content">
+          <div class="unit-row__title">写真・データ・文体変換ユニット <span class="card__badge" style="font-size:0.7rem; vertical-align:middle;">ver.1.1s</span></div>
+          <div class="unit-row__desc" style="margin-bottom:0.5rem;">写真・手書き・表・記録・文章を目的に合わせて変換するユニット。変換と解釈を必ず分け、素材にない情報は補いません。</div>
+          <div style="font-size:0.78rem; color:var(--pc-text-sub); background:var(--pc-bg); border:1px solid var(--pc-border); border-radius:4px; padding:0.5rem 0.75rem;">
+            <strong style="color:var(--pc-text);">変換の5種：</strong>
+            写真→文章（material_to_text）/ 表→文章（table_to_text）/ 文体変換（text_style_convert）/ やさしく言い換え（plain_language）/ 報告・共有用整理（report_packaging）
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第5章：キャラクター会議室 ===== -->
+<section class="section" id="characters">
+  <div class="section__inner">
+    <div class="ch-label">第5章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">meeting_room</span>
+      キャラクター会議室の10キャラクター
+    </h2>
+    <p class="section__lead">
+      できあがった授業案・指導案・板書案を10人のキャラクターが多角的に見直す「協議・俯瞰レイヤ」です。
+    </p>
+
+    <div class="principles">
+      <div class="principles__title">
+        <span class="material-symbols-outlined ico ico--blue">verified</span>
+        キャラクター会議室の3大特徴
+      </div>
+      <ol>
+        <li>授業を新規に作る主担当ではなく、できた案を点検する場所</li>
+        <li>個別コメント集ではなく、応答型「小会議」として会話する</li>
+        <li>改善案は3点までに絞り、最終判断は教師が行う</li>
+      </ol>
+    </div>
+
+    <!-- 監査モード / 再設計モード -->
+    <h3 style="margin-top:2rem; margin-bottom:0.75rem; font-size:1.1rem;">2つのモード</h3>
+    <div class="grid-2 fi" style="gap:1rem;">
+      <div class="card card--left" style="border-left:3px solid var(--pc-blue);">
+        <div class="card__title" style="color:var(--pc-blue); display:flex; align-items:center; gap:0.4rem;">
+          <span class="material-symbols-outlined ico ico--blue">fact_check</span>監査モード（デフォルト）
+        </div>
+        <div class="card__desc">
+          <strong>授業の核を動かさず</strong>、主眼・問い・展開・評価・板書・対話・支援のズレを確認する。<br>
+          モード指定なし → 自動的に監査モードで開始。<br>
+          核・山場・評価対象が動いた場合は「部分再設計」として明示する。
+        </div>
+      </div>
+      <div class="card card--left" style="border-left:3px solid #E65100;">
+        <div class="card__title" style="color:#E65100; display:flex; align-items:center; gap:0.4rem;">
+          <span class="material-symbols-outlined ico" style="color:#E65100;">construction</span>再設計モード（要指定）
+        </div>
+        <div class="card__desc">
+          必要に応じて<strong>授業の核・山場・評価対象を動かし</strong>、別案として組み直す。<br>
+          「再設計モードで」と明示した場合のみ起動。<br>
+          元案維持案と再設計案は混ぜない。変わった場合「これは別案」と明示する。
+        </div>
+      </div>
+    </div>
+    <div class="box box--yellow fi" style="margin-top:0.75rem;">
+      <strong>制御ライン判定：</strong>会議中に核・山場・評価対象が動いた場合は「監査 / 部分再設計 / 再設計」のどれかを判定し、部分再設計以上の場合は教師の判断へ戻します。AIが授業の採用・不採用を勝手に決めません。
+    </div>
+
+    <!-- 10キャラクター -->
+    <div class="grid-auto mt2 fi">
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:#0E1116;">security</span>
+          <div><div class="char-card__name">Jジャック</div><div class="char-card__role">安全番人</div></div>
+        </div>
+        <div class="char-card__desc">逸脱・暴走・ルール違反を止める。会議が脱線しそうなとき、子どもの内面断定が出たとき、再設計が監査に混入したときに介入する。</div>
+        <div class="char-card__q">「この案で子どもを傷つける可能性はないか」「暴走していないか」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:var(--pc-blue);">analytics</span>
+          <div><div class="char-card__name">ダイヤ</div><div class="char-card__role">論理・構造・整合の番人</div></div>
+        </div>
+        <div class="char-card__desc">主眼と展開がつながっているか、活動と評価が対応しているか、授業の核と中心発問がずれていないかを見る。</div>
+        <div class="char-card__q">「主眼と活動はつながっているか」「根拠はあるか」「論理的な抜けはどこか」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:var(--pc-red);">favorite</span>
+          <div><div class="char-card__name">ハート</div><div class="char-card__role">教師の願い・教室の空気の番人</div></div>
+        </div>
+        <div class="char-card__desc">教師が本当に大事にしたいことを守る。論理だけで切り捨てられそうな「温かさ」を代弁する。</div>
+        <div class="char-card__q">「この授業で教師が守りたいものは何か」「子どもの関係性は大丈夫か」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:#7B1FA2;">shuffle</span>
+          <div><div class="char-card__name">ジョーカー</div><div class="char-card__role">視点転換・再解釈担当</div></div>
+        </div>
+        <div class="char-card__desc">「そもそもこの問いが正しいか」「別の見方はないか」を問い直す。ただし破壊ではなく、安全な問い直し。</div>
+        <div class="char-card__q">「前提を疑ってみると」「別の角度から見ると」「ひっくり返すとどう見える」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:var(--pc-yellow);">child_care</span>
+          <div><div class="char-card__name">ジュニア</div><div class="char-card__role">子どもの受け取り担当</div></div>
+        </div>
+        <div class="char-card__desc">「この発問で子どもはどこで止まるか」「この板書で何が見えるか」を子どもの立場から読む。</div>
+        <div class="char-card__q">「子どもにはこう見える」「この活動で子どもが止まるのはどこか」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:var(--pc-green);">grade</span>
+          <div><div class="char-card__name">エース</div><div class="char-card__role">授業の核・収束担当</div></div>
+        </div>
+        <div class="char-card__desc">授業の核・教師の願いを一文にまとめる。複雑になりすぎた案を「結局この授業で何を大事にするのか」の一文に収束させる。</div>
+        <div class="char-card__q">「この授業を一文で言うと」「核は何か」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:#5D4037;">workspace_premium</span>
+          <div><div class="char-card__name">キング</div><div class="char-card__role">実務・共有文書担当</div></div>
+        </div>
+        <div class="char-card__desc">共有文書・学年会資料・掲示物として整える。「明日使える形」にする実務担当。Jジャックと組んで安全に使える形まで落とし込む。</div>
+        <div class="char-card__q">「これを学年会の資料にするには」「配布可能な形にすると」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:#E91E63;">rtt</span>
+          <div><div class="char-card__name">クイーン</div><div class="char-card__role">語り口・文体の番人</div></div>
+        </div>
+        <div class="char-card__desc">「この文章は保護者に届くか」「子どもへの語りかけになっているか」「丁寧すぎて読まれない形になっていないか」を整える。</div>
+        <div class="char-card__q">「読む相手は誰か」「この言葉は届くか」「もっと自然な言い方は」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:var(--pc-green);">diversity_3</span>
+          <div><div class="char-card__name">クラブ</div><div class="char-card__role">協働・対話の番人</div></div>
+        </div>
+        <div class="char-card__desc">「子ども同士が聞き合う必然はあるか」「グループ活動が成立する構造になっているか」「対話が形骸化していないか」を見る。</div>
+        <div class="char-card__q">「なぜ友だちの考えを聞く必要があるか」「対話の必然はどこにあるか」</div>
+      </div>
+
+      <div class="char-card">
+        <div class="char-card__head">
+          <span class="material-symbols-outlined char-card__ico" style="color:#0E1116;">psychology</span>
+          <div><div class="char-card__name">スペード</div><div class="char-card__role">問い・学びの弱さを突く担当</div></div>
+        </div>
+        <div class="char-card__desc">「この授業で本当に思考が動くか」「なんとなく活動しているだけになっていないか」「問いが浅すぎないか」を突く。</div>
+        <div class="char-card__q">「ここで本当に子どもは考えるか」「学びの弱さはどこか」「問いに深みはあるか」</div>
+      </div>
+    </div>
+
+    <!-- 3つのモード -->
+    <h3 style="margin-top:2.5rem; margin-bottom:0.75rem; font-size:1.1rem;">3つのモード</h3>
+    <div class="table-wrap fi">
+      <table>
+        <thead>
+          <tr><th>モード</th><th>目的</th><th>特徴</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--pc-blue);">監査モード（デフォルト）</strong></td>
+            <td>元案の授業の核を動かさずにズレを確認する</td>
+            <td>核・山場・評価対象は動かさない。改善案は3点まで。最も安全で基本のモード。</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--pc-yellow);">部分再設計モード</strong></td>
+            <td>授業の核はほぼ同じで、山場・活動順・板書の一部を変える</td>
+            <td>変更が起きた場合は変更前→後→理由を明示。ユーザーの採用判断が必要。</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--pc-red);">再設計モード</strong></td>
+            <td>授業の核・山場・評価対象を動かして別案を作る</td>
+            <td>元案と再設計案は必ず分けて保持。ユーザーが明示的に「再設計モード」と指定した場合のみ起動。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box box--green mt1 fi">
+      <strong>初任者へ：まず「監査モード」だけ使おう</strong><br>
+      キャラクター会議室を初めて使うときは、モード指定なし（＝監査モード）で十分です。「この授業案をキャラクターに見てもらいたい」と話しかけるだけで、ダイヤ・ジュニア・スペードなど適切なキャラクターが選ばれて会議が始まります。
+    </div>
+
+    <!-- おすすめ小会議パターン -->
+    <h3 style="margin-top:2.5rem; margin-bottom:0.75rem; font-size:1.1rem;">おすすめ小会議パターン</h3>
+    <div class="table-wrap fi">
+      <table>
+        <thead>
+          <tr><th>会議名</th><th>呼ぶキャラクター</th><th>使う場面</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>発問見直し会議</td><td>ダイヤ・ジュニア・スペード</td><td>中心発問・導入・振り返りの問いを見直す</td></tr>
+          <tr><td>板書監査会議</td><td>ダイヤ・ジュニア・スペード・Jジャック</td><td>板書が授業の核と思考の流れを支えているか見る</td></tr>
+          <tr><td>指導案監査会議</td><td>ダイヤ・ジュニア・スペード・クラブ・Jジャック</td><td>主眼・展開・評価・対話の必然を見る</td></tr>
+          <tr><td>対話成立監査会議</td><td>クラブ・ジュニア・ハート・スペード</td><td>聞く意味・選び直す意味があるか見る</td></tr>
+          <tr><td>教材接続監査会議</td><td>ダイヤ・ジュニア・スペード・エース</td><td>活動が教材から離れていないか見る</td></tr>
+          <tr><td>支援設計監査会議</td><td>ジュニア・クラブ・ダイヤ・Jジャック・ハート</td><td>参加しにくさ・書字抵抗・見通しへの支援を考える</td></tr>
+          <tr><td>実践着地会議</td><td>クラブ・キング・Jジャック</td><td>明日使える形へ、活動手順・安全・共有文書を整える</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box box--blue mt1 fi">
+      <div class="box__label box__label--blue">話しかけ例（授業前）</div>
+      「次の授業構想について、お勧めのキャラクター会議を開いてください。モード指定なし（監査モード）で、個別コメントではなく応答型の小会議にしてください。改善案は3点までに絞り、最後に【授業の核】【次の一手】【残る問い】【制御ライン判定】で収束してください。」
+    </div>
+
+    <!-- 実施後検証フェーズ -->
+    <h3 style="margin-top:2rem; margin-bottom:0.75rem; font-size:1.1rem;">実施後検証フェーズ（授業後の使い方）</h3>
+    <div class="box box--green fi">
+      <strong>授業を実施した後は「設計を足す」のではなく「ズレを取る」ことを目的にします。</strong>
+      <div class="table-wrap" style="margin-top:0.75rem;">
+        <table>
+          <thead><tr><th>見るポイント</th><th>確認内容</th></tr></thead>
+          <tbody>
+            <tr><td>山場は成立したか</td><td>中心となる思考場面で子どもが考えを動かしていたか</td></tr>
+            <tr><td>補助活動は主活動を支えたか</td><td>補助活動が主役化・作業消化になっていなかったか</td></tr>
+            <tr><td>止まった子はどこで止まったか</td><td>どの場面で、どの子どもが止まったかを特定する</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:0.85rem; margin-top:0.75rem; color:var(--pc-text-sub);">
+        収束形式：【残す設計】【直す設計】【次時への一手】<br>
+        授業前に活動を足したり、評価項目を増やしたり、板書を複雑にしたりしない。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第7章：シナリオ ===== -->
+<section class="section" id="scenarios">
+  <div class="section__inner">
+    <div class="ch-label">第7章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">route</span>
+      授業デザインシナリオ（A〜D）
+    </h2>
+    <p class="section__lead">ベースとユニットを組み合わせることで、どんな授業デザインができるか、4つのシナリオで確認します。</p>
+
+    <!-- シナリオA -->
+    <div class="sc-card fi">
+      <div class="sc-card__header">
+        <span class="sc-label">シナリオA</span>
+        <div class="sc-title">困り感から授業改善へ</div>
+      </div>
+      <div class="sc-meta">
+        <div class="sc-meta__item"><span class="material-symbols-outlined">school</span> 3年生・国語・物語文</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">flag</span> 授業の核・主眼・活動のたたき台まで作る</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">route</span> ベース → 傾聴・対話 → 授業づくりコア</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <div class="step__label">ベースへ話しかける</div>
+            <div class="step__text">「3年生の国語で物語文の授業をしていますが、子どもが考えを言葉にできなくて止まります。毎回「分からない」で終わってしまって困っています。」</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <div class="step__label">ベースが課題を仮見立て</div>
+            <div class="step__text">「言葉にできない」背景を整理し、「問いが広すぎて子どもが何を考えればよいか分からない」という仮課題と「傾聴・対話ユニットへ」という提案が返ってくる。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <div class="step__label">傾聴・対話ユニットで語りをほどく</div>
+            <div class="step__text">願い・事実・解釈・困り感を分離。「分からない」が「問いが広すぎて根拠の探し方が分からない」という事実として浮かぶ。次に見る子どもの姿も示される。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__body">
+            <div class="step__label">授業づくりコアユニットへ接続</div>
+            <div class="step__text">「物語の山場で主人公が選択した理由について、複数の根拠を使って考える」という授業の核のたたき台が出る。中心発問の方向・活動構成・見取りの観点が整理される。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シナリオB -->
+    <div class="sc-card fi">
+      <div class="sc-card__header">
+        <span class="sc-label">シナリオB</span>
+        <div class="sc-title">探究学習の授業設計</div>
+      </div>
+      <div class="sc-meta">
+        <div class="sc-meta__item"><span class="material-symbols-outlined">school</span> 5年生・総合</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">flag</span> 探究の流れ（問い→調査→整理→表現→ふり返り）を設計する</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">route</span> ベース → 探究コア → Web検索・ICT情報教育</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <div class="step__label">ベースへ話しかける</div>
+            <div class="step__text">「5年生・総合。地域の高齢化問題で探究学習をしたい。問い→調査→整理→表現の流れを設計したいです。」</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <div class="step__label">探究コアユニットで流れを設計</div>
+            <div class="step__text">「探究の問い」「情報収集の方法」「整理の観点」「表現の形」「ふり返り」「再探究への問い」が整理される。子どもが問いを更新する「再探究」の仕掛けも含まれる。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <div class="step__label">Web検索ユニットで資料・根拠を整理</div>
+            <div class="step__text">「高齢化率の統計」「地域の公的資料」を検索し、benchmark（定番的理解）とgap（この学校区の特性との差）を整理して探究の文脈に組み込む。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シナリオC -->
+    <div class="sc-card fi">
+      <div class="sc-card__header">
+        <span class="sc-label">シナリオC</span>
+        <div class="sc-title">指導案＋板書の成果物作成</div>
+      </div>
+      <div class="sc-meta">
+        <div class="sc-meta__item"><span class="material-symbols-outlined">school</span> 6年生・社会・戦争と人々の暮らし</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">flag</span> 提出できる指導案と板書案5案を作る</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">route</span> ベース → 授業づくりコア → 指導案デザイン → 板書デザイン</div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <div class="step__label">ベースへ話しかける</div>
+            <div class="step__text">「6年生・社会・戦争と人々の暮らし。授業研究で指導案が必要です。子どもたちが戦時中の人々の選択を自分事として考える授業にしたい。」</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <div class="step__label">授業づくりコアユニットで授業の核を立てる</div>
+            <div class="step__text">授業の核「戦時中の普通の人々がなぜあの選択をしたのかを、自分ならどうするかという問いとともに根拠をもって考える」と主眼・中心発問・活動構成が出てくる。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <div class="step__label">指導案デザインユニットで整形</div>
+            <div class="step__text">固定8見出しの指導案に整形。「研究用」モードで主眼の4要素チェック・整合監査も行われる。展開表6列が出力される。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__body">
+            <div class="step__label">板書デザインユニットで板書案5案を作成</div>
+            <div class="step__text">中心発問をもとに、比較型・変化型・根拠型・問い深化型・共有焦点型の5案が出力される。教師が選び、キャラクター会議室で追加点検することもできる。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シナリオD -->
+    <div class="sc-card fi">
+      <div class="sc-card__header">
+        <span class="sc-label">シナリオD</span>
+        <div class="sc-title">初任者・2年目のための最初の一歩</div>
+      </div>
+      <div class="sc-meta">
+        <div class="sc-meta__item"><span class="material-symbols-outlined">person</span> 初任者・2年目の教員</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">timer</span> 所要時間：15〜30分</div>
+        <div class="sc-meta__item"><span class="material-symbols-outlined">route</span> ベース（＋必要なら授業づくりコア）</div>
+      </div>
+
+      <div class="do-dont" style="margin-bottom:1.25rem;">
+        <div class="dont-box">
+          <div class="dont-box__label">よくやりがちな間違いパターン</div>
+          <ul>
+            <li>完璧な指導案を最初から作ろうとする</li>
+            <li>活動を増やせばよい授業になると思う</li>
+            <li>子どもの様子を見る前に手立てを決めてしまう</li>
+          </ul>
+        </div>
+        <div class="do-box">
+          <div class="do-box__label">たい焼きタイムの基本スタンス</div>
+          <ul>
+            <li>まず「今日の子どもの事実」を話す</li>
+            <li>次の一手は1つだけ</li>
+            <li>慣れてきたらユニットを増やす</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">①</div>
+          <div class="step__body">
+            <div class="step__label">今日の授業を3行で話す</div>
+            <div class="step__text">「何の授業・どんな子どもの様子・自分のもやもや」をベースへ。完璧な説明でなくてOKです。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">②</div>
+          <div class="step__body">
+            <div class="step__label">ベースから「課題の仮見立て」と「次の最小作業」を受け取る</div>
+            <div class="step__text">読んで「そうかも」と思ったら、次の最小作業だけ記録する。すぐ合ってるかどうか判断しなくていい。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">③</div>
+          <div class="step__body">
+            <div class="step__label">明日の授業で「次の最小作業」を1つだけ試す</div>
+            <div class="step__text">全部一気に変えない。1つだけ変えて、子どもの変化を見る。</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">④</div>
+          <div class="step__body">
+            <div class="step__label">（翌日）またベースへ「昨日試したら、こうなりました」と話す</div>
+            <div class="step__text">繰り返すことで、課題→改善→観察のサイクルが回り始める。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box box--blue mt1">
+        <div class="box__label box__label--blue">ベースへの話しかけ例（初任者向け）</div>
+        「今日の2年生の算数の授業で、繰り上がりのある足し算をやりました。一部の子は早く終わるのに、多くの子が手が止まっていました。「もう一度説明しよう」と思って説明したんですが、変わらなくて…。何か違う気がしているんですが、何が問題なのかよく分かりません。」
+      </div>
+      <div class="box box--green" style="margin-top:0.75rem;">
+        <strong>初任者・2年目向け：最も短い使い方フロー</strong><br>
+        発問だけ変えたい → ベースの回答だけ使う（指導案は今日は不要）<br>
+        授業全体を見直したい → 授業づくりコアユニットへ進む<br>
+        指導案も必要 → さらに指導案デザインユニットへ進む（提出用・研究用・調整用を選択）
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第8章：誤解と対処 ===== -->
+<section class="section" id="misconceptions">
+  <div class="section__inner">
+    <div class="ch-label">第8章</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">quiz</span>
+      初任者のためのよくある誤解と対処
+    </h2>
+
+    <div class="mis fi">
+      <div class="mis__wrong">
+        <span class="material-symbols-outlined mis__ico">cancel</span>
+        <div>
+          <div class="mis__title">誤解1：ベースに話しかければ指導案が完成する</div>
+          <div class="mis__body">「ベースに授業の情報を入れたら、全部やってくれる」</div>
+        </div>
+      </div>
+      <div class="mis__ok">
+        <span class="material-symbols-outlined mis__ico">check_circle</span>
+        <div>
+          <div class="mis__title">正解</div>
+          <div class="mis__body">ベースは「交通整理」をするだけです。成果物を作るのは各ユニットの仕事。必要なユニットへ接続してから作業を進めます。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mis fi">
+      <div class="mis__wrong">
+        <span class="material-symbols-outlined mis__ico">cancel</span>
+        <div>
+          <div class="mis__title">誤解2：出てきた案をそのまま使えばよい</div>
+          <div class="mis__body">「AIが出した主眼・発問をそのまま提出案にする」</div>
+        </div>
+      </div>
+      <div class="mis__ok">
+        <span class="material-symbols-outlined mis__ico">check_circle</span>
+        <div>
+          <div class="mis__title">正解</div>
+          <div class="mis__body">たい焼きタイムはすべて「たたき台」として出します。教師が選び・修正することを前提にした出力です。「これは合う／合わない」を判断するのは教師です。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mis fi">
+      <div class="mis__wrong">
+        <span class="material-symbols-outlined mis__ico">cancel</span>
+        <div>
+          <div class="mis__title">誤解3：子どもの事実がなくても使える</div>
+          <div class="mis__body">「子どもの様子はよく分からないけど、とにかく授業案を作ってほしい」</div>
+        </div>
+      </div>
+      <div class="mis__ok">
+        <span class="material-symbols-outlined mis__ico">check_circle</span>
+        <div>
+          <div class="mis__title">正解</div>
+          <div class="mis__body">子どもの具体的な姿・発言・行動がないと、「もっともらしいが薄い授業案」にしかなりません。子どもの事実が薄い場合、たい焼きタイムは「まだ見えていないこと」を確認する問いを返します。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mis fi">
+      <div class="mis__wrong">
+        <span class="material-symbols-outlined mis__ico">cancel</span>
+        <div>
+          <div class="mis__title">誤解4：キャラクター会議室が授業を作ってくれる</div>
+          <div class="mis__body">「キャラクターに最初から授業設計を頼めばよい」</div>
+        </div>
+      </div>
+      <div class="mis__ok">
+        <span class="material-symbols-outlined mis__ico">check_circle</span>
+        <div>
+          <div class="mis__title">正解</div>
+          <div class="mis__body">キャラクター会議室は「協議・俯瞰レイヤ」です。すでにある授業案を多角的に点検する場所であり、新規設計の主担当ではありません。授業の核や構想ができてから使います。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mis fi">
+      <div class="mis__wrong">
+        <span class="material-symbols-outlined mis__ico">cancel</span>
+        <div>
+          <div class="mis__title">誤解5：板書ユニットは1案だけ出す</div>
+          <div class="mis__body">「板書案を1つ作ってください」と頼めばよい</div>
+        </div>
+      </div>
+      <div class="mis__ok">
+        <span class="material-symbols-outlined mis__ico">check_circle</span>
+        <div>
+          <div class="mis__title">正解</div>
+          <div class="mis__body">板書デザインユニットは必ず5案出します。「見た目が違う5案」ではなく「思考の流れが違う5案」です。教師が授業のねらいに合った案を選ぶ設計になっています。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== クイックリファレンス ===== -->
+<section class="section" id="quickref">
+  <div class="section__inner">
+    <div class="ch-label">クイックリファレンス</div>
+    <h2 class="section__title">
+      <span class="material-symbols-outlined">quick_reference_all</span>
+      どのユニットを使う？
+    </h2>
+    <div class="table-wrap fi">
+      <table>
+        <thead>
+          <tr>
+            <th>こんな時…</th>
+            <th>このユニットへ</th>
+            <th>レイヤー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>授業が「何かおかしい」と感じるが、何が問題か分からない</td>
+            <td><strong>傾聴・対話ユニット</strong></td>
+            <td><span class="lb lb-1">①B</span></td>
+          </tr>
+          <tr>
+            <td>授業の核・主眼・発問・活動を考えたい</td>
+            <td><strong>授業づくりコアユニット</strong></td>
+            <td><span class="lb lb-2">②</span></td>
+          </tr>
+          <tr>
+            <td>探究学習の流れをデザインしたい</td>
+            <td><strong>探究コアユニット</strong></td>
+            <td><span class="lb lb-2">②</span></td>
+          </tr>
+          <tr>
+            <td>子どもが自分で進める授業にしたい</td>
+            <td><strong>自由進度コアユニット</strong></td>
+            <td><span class="lb lb-2">②</span></td>
+          </tr>
+          <tr>
+            <td>特別支援が必要な子どもへの対応を組み込みたい</td>
+            <td><strong>特別支援教育コアユニット</strong></td>
+            <td><span class="lb lb-2">②</span></td>
+          </tr>
+          <tr>
+            <td>GeminiやAIをどこに使うか判断したい</td>
+            <td><strong>生成AI授業活用コアユニット</strong></td>
+            <td><span class="lb lb-2">②</span></td>
+          </tr>
+          <tr>
+            <td>指導案の形式に整形したい</td>
+            <td><strong>指導案デザインユニット</strong></td>
+            <td><span class="lb lb-3">③</span></td>
+          </tr>
+          <tr>
+            <td>板書案を複数の構造から選びたい</td>
+            <td><strong>板書デザインユニット</strong></td>
+            <td><span class="lb lb-3">③</span></td>
+          </tr>
+          <tr>
+            <td>授業に使う資料・根拠・統計を探したい</td>
+            <td><strong>Web検索・ICT情報教育ユニット</strong></td>
+            <td><span class="lb lb-4">④</span></td>
+          </tr>
+          <tr>
+            <td>写真・手書きメモ・文章を変換したい</td>
+            <td><strong>写真・データ・文体変換ユニット</strong></td>
+            <td><span class="lb lb-4">④</span></td>
+          </tr>
+          <tr>
+            <td>できた授業案を多角度から点検したい</td>
+            <td><strong>キャラクター会議室ユニット</strong></td>
+            <td><span class="lb lb-0">⓪</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section section--cta">
+  <div class="section__inner">
+    <span class="material-symbols-outlined" style="font-size:clamp(3rem,6vw,4rem); color:var(--pc-blue); margin-bottom:1rem; display:block;">favorite</span>
+    <h2 class="section__title">最後に</h2>
+    <p class="section__lead" style="max-width:58ch; margin:0 auto 1rem;">
+      たい焼きタイムは「完成した答え」を出すツールではありません。<br>
+      教師が子どもの事実に向き合い、思考を整理し、次の一手を選ぶプロセスを支えるツールです。<br><br>
+      最初は<strong>「ベースへ話しかけるだけ」</strong>で十分です。<br>
+      子どもの事実から始めて、次の最小作業を一歩ずつ。それがたい焼きタイムの使い方です。
+    </p>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  たい焼きタイム 使い方マニュアル ver.1.1s &nbsp;·&nbsp; 2026年4月
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

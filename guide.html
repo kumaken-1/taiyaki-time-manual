@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>たい焼きタイム 使い方ガイド</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    /* ========== リセット & ベース ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --il-primary:   #FF8A65;
+      --il-secondary: #7986CB;
+      --il-accent:    #FFD54F;
+      --il-bg:        #FFF8F3;
+      --il-bg-sub:    #FFE8D6;
+      --il-surface:   #FFFFFF;
+      --il-text:      #2D2A32;
+      --il-text-sub:  #6E6A74;
+      --il-border:    #EADBCF;
+      --il-shadow:        0 8px 24px rgba(45,42,50,0.08);
+      --il-shadow-strong: 0 16px 36px rgba(45,42,50,0.12);
+
+      --c0: #9C64C8; --c0-bg: #F3E8FF; --c0-mid: #E8D5F5;
+      --c1: #E87722; --c1-bg: #FFF3E8; --c1-mid: #FFE0C2;
+      --c2: #2E86C1; --c2-bg: #EAF4FB; --c2-mid: #D6EAF8;
+      --c3: #1E8449; --c3-bg: #EAFAF1; --c3-mid: #D5F5E3;
+      --c4: #CA6F1E; --c4-bg: #FEF5E7; --c4-mid: #FDEBD0;
+    }
+
+    body {
+      font-family: 'Nunito', 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+      font-weight: 500;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+      color: var(--il-text);
+      background: var(--il-bg);
+      background-image:
+        radial-gradient(ellipse 600px 400px at 85% -10%,  rgba(255,213,79,0.25),   transparent 60%),
+        radial-gradient(ellipse 500px 500px at -10% 90%,  rgba(121,134,203,0.20),  transparent 60%),
+        radial-gradient(ellipse 400px 300px at 60% 50%,   rgba(255,138,101,0.08),  transparent 70%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 20%; right: -80px;
+      width: 200px; height: 200px;
+      background: var(--il-bg-sub);
+      border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+      opacity: 0.55;
+      z-index: -1;
+      pointer-events: none;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Nunito', 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      line-height: 1.3;
+    }
+    code {
+      background: var(--il-bg-sub);
+      border: 1px solid var(--il-border);
+      border-radius: 6px;
+      padding: 0.1em 0.4em;
+      font-size: 0.9em;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ========== ナビ ========== */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 0.85rem 2rem;
+      background: rgba(255,248,243,0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--il-border);
+      z-index: 200;
+    }
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 0.25rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+    .nav-link {
+      display: inline-block;
+      color: var(--il-text-sub);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link:hover {
+      background: var(--il-bg-sub);
+      color: var(--il-primary);
+    }
+
+    /* ========== ヒーロー ========== */
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 5rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -80px;
+      width: 320px; height: 320px;
+      background: var(--il-accent);
+      border-radius: 48% 52% 60% 40% / 55% 45% 60% 40%;
+      opacity: 0.22;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -60px;
+      width: 260px; height: 260px;
+      background: var(--il-secondary);
+      border-radius: 55% 45% 50% 55% / 50% 55% 45% 50%;
+      opacity: 0.20;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--il-bg-sub);
+      border: 1px solid var(--il-border);
+      border-radius: 999px;
+      padding: 0.35rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--il-primary);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.06em;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--il-text);
+      margin-bottom: 1.25rem;
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title::after {
+      content: '';
+      position: absolute;
+      left: 10%; bottom: -0.3rem;
+      width: 80%; height: 14px;
+      background: var(--il-primary);
+      border-radius: 50%;
+      opacity: 0.28;
+      z-index: -1;
+    }
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--il-text-sub);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--il-primary);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 0.9rem 2.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255,138,101,0.38);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(255,138,101,0.48);
+    }
+
+    /* ========== セクション共通 ========== */
+    .page-main { padding-top: 0; }
+
+    .section {
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-alt {
+      background: rgba(255,255,255,0.55);
+    }
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .section-heading {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      color: var(--il-text);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -0.35rem;
+      width: 55%; height: 10px;
+      background: var(--il-accent);
+      border-radius: 50%;
+      opacity: 0.55;
+      z-index: -1;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--il-text-sub);
+      line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+
+    /* ========== 全体マップ ========== */
+    .system-map {
+      background: var(--il-surface);
+      border: 1px solid var(--il-border);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--il-shadow);
+      margin-bottom: 2.5rem;
+      overflow-x: auto;
+    }
+    .system-map svg {
+      width: 100%;
+      min-width: 560px;
+      height: auto;
+      display: block;
+    }
+    .layer-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--il-surface);
+      border: 1px solid var(--il-border);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--il-text-sub);
+    }
+    .legend-num {
+      font-size: 0.85rem;
+      font-weight: 900;
+    }
+    .legend-zero { border-color: var(--c0); color: var(--c0); }
+    .legend-one  { border-color: var(--c1); color: var(--c1); }
+    .legend-two  { border-color: var(--c2); color: var(--c2); }
+    .legend-three{ border-color: var(--c3); color: var(--c3); }
+    .legend-four { border-color: var(--c4); color: var(--c4); }
+
+    /* ========== ステップ ========== */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .step-item {
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+      background: var(--il-surface);
+      border: 1px solid var(--il-border);
+      border-radius: 24px;
+      padding: 2rem 2rem 2rem 1.75rem;
+      box-shadow: var(--il-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .step-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--il-shadow-strong);
+    }
+    .step-item::after {
+      content: '';
+      position: absolute;
+      top: -28px; right: -28px;
+      width: 90px; height: 90px;
+      background: var(--il-bg-sub);
+      border-radius: 50% 45% 55% 50%;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .step-number {
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      background: var(--il-primary);
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(255,138,101,0.38);
+      position: relative;
+      z-index: 1;
+    }
+    .step-body { position: relative; z-index: 1; }
+    .step-title {
+      font-size: 1.15rem;
+      color: var(--il-text);
+      margin-bottom: 0.6rem;
+    }
+    .step-desc {
+      font-size: 0.95rem;
+      color: var(--il-text-sub);
+      line-height: 1.85;
+    }
+    .step-example {
+      margin-top: 1rem;
+      background: var(--il-bg);
+      border: 1px solid var(--il-border);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+    }
+    .example-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--il-primary);
+      margin-bottom: 0.6rem;
+    }
+    .example-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .example-list li {
+      font-size: 0.9rem;
+      color: var(--il-text-sub);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .example-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--il-primary);
+      font-weight: 900;
+    }
+
+    /* ========== ユニット レイヤー ========== */
+    .unit-layer {
+      margin-bottom: 3.5rem;
+    }
+    .layer-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--il-border);
+    }
+    .layer-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .badge-zero  { background: var(--c0-mid); color: var(--c0); }
+    .badge-one   { background: var(--c1-mid); color: var(--c1); }
+    .badge-two   { background: var(--c2-mid); color: var(--c2); }
+    .badge-three { background: var(--c3-mid); color: var(--c3); }
+    .badge-four  { background: var(--c4-mid); color: var(--c4); }
+
+    .layer-zero-heading  { color: var(--c0); border-bottom-color: var(--c0-mid); }
+    .layer-one-heading   { color: var(--c1); border-bottom-color: var(--c1-mid); }
+    .layer-two-heading   { color: var(--c2); border-bottom-color: var(--c2-mid); }
+    .layer-three-heading { color: var(--c3); border-bottom-color: var(--c3-mid); }
+    .layer-four-heading  { color: var(--c4); border-bottom-color: var(--c4-mid); }
+
+    /* ========== ユニットカードグリッド ========== */
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .unit-grid-wide {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .unit-card {
+      background: var(--il-surface);
+      border: 1.5px solid var(--il-border);
+      border-radius: 24px;
+      padding: 1.75rem;
+      box-shadow: var(--il-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .unit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--il-shadow-strong);
+    }
+    .unit-card::before {
+      content: '';
+      position: absolute;
+      top: -24px; right: -24px;
+      width: 80px; height: 80px;
+      border-radius: 50% 45% 55% 50%;
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .card-zero::before  { background: var(--c0-mid); }
+    .card-one::before   { background: var(--c1-mid); }
+    .card-two::before   { background: var(--c2-mid); }
+    .card-three::before { background: var(--c3-mid); }
+    .card-four::before  { background: var(--c4-mid); }
+
+    .card-highlight {
+      border-color: var(--c1);
+      background: linear-gradient(135deg, #fff 80%, var(--c1-bg));
+    }
+    .card-zero  { border-color: var(--c0-mid); }
+    .card-two   { border-color: var(--c2-mid); }
+    .card-three { border-color: var(--c3-mid); }
+    .card-four  { border-color: var(--c4-mid); }
+
+    .unit-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .unit-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .tag-zero  { background: var(--c0-mid); color: var(--c0); }
+    .tag-one   { background: var(--c1-mid); color: var(--c1); }
+    .tag-two   { background: var(--c2-mid); color: var(--c2); }
+    .tag-three { background: var(--c3-mid); color: var(--c3); }
+    .tag-four  { background: var(--c4-mid); color: var(--c4); }
+
+    .unit-name {
+      font-size: 1rem;
+      color: var(--il-text);
+      flex: 1;
+    }
+    .unit-version {
+      font-size: 0.72rem;
+      color: var(--il-text-sub);
+      background: var(--il-bg);
+      border: 1px solid var(--il-border);
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+    }
+    .unit-badge-start {
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #fff;
+      background: var(--c1);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+    }
+    .unit-role {
+      font-size: 0.9rem;
+      color: var(--il-text);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .unit-when {
+      background: var(--il-bg);
+      border-radius: 14px;
+      padding: 0.75rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .when-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--il-primary);
+      background: var(--il-bg-sub);
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .unit-when p {
+      font-size: 0.88rem;
+      color: var(--il-text-sub);
+      line-height: 1.65;
+    }
+    .unit-modes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .mode-chip {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--il-secondary);
+      background: rgba(121,134,203,0.12);
+      border: 1px solid rgba(121,134,203,0.3);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+    }
+    .unit-note {
+      font-size: 0.8rem;
+      color: var(--il-text-sub);
+      background: var(--il-bg);
+      border-left: 3px solid var(--il-accent);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0 10px 10px 0;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ========== フロー ========== */
+    .flow-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 1.75rem;
+    }
+    .flow-card {
+      background: var(--il-surface);
+      border: 1.5px solid var(--il-border);
+      border-radius: 24px;
+      padding: 1.75rem;
+      box-shadow: var(--il-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .flow-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--il-shadow-strong);
+    }
+    .flow-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: -30px;
+      width: 100px; height: 100px;
+      background: var(--il-bg-sub);
+      border-radius: 55% 45% 50% 55%;
+      opacity: 0.45;
+      z-index: 0;
+    }
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .flow-title {
+      font-size: 1rem;
+      color: var(--il-text);
+    }
+    .flow-path {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-node {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+    }
+    .node-zero  { background: var(--c0-mid); color: var(--c0); }
+    .node-one   { background: var(--c1-mid); color: var(--c1); }
+    .node-two   { background: var(--c2-mid); color: var(--c2); }
+    .node-three { background: var(--c3-mid); color: var(--c3); }
+    .flow-arrow-icon {
+      color: var(--il-text-sub);
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    .flow-desc {
+      font-size: 0.9rem;
+      color: var(--il-text-sub);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ========== ポイント ========== */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .tip-card {
+      background: var(--il-surface);
+      border: 1.5px solid var(--il-border);
+      border-radius: 24px;
+      padding: 1.75rem;
+      box-shadow: var(--il-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .tip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--il-shadow-strong);
+    }
+    .tip-card::after {
+      content: '';
+      position: absolute;
+      top: -24px; right: -24px;
+      width: 80px; height: 80px;
+      background: var(--il-bg-sub);
+      border-radius: 50% 45% 55% 50%;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .tip-icon-wrap {
+      font-size: 2rem;
+      margin-bottom: 0.9rem;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .tip-title {
+      font-size: 1rem;
+      color: var(--il-text);
+      margin-bottom: 0.65rem;
+      position: relative;
+      z-index: 1;
+    }
+    .tip-desc {
+      font-size: 0.9rem;
+      color: var(--il-text-sub);
+      line-height: 1.85;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ========== フッター ========== */
+    .site-footer {
+      background: var(--il-bg-sub);
+      border-top: 1px solid var(--il-border);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 120px;
+      background: var(--il-bg);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+    .footer-inner { position: relative; z-index: 1; }
+    .footer-title {
+      font-size: 1.2rem;
+      color: var(--il-text);
+      margin-bottom: 0.35rem;
+    }
+    .footer-version {
+      font-size: 0.85rem;
+      color: var(--il-text-sub);
+      margin-bottom: 0.5rem;
+    }
+    .footer-note {
+      font-size: 0.82rem;
+      color: var(--il-text-sub);
+      opacity: 0.8;
+    }
+
+    /* ========== アニメーション ========== */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* ========== レスポンシブ ========== */
+    @media (max-width: 768px) {
+      .section { padding: 4rem 1.25rem; }
+      .hero { padding: 7rem 1.25rem 4rem; min-height: auto; }
+      .hero-title { font-size: 2.2rem; }
+      .site-nav { padding: 0.7rem 1rem; }
+      .nav-list { gap: 0.1rem; }
+      .nav-link { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
+      .unit-grid, .unit-grid-wide { grid-template-columns: 1fr; }
+      .flow-list { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .step-item { flex-direction: column; gap: 1rem; }
+      .system-map { padding: 1rem; }
+      .layer-legend { gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">授業効率化AIプロンプト集</p>
+      <h1 class="hero-title">たい焼きタイム<br>使い方ガイド</h1>
+      <p class="hero-lead">教師の願いと子どもの事実から、<br>授業改善の次の一手を一緒に考えるAIプロンプト連合体</p>
+      <a href="#howto" class="hero-cta">使い方を見る</a>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="メインナビゲーション">
+    <ul class="nav-list">
+      <li><a class="nav-link" href="#overview">全体マップ</a></li>
+      <li><a class="nav-link" href="#howto">基本の使い方</a></li>
+      <li><a class="nav-link" href="#units">ユニット紹介</a></li>
+      <li><a class="nav-link" href="#flows">よくある流れ</a></li>
+      <li><a class="nav-link" href="#tips">ポイント</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-main">
+
+    <!-- ========== 全体マップ ========== -->
+    <section id="overview" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading">全体マップ</h2>
+        <p class="section-lead">たい焼きタイムは、11のユニットが連携するプロンプト連合体です。<br>まず「ベース」から始め、必要に応じて専門ユニットへつなぎます。</p>
+
+        <div class="system-map" aria-label="ユニット構成図">
+          <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="たい焼きタイム ユニット構成図">
+            <!-- Layer 0: キャラクター会議室 -->
+            <rect x="230" y="10" width="260" height="48" rx="24" fill="#F3E8FF" stroke="#9C64C8" stroke-width="2"/>
+            <text x="360" y="30" text-anchor="middle" font-size="11" fill="#5A2E8A" font-weight="bold" font-family="sans-serif">⓪ キャラクター会議室</text>
+            <text x="360" y="49" text-anchor="middle" font-size="10" fill="#7B4FAD" font-family="sans-serif">俯瞰・監査レイヤ（いつでも呼べる）</text>
+
+            <!-- Layer 1: ベース -->
+            <rect x="255" y="88" width="210" height="48" rx="24" fill="#FFE0C2" stroke="#E87722" stroke-width="2.5"/>
+            <text x="360" y="108" text-anchor="middle" font-size="12" fill="#A04500" font-weight="bold" font-family="sans-serif">①A たい焼きタイムベース</text>
+            <text x="360" y="126" text-anchor="middle" font-size="10" fill="#C05A00" font-family="sans-serif">★ まずここから（入口）</text>
+
+            <!-- Layer 1: 傾聴・対話 -->
+            <rect x="30" y="88" width="185" height="48" rx="24" fill="#FFF3E8" stroke="#E87722" stroke-width="1.5"/>
+            <text x="123" y="108" text-anchor="middle" font-size="11" fill="#7A5900" font-weight="bold" font-family="sans-serif">①B 傾聴・対話ユニット</text>
+            <text x="123" y="126" text-anchor="middle" font-size="10" fill="#9A7200" font-family="sans-serif">語りをほどく</text>
+
+            <!-- Arrow base↔傾聴 -->
+            <line x1="255" y1="112" x2="215" y2="112" stroke="#E87722" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <polygon points="218,108 208,112 218,116" fill="#E87722"/>
+
+            <!-- Arrow base→layer2 -->
+            <line x1="360" y1="136" x2="360" y2="162" stroke="#999" stroke-width="1.5"/>
+            <polygon points="356,158 360,168 364,158" fill="#999"/>
+
+            <!-- Layer 2 units -->
+            <rect x="14"  y="168" width="126" height="44" rx="22" fill="#EAF4FB" stroke="#2E86C1" stroke-width="1.5"/>
+            <text x="77"  y="187" text-anchor="middle" font-size="10" fill="#1A5276" font-weight="bold" font-family="sans-serif">② 授業づくり</text>
+            <text x="77"  y="205" text-anchor="middle" font-size="9"  fill="#2874A6" font-family="sans-serif">コアユニット</text>
+
+            <rect x="154" y="168" width="120" height="44" rx="22" fill="#EAF4FB" stroke="#2E86C1" stroke-width="1.5"/>
+            <text x="214" y="187" text-anchor="middle" font-size="10" fill="#1A5276" font-weight="bold" font-family="sans-serif">② 探究</text>
+            <text x="214" y="205" text-anchor="middle" font-size="9"  fill="#2874A6" font-family="sans-serif">コアユニット</text>
+
+            <rect x="288" y="168" width="136" height="44" rx="22" fill="#EAF4FB" stroke="#2E86C1" stroke-width="1.5"/>
+            <text x="356" y="187" text-anchor="middle" font-size="10" fill="#1A5276" font-weight="bold" font-family="sans-serif">② 特別支援教育</text>
+            <text x="356" y="205" text-anchor="middle" font-size="9"  fill="#2874A6" font-family="sans-serif">コアユニット</text>
+
+            <rect x="438" y="168" width="120" height="44" rx="22" fill="#EAF4FB" stroke="#2E86C1" stroke-width="1.5"/>
+            <text x="498" y="187" text-anchor="middle" font-size="10" fill="#1A5276" font-weight="bold" font-family="sans-serif">② 自由進度</text>
+            <text x="498" y="205" text-anchor="middle" font-size="9"  fill="#2874A6" font-family="sans-serif">コアユニット</text>
+
+            <rect x="572" y="168" width="132" height="44" rx="22" fill="#EAF4FB" stroke="#2E86C1" stroke-width="1.5"/>
+            <text x="638" y="187" text-anchor="middle" font-size="10" fill="#1A5276" font-weight="bold" font-family="sans-serif">② 生成AI</text>
+            <text x="638" y="205" text-anchor="middle" font-size="9"  fill="#2874A6" font-family="sans-serif">授業活用</text>
+
+            <!-- Arrows base→core units -->
+            <line x1="315" y1="172" x2="195" y2="190" stroke="#ccc" stroke-width="1"/>
+            <line x1="335" y1="172" x2="285" y2="190" stroke="#ccc" stroke-width="1"/>
+            <line x1="360" y1="172" x2="360" y2="190" stroke="#ccc" stroke-width="1"/>
+            <line x1="385" y1="172" x2="490" y2="190" stroke="#ccc" stroke-width="1"/>
+            <line x1="405" y1="172" x2="628" y2="190" stroke="#ccc" stroke-width="1"/>
+
+            <!-- Arrow layer2→layer3 -->
+            <line x1="360" y1="212" x2="360" y2="280" stroke="#999" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <polygon points="356,276 360,286 364,276" fill="#999"/>
+
+            <!-- Layer 3 -->
+            <rect x="155" y="286" width="180" height="44" rx="22" fill="#EAFAF1" stroke="#1E8449" stroke-width="1.5"/>
+            <text x="245" y="305" text-anchor="middle" font-size="10" fill="#145A32" font-weight="bold" font-family="sans-serif">③ 指導案デザイン</text>
+            <text x="245" y="323" text-anchor="middle" font-size="9"  fill="#1E8449" font-family="sans-serif">ユニット</text>
+
+            <rect x="385" y="286" width="180" height="44" rx="22" fill="#EAFAF1" stroke="#1E8449" stroke-width="1.5"/>
+            <text x="475" y="305" text-anchor="middle" font-size="10" fill="#145A32" font-weight="bold" font-family="sans-serif">③ 板書デザイン</text>
+            <text x="475" y="323" text-anchor="middle" font-size="9"  fill="#1E8449" font-family="sans-serif">ユニット</text>
+
+            <!-- Layer 4 -->
+            <rect x="70"  y="360" width="210" height="44" rx="22" fill="#FEF5E7" stroke="#CA6F1E" stroke-width="1.5"/>
+            <text x="175" y="379" text-anchor="middle" font-size="10" fill="#784212" font-weight="bold" font-family="sans-serif">④ Web検索・ICT</text>
+            <text x="175" y="397" text-anchor="middle" font-size="9"  fill="#A04000" font-family="sans-serif">情報教育ユニット</text>
+
+            <rect x="430" y="360" width="210" height="44" rx="22" fill="#FEF5E7" stroke="#CA6F1E" stroke-width="1.5"/>
+            <text x="535" y="379" text-anchor="middle" font-size="10" fill="#784212" font-weight="bold" font-family="sans-serif">④ 写真・データ</text>
+            <text x="535" y="397" text-anchor="middle" font-size="9"  fill="#A04000" font-family="sans-serif">文体変換ユニット</text>
+          </svg>
+        </div>
+
+        <div class="layer-legend">
+          <div class="legend-item legend-zero"><span class="legend-num">⓪</span>俯瞰・監査レイヤ</div>
+          <div class="legend-item legend-one"><span class="legend-num">①</span>入口・対話レイヤ</div>
+          <div class="legend-item legend-two"><span class="legend-num">②</span>コアユニット群</div>
+          <div class="legend-item legend-three"><span class="legend-num">③</span>デザインユニット</div>
+          <div class="legend-item legend-four"><span class="legend-num">④</span>ツールユニット</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 基本の使い方 ========== -->
+    <section id="howto" class="section section-alt">
+      <div class="section-inner">
+        <h2 class="section-heading">基本の使い方</h2>
+        <p class="section-lead">まず「たい焼きタイムベース」のプロンプトをAIに貼り付けて、相談を始めます。</p>
+
+        <ol class="steps-list">
+          <li class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <h3 class="step-title">ベースのプロンプトをAIに貼り付ける</h3>
+              <p class="step-desc">
+                <code>①A_たい焼きタイムベース</code> のファイルを開き、<code>system_prompt</code> の中身をコピーします。
+                ChatGPT・GeminiなどのAIのシステムプロンプト、またはチャットの最初のメッセージに貼り付けましょう。
+              </p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <h3 class="step-title">授業の悩みや目的を自由に伝える</h3>
+              <p class="step-desc">
+                「教師の願い」「子どもの事実」「困り感」「作りたいもの」を自由に話しかけます。
+                うまく整理できていなくても大丈夫。AIがほぐしながら整理を手伝います。
+              </p>
+              <div class="step-example">
+                <p class="example-label">こんな相談から始められます</p>
+                <ul class="example-list">
+                  <li>「算数の授業がいつも同じ子しか発言しない。どうしたらいいかな」</li>
+                  <li>「来週の国語の指導案を作りたい。単元は〇〇です」</li>
+                  <li>「Aさんがグループ活動に入れていない。何か手立てはないか」</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <h3 class="step-title">必要に応じて専門ユニットへ切り替える</h3>
+              <p class="step-desc">
+                ベースが「授業づくりコアへ進みましょう」などと提案したら、
+                該当ユニットのプロンプトに切り替えます。
+                <strong>handoff_payload</strong>（引き継ぎ情報）が出たら、次のユニットに貼り付けると文脈を引き継げます。
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== ユニット紹介 ========== -->
+    <section id="units" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading">ユニット紹介</h2>
+        <p class="section-lead">各ユニットの役割と「使うとき」をまとめました。</p>
+
+        <!-- ⓪ -->
+        <div class="unit-layer">
+          <h3 class="layer-heading layer-zero-heading">
+            <span class="layer-badge badge-zero">⓪</span>
+            俯瞰・監査レイヤ
+          </h3>
+          <div class="unit-grid">
+            <div class="unit-card card-zero">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-zero">⓪</span>
+                <h4 class="unit-name">キャラクター会議室</h4>
+                <span class="unit-version">ver.0.5.1c</span>
+              </div>
+              <p class="unit-role">10人のキャラクターが授業構想を複数の視点で見直す「劇場型」授業づくりレイヤ</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>授業案ができた後、ズレや弱さを多角的にチェックしたいとき</p>
+              </div>
+              <div class="unit-modes">
+                <span class="mode-chip">監査モード</span>
+                <span class="mode-chip">再設計モード</span>
+              </div>
+              <p class="unit-note">いつでも呼び出せる。既存ユニットを上書きしない。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ① -->
+        <div class="unit-layer">
+          <h3 class="layer-heading layer-one-heading">
+            <span class="layer-badge badge-one">①</span>
+            入口・対話レイヤ
+          </h3>
+          <div class="unit-grid">
+            <div class="unit-card card-one card-highlight">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-one">①A</span>
+                <h4 class="unit-name">たい焼きタイムベース</h4>
+                <span class="unit-badge-start">★ まずここから</span>
+              </div>
+              <p class="unit-role">授業改善の入口。教師の願い・子どもの事実・困り感・出力目的を整理して適切なユニットへつなぐ</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>何から始めればいいか迷うとき・とにかく最初に使う</p>
+              </div>
+              <p class="unit-note">ベースがすること：整理・仮見立て・ユニット接続。ベースがしないこと：指導案・板書・授業案の確定</p>
+            </div>
+            <div class="unit-card card-one">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-one">①B</span>
+                <h4 class="unit-name">傾聴・対話ユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">教師の語りをほどき、願いと子どもの事実を分けて整理する。授業案を急がず、まず「見える状態」にする</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>「うまく言葉にできない」「もやっとした悩みがある」とき</p>
+              </div>
+              <p class="unit-note">授業案はここで確定しない。材料がそろったら授業づくりコアへ</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ② -->
+        <div class="unit-layer">
+          <h3 class="layer-heading layer-two-heading">
+            <span class="layer-badge badge-two">②</span>
+            コアユニット群
+          </h3>
+          <div class="unit-grid unit-grid-wide">
+            <div class="unit-card card-two">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-two">②</span>
+                <h4 class="unit-name">授業づくりコアユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">授業の核・主眼・中心発問・活動構成・見取りのたたき台をつくる</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>授業の骨格を組み立てたいとき</p>
+              </div>
+              <p class="unit-note">出力は「たたき台」。完成版ではなく教師が選び直す素材</p>
+            </div>
+            <div class="unit-card card-two">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-two">②</span>
+                <h4 class="unit-name">探究コアユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">問い・情報収集・整理・表現・振り返り・再探究の流れを設計する</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>総合的な学習・探究的な学びを設計するとき</p>
+              </div>
+            </div>
+            <div class="unit-card card-two">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-two">②</span>
+                <h4 class="unit-name">特別支援教育コアユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">参加保障・環境調整・課題調整・関係性支援を4層（環境・課題・関係・見取り）で整える</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>参加しにくさがある子どもへの支援を考えるとき</p>
+              </div>
+              <p class="unit-note">診断しない。観察事実から支援へ接続する</p>
+            </div>
+            <div class="unit-card card-two">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-two">②</span>
+                <h4 class="unit-name">自由進度コアユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">「委ねること・固定すること・共有すること」を分け、計画→進度→省察→調整のループを設計</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>自由進度学習・個別最適な学びを設計するとき</p>
+              </div>
+              <p class="unit-note">自由を増やすだけにしない。学習の核は固定する</p>
+            </div>
+            <div class="unit-card card-two">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-two">②</span>
+                <h4 class="unit-name">生成AI授業活用コアユニット</h4>
+                <span class="unit-version">ver.1.0</span>
+              </div>
+              <p class="unit-role">Gemini・NotebookLMをどこに・何のために・どの程度使うかを判断。使わない判断も支援</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>授業にAIを取り入れたいとき・使い方を迷っているとき</p>
+              </div>
+              <p class="unit-note">AI活用を目的化しない。ファクトチェックを必ず入れる</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ -->
+        <div class="unit-layer">
+          <h3 class="layer-heading layer-three-heading">
+            <span class="layer-badge badge-three">③</span>
+            デザインユニット
+          </h3>
+          <div class="unit-grid">
+            <div class="unit-card card-three">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-three">③</span>
+                <h4 class="unit-name">指導案デザインユニット</h4>
+                <span class="unit-version">ver.1.1s-st</span>
+              </div>
+              <p class="unit-role">授業構想を固定フォーマットの指導案へ整形・監査する。主眼slot定型・展開表6列を厳守</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>指導案の書式に落とし込みたいとき</p>
+              </div>
+              <div class="unit-modes">
+                <span class="mode-chip">提出用</span>
+                <span class="mode-chip">研究用</span>
+                <span class="mode-chip">調整用</span>
+              </div>
+            </div>
+            <div class="unit-card card-three">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-three">③</span>
+                <h4 class="unit-name">板書デザインユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">中心発問または授業の核から、思考の流れが異なる板書案を必ず5案で提案</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>板書の構造を考えたいとき（中心発問または授業の核が必要）</p>
+              </div>
+              <p class="unit-note">5案固定。板書は黒板を埋めるためでなく、思考を可視化するもの</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ④ -->
+        <div class="unit-layer">
+          <h3 class="layer-heading layer-four-heading">
+            <span class="layer-badge badge-four">④</span>
+            ツールユニット
+          </h3>
+          <div class="unit-grid">
+            <div class="unit-card card-four">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-four">④</span>
+                <h4 class="unit-name">Web検索・ICT情報教育ユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">根拠・資料・ICT活用・情報モラルに必要な情報を benchmark / gap / evidence に整理して渡す</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>根拠を確認したい・ICT活用を検討するとき</p>
+              </div>
+              <p class="unit-note">授業案を確定しない。判断材料として授業づくりコアへ渡す</p>
+            </div>
+            <div class="unit-card card-four">
+              <div class="unit-card-top">
+                <span class="unit-tag tag-four">④</span>
+                <h4 class="unit-name">写真・データ・文体変換ユニット</h4>
+                <span class="unit-version">ver.1.1s</span>
+              </div>
+              <p class="unit-role">写真・手書き・表・記録・文章を目的と読み手に合わせた形へ変換。変換と解釈を必ず分ける</p>
+              <div class="unit-when">
+                <span class="when-tag">使うとき</span>
+                <p>記録・資料・文章を整理・変換したいとき（所見、通信、観察記録など）</p>
+              </div>
+              <p class="unit-note">素材にない情報を補わない。個人情報は匿名化</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== よくある使い方の流れ ========== -->
+    <section id="flows" class="section section-alt">
+      <div class="section-inner">
+        <h2 class="section-heading">よくある使い方の流れ</h2>
+        <p class="section-lead">こんなシーンで使えます。ベースから始めて、AIの提案に沿ってユニットを切り替えましょう。</p>
+
+        <div class="flow-list">
+          <div class="flow-card">
+            <div class="flow-header">
+              <span class="flow-icon">💬</span>
+              <h3 class="flow-title">パターン① 授業の悩みから始める</h3>
+            </div>
+            <div class="flow-path">
+              <span class="flow-node node-one">①ベース</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-one">①傾聴・対話</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-two">②授業づくりコア</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-three">③指導案 or 板書</span>
+            </div>
+            <p class="flow-desc">「うまく言葉にできないけど、この授業がうまくいかない」という相談に最適。語りをほどいてから授業設計へ進む。</p>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-header">
+              <span class="flow-icon">📝</span>
+              <h3 class="flow-title">パターン② 指導案を作りたい</h3>
+            </div>
+            <div class="flow-path">
+              <span class="flow-node node-one">①ベース</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-two">②授業づくりコア</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-three">③指導案デザイン</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-zero">⓪会議室で監査</span>
+            </div>
+            <p class="flow-desc">授業の核を固めてから指導案に落とし込む。最後にキャラクター会議室でズレをチェックする。</p>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-header">
+              <span class="flow-icon">🤝</span>
+              <h3 class="flow-title">パターン③ 支援が必要な子どもがいる</h3>
+            </div>
+            <div class="flow-path">
+              <span class="flow-node node-one">①ベース</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-two">②特別支援コア</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-two">②授業づくりコア</span>
+            </div>
+            <p class="flow-desc">参加を妨げる要因を4層で整理してから、授業構造全体の見直しへ接続する。個別対応に閉じない。</p>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-header">
+              <span class="flow-icon">📱</span>
+              <h3 class="flow-title">パターン④ AIを授業で使いたい</h3>
+            </div>
+            <div class="flow-path">
+              <span class="flow-node node-one">①ベース</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-two">②生成AI活用コア</span>
+              <span class="flow-arrow-icon">→</span>
+              <span class="flow-node node-two">②授業づくりコア</span>
+            </div>
+            <p class="flow-desc">目的・場面・主体・安全を確認してから授業設計へ。使わない判断も正しい判断として扱う。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ポイント ========== -->
+    <section id="tips" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading">使うときのポイント</h2>
+
+        <div class="tips-grid">
+          <div class="tip-card">
+            <span class="tip-icon-wrap">🎯</span>
+            <h3 class="tip-title">子どもの事実を持ってくる</h3>
+            <p class="tip-desc">「〇〇と言っていた」「この場面で止まっていた」という具体的な姿があると、AIの見立ての質が上がります。教師の願いだけでなく、子どもの姿を一緒に伝えましょう。</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon-wrap">🔄</span>
+            <h3 class="tip-title">handoff_payloadで引き継ぐ</h3>
+            <p class="tip-desc">ユニットを切り替えるとき、前のユニットが出した <code>handoff_payload</code> を次のユニットに渡すと、文脈を引き継いで作業を続けられます。YAML形式でそのままコピーしてOK。</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon-wrap">✋</span>
+            <h3 class="tip-title">たたき台として使う</h3>
+            <p class="tip-desc">AIの出力は完成版ではなく「たたき台」です。「これが正解」として受け取らず、教師が選び直し、組み替える素材として使いましょう。採用・不採用の判断は常に教師が行います。</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon-wrap">🔍</span>
+            <h3 class="tip-title">断定されたら立ち止まる</h3>
+            <p class="tip-desc">AIが「〜に違いない」と断定してきたら要注意。このプロンプト集は「根拠が薄い場合は断定しない」を共通原則としています。根拠の薄さは薄いまま伝えるのが正しい使い方です。</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon-wrap">⚠️</span>
+            <h3 class="tip-title">使わない判断も大切に</h3>
+            <p class="tip-desc">道徳・個人の表現・評価・テストなどの場面ではAIを使わない判断が学びを守ります。生成AI授業活用コアユニットが「使わない方がよい理由」を整理してくれます。</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon-wrap">🎭</span>
+            <h3 class="tip-title">キャラクター会議室はいつでも</h3>
+            <p class="tip-desc">⓪キャラクター会議室は他のユニットを上書きしません。授業案ができた段階でいつでも呼び出せます。モード指定がなければ「監査モード」で始まります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-title">たい焼きタイム</p>
+      <p class="footer-version">ver.1.1s — 授業改善を支えるプロンプト連合体</p>
+      <p class="footer-note">AIは授業を代行しません。教師の思考を構造化します。</p>
+    </div>
+  </footer>
+
+</body>
+</html>
