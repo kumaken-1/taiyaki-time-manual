@@ -7,7 +7,6 @@
 <style>
   :root {
     --main: #c0392b;
-    --sub: #e74c3c;
     --accent: #f39c12;
     --bg: #fdf6ee;
     --surface: #fff;
@@ -20,6 +19,8 @@
     --new-border: #a8d8a8;
     --improved-bg: #e8f0ff;
     --improved-border: #a0b8e8;
+    --young-bg: #fffbe6;
+    --young-border: #f4c842;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,35 +40,13 @@
     padding: 28px 40px 24px;
     border-bottom: 4px solid var(--accent);
   }
-  .page-header .logo {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    opacity: 0.8;
-    margin-bottom: 6px;
-  }
-  .page-header h1 {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    line-height: 1.3;
-  }
-  .page-header .subtitle {
-    font-size: 13px;
-    opacity: 0.85;
-    margin-top: 6px;
-  }
-  .page-header .meta {
-    font-size: 11px;
-    opacity: 0.7;
-    margin-top: 10px;
-  }
+  .page-header .logo { font-size: 11px; letter-spacing: 0.1em; opacity: 0.8; margin-bottom: 6px; }
+  .page-header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.05em; line-height: 1.3; }
+  .page-header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 6px; }
+  .page-header .meta { font-size: 11px; opacity: 0.7; margin-top: 10px; }
 
   /* ===== LAYOUT ===== */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 32px 24px 60px;
-  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 24px 60px; }
 
   /* ===== SECTION TITLE ===== */
   .section-title {
@@ -79,16 +58,15 @@
     color: var(--main);
     border-bottom: 2px solid var(--main);
     padding-bottom: 8px;
-    margin: 36px 0 16px;
+    margin: 40px 0 16px;
   }
   .section-title .icon { font-size: 20px; }
 
-  /* ===== SUBSECTION ===== */
   .subsection-title {
     font-size: 14px;
     font-weight: 700;
     color: var(--main);
-    margin: 20px 0 8px;
+    margin: 22px 0 8px;
     padding-left: 10px;
     border-left: 3px solid var(--accent);
   }
@@ -103,9 +81,63 @@
     margin: 12px 0;
     font-size: 13.5px;
   }
-  .callout.info { border-left-color: #3498db; }
-  .callout.warn { border-left-color: var(--accent); }
-  .callout.success { border-left-color: #27ae60; }
+  .callout.info  { border-left-color: #3498db; }
+  .callout.warn  { border-left-color: var(--accent); }
+  .callout.young {
+    background: var(--young-bg);
+    border: 1px solid var(--young-border);
+    border-left: 4px solid #e6a800;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 13.5px;
+  }
+
+  /* ===== INTRO BOX ===== */
+  .intro-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .intro-box {
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 13px;
+  }
+  .intro-box.young-box {
+    background: var(--young-bg);
+    border: 2px solid var(--young-border);
+  }
+  .intro-box.senior-box {
+    background: var(--improved-bg);
+    border: 2px solid var(--improved-border);
+  }
+  .intro-box .box-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .intro-box.young-box .box-title { color: #8a6500; }
+  .intro-box.senior-box .box-title { color: #2855a0; }
+  .intro-box p { color: #444; }
+
+  /* ===== KEYWORD BOX ===== */
+  .keyword-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .keyword-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .keyword-item .kw { font-weight: 700; font-size: 13px; color: var(--main); }
+  .keyword-item .kw-plain { font-size: 13px; color: #333; margin-top: 3px; }
+  .keyword-item .kw-tech { font-size: 11.5px; color: var(--muted); margin-top: 4px; border-top: 1px solid #f0e8e0; padding-top: 4px; }
 
   /* ===== UNIT CARD ===== */
   .unit-card {
@@ -120,7 +152,7 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .unit-number {
     background: var(--main);
@@ -134,21 +166,41 @@
     flex-shrink: 0;
   }
   .unit-number.secondary { background: #888; }
-  .unit-name {
-    font-size: 15px;
+  .unit-name { font-size: 15px; font-weight: 700; line-height: 1.4; }
+  .unit-version { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* 青年向け説明 */
+  .unit-young {
+    background: var(--young-bg);
+    border: 1px solid var(--young-border);
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .unit-young .young-label {
+    font-size: 10px;
     font-weight: 700;
-    line-height: 1.4;
+    color: #8a6500;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
   }
-  .unit-version {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-  .unit-body {
+  .unit-young p { color: #333; }
+
+  /* 中堅向け説明 */
+  .unit-senior {
     font-size: 13px;
     color: #444;
-    padding-left: 4px;
+    padding-left: 2px;
   }
+  .unit-senior .senior-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #2855a0;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
   .unit-when {
     font-size: 12px;
     background: var(--tag-bg);
@@ -156,7 +208,7 @@
     border-radius: 4px;
     padding: 4px 10px;
     display: inline-block;
-    margin-top: 8px;
+    margin-top: 10px;
     color: #c0392b;
   }
 
@@ -170,29 +222,12 @@
     margin-left: 6px;
     vertical-align: middle;
   }
-  .badge.new {
-    background: var(--new-bg);
-    border: 1px solid var(--new-border);
-    color: #2d7a2d;
-  }
-  .badge.improved {
-    background: var(--improved-bg);
-    border: 1px solid var(--improved-border);
-    color: #2855a0;
-  }
-  .badge.major {
-    background: #fce8d0;
-    border: 1px solid #e8a870;
-    color: #a04010;
-  }
+  .badge.new      { background: var(--new-bg);      border: 1px solid var(--new-border);      color: #2d7a2d; }
+  .badge.improved { background: var(--improved-bg); border: 1px solid var(--improved-border); color: #2855a0; }
+  .badge.major    { background: #fce8d0;             border: 1px solid #e8a870;                color: #a04010; }
 
-  /* ===== FLOW DIAGRAM ===== */
-  .flow {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 16px 0;
-  }
+  /* ===== FLOW ===== */
+  .flow { display: flex; flex-direction: column; margin: 16px 0; }
   .flow-step {
     display: flex;
     align-items: flex-start;
@@ -200,16 +235,10 @@
     padding: 14px 16px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 0;
-    position: relative;
   }
   .flow-step:first-child { border-radius: 8px 8px 0 0; }
-  .flow-step:last-child { border-radius: 0 0 8px 8px; }
+  .flow-step:last-child  { border-radius: 0 0 8px 8px; }
   .flow-step + .flow-step { border-top: none; }
-  .flow-step::before {
-    content: '';
-    display: none;
-  }
   .flow-num {
     background: var(--main);
     color: #fff;
@@ -226,119 +255,65 @@
   }
   .flow-content { flex: 1; }
   .flow-content strong { font-size: 14px; }
-  .flow-content p { font-size: 13px; color: #555; margin-top: 4px; }
+  .flow-content p  { font-size: 13px; color: #555; margin-top: 4px; }
+  .flow-content .eg { font-size: 12px; background: var(--young-bg); border: 1px solid var(--young-border); border-radius: 4px; padding: 5px 10px; margin-top: 6px; color: #555; }
 
-  /* ===== HALT TABLE ===== */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin: 12px 0;
-    background: var(--surface);
-  }
-  th {
-    background: var(--main);
-    color: #fff;
-    padding: 8px 12px;
-    text-align: left;
-    font-weight: 700;
-    font-size: 12px;
-  }
-  td {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
+  /* ===== TABLE ===== */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: var(--surface); }
+  th   { background: var(--main); color: #fff; padding: 8px 12px; text-align: left; font-weight: 700; font-size: 12px; }
+  td   { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
   tr:last-child td { border-bottom: none; }
   tr:nth-child(even) td { background: #fdf6ee; }
 
+  /* ===== HALT TABLE ===== */
+  .halt-row-1 td:first-child { border-left: 3px solid #3498db; }
+  .halt-row-2 td:first-child { border-left: 3px solid var(--accent); }
+  .halt-row-3 td:first-child { border-left: 3px solid var(--main); }
+
   /* ===== CHANGELOG ===== */
-  .changelog-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin: 14px 0;
-  }
-  .changelog-section h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--main);
-    margin-bottom: 12px;
-  }
-  .changelog-item {
-    display: flex;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid #f0e8e0;
-    font-size: 13px;
-  }
+  .changelog-section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 14px 0; }
+  .changelog-section h3 { font-size: 15px; font-weight: 700; color: var(--main); margin-bottom: 12px; }
+  .changelog-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0e8e0; font-size: 13px; }
   .changelog-item:last-child { border-bottom: none; }
-  .changelog-item .cl-name {
-    min-width: 200px;
-    font-weight: 700;
-    color: #333;
-  }
-  .changelog-item .cl-from {
-    color: var(--muted);
-    min-width: 80px;
-    font-size: 12px;
-    padding-top: 2px;
-  }
+  .changelog-item .cl-name { min-width: 200px; font-weight: 700; color: #333; }
+  .changelog-item .cl-from { color: var(--muted); min-width: 80px; font-size: 12px; padding-top: 2px; }
   .changelog-item .cl-desc { color: #444; flex: 1; }
 
-  /* ===== TIPS ===== */
-  .tips-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 12px 0;
-  }
-  .tip-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 14px 16px;
-  }
-  .tip-card .tip-title {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--main);
-  }
+  /* ===== TIPS GRID ===== */
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  .tip-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; }
+  .tip-card .tip-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--main); }
   .tip-card p { font-size: 12.5px; color: #555; }
 
-  /* ===== DIVIDER ===== */
-  hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 28px 0;
-  }
+  /* ===== CHARACTER CARDS ===== */
+  .char-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  .char-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+  .char-card.full { grid-column: 1 / -1; }
+  .char-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+  .char-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+  .char-name { font-size: 15px; font-weight: 700; }
+  .char-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .char-body { font-size: 13px; color: #444; }
+  .char-voice { font-size: 12px; color: #c0392b; font-style: italic; margin-top: 6px; padding: 5px 10px; background: var(--tag-bg); border-radius: 4px; }
 
-  /* ===== LIST ===== */
-  ul, ol {
-    padding-left: 1.4em;
-    font-size: 13.5px;
-    color: #444;
-  }
+  /* ===== DIVIDER ===== */
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  ul, ol { padding-left: 1.4em; font-size: 13.5px; color: #444; }
   li { margin: 4px 0; }
-  li strong { color: var(--text); }
 
   /* ===== PRINT ===== */
   @media print {
     body { background: white; font-size: 12px; }
-    .page-header { background: #c0392b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .unit-number { background: #c0392b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .flow-num { background: #c0392b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    th { background: #c0392b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page-header, th, .unit-number, .flow-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .container { padding: 20px; }
-    .tips-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .page-header { padding: 20px; }
     .page-header h1 { font-size: 20px; }
-    .tips-grid { grid-template-columns: 1fr; }
+    .intro-two-col, .tips-grid, .keyword-grid, .char-grid { grid-template-columns: 1fr; }
+    .char-card.full { grid-column: 1; }
     .changelog-item { flex-direction: column; gap: 4px; }
     .changelog-item .cl-name { min-width: unset; }
   }
@@ -355,491 +330,458 @@
 
 <div class="container">
 
-<!-- ===== 1. たい焼きタイムとは ===== -->
+<!-- ===== はじめに ===== -->
+<div class="section-title"><span class="icon">👋</span> はじめに ― このマニュアルの読み方</div>
+
+<div class="intro-two-col">
+  <div class="intro-box young-box">
+    <div class="box-title">🌱 教職1〜5年目の方へ</div>
+    <p>各ユニットの説明には <strong style="color:#8a6500;">「こんな悩みのとき」</strong> という黄色いボックスがあります。<br>まずそこだけ読んでください。「自分の悩みに当てはまる」と思ったユニットを使えばOKです。</p>
+  </div>
+  <div class="intro-box senior-box">
+    <div class="box-title">📘 6年目以上・研究主任の方へ</div>
+    <p>各ユニットの青いラベル <strong style="color:#2855a0;">「設計の意図」</strong> に技術的な詳細があります。<br>停止レベルや handoff_payload などの仕組みはその部分に記載しています。</p>
+  </div>
+</div>
+
+<!-- ===== キーワード解説 ===== -->
+<div class="section-title"><span class="icon">📖</span> このツールに出てくる言葉</div>
+
+<p style="font-size:13px; color:#555; margin-bottom:12px;">「授業の核」「死人テスト」など、このツール独自の言葉があります。最初にここだけ確認してください。</p>
+
+<div class="keyword-grid">
+  <div class="keyword-item">
+    <div class="kw">授業の核</div>
+    <div class="kw-plain">「この授業で、子どもに一番気づいてほしいこと」です。<br>「楽しかった」で終わらず、「あっ、そうか！」と思う瞬間を引き出す中心軸のことです。</div>
+    <div class="kw-tech">指導案の「主眼」に近い概念。子どもの事実と教材の事実がぶつかった地点に生まれます。</div>
+  </div>
+  <div class="keyword-item">
+    <div class="kw">死人テスト</div>
+    <div class="kw-plain">「死人でもできること（状態の描写）」は、子どもを語る言葉として使わないルールです。<br>例：「集中していなかった」→ 死人でも可。<br>「鉛筆を置いて窓の外を見ていた」→ これが使える事実です。</div>
+    <div class="kw-tech">教師の解釈・印象・状態ではなく、観察可能な行動事実のみを根拠として扱うためのフィルター。</div>
+  </div>
+  <div class="keyword-item">
+    <div class="kw">Halt（止まる）</div>
+    <div class="kw-plain">AIが途中で「もう少し教えてください」と止まることです。情報が足りないまま進むと見当外れな提案になるため、必要な情報が揃ってから先に進む設計になっています。</div>
+    <div class="kw-tech">入力の充足度に応じて Level 1〜3 の3段階で停止ロジックが制御されます。</div>
+  </div>
+  <div class="keyword-item">
+    <div class="kw">ユニット</div>
+    <div class="kw-plain">「目的別の相談窓口」です。困り感の種類によって使う窓口を変えます。<br>受付（ベース）がどの窓口に行けばいいかを案内してくれます。</div>
+    <div class="kw-tech">各ユニットは独立したカスタム指示として Gemini に貼り付けて使います。ベースが handoff_payload で文脈を引き継ぎます。</div>
+  </div>
+</div>
+
+<!-- ===== たい焼きタイムとは ===== -->
 <div class="section-title"><span class="icon">🐟</span> たい焼きタイムとは</div>
 
-<div class="callout">
-  <strong>一言で言うと：</strong> 教師の「モヤモヤ・願い・困り感」を起点に、<strong>授業改善の核を一緒に掘り当てる AI 思考補助システム</strong>です。<br>
-  「こうすればいい」という手立て先行ではなく、まず「何が授業課題か」を見立て、必要なユニットへつなぎます。
+<div class="callout young">
+  <strong>🌱 一言で言うと：</strong><br>
+  「今日の授業、なんかうまくいかなかった」「あの子、どうすればいいんだろう」という<strong>教師のモヤモヤを一緒に整理してくれる AI 思考パートナー</strong>です。<br>
+  「こうすればいい」という答えを出すのではなく、「何が問題か」を一緒に掘り当てることに特化しています。
 </div>
-
-<p style="margin:12px 0; font-size:13.5px;">たい焼きタイムは <strong>1つのベースと複数のユニット</strong>からなるプロンプト連合体です。Gemini のカスタム指示（System Prompt）に貼り付けて使います。ベースが入力を仕分け・見立て・誘導し、各ユニットが専門処理を担います。</p>
 
 <div class="callout info">
-  <strong>対象ツール：</strong> Google Gemini（カスタム指示機能）<br>
-  <strong>ファイル形式：</strong> .txt（XMLタグ形式）→ カスタム指示欄にそのままコピー&ペースト
+  <strong>📘 仕組み：</strong> 1つのベース（受付）と複数のユニット（専門窓口）からなるプロンプト連合体です。Google Gemini の「カスタム指示」欄にテキストを貼り付けて使います。ユニットは目的別に選んで使います。
 </div>
 
-<!-- ===== 2. 全体構成 ===== -->
+<!-- ===== 全体構成 ===== -->
 <div class="section-title"><span class="icon">🗺️</span> 全体構成と役割分担</div>
 
+<!-- ⓪A ベース -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">⓪A</div>
     <div>
-      <div class="unit-name">たい焼きタイムベース（司令塔）</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：⓪A_たい焼きタイムベース_ver.2.1g_260504.txt</div>
+      <div class="unit-name">たい焼きタイムベース（受付・司令塔）</div>
+      <div class="unit-version">ver.2.1G ｜ ⓪A_たい焼きタイムベース_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    すべての入力を最初に受け取るトリアージ役。「事実」と「解釈」を仕分け、停止レベルを判定し、適切なユニットへ誘導します。ベースだけで相談を完結させることもできます。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>何か困っているけど、何から話せばいいかわからない。そんなときはまずここへ話しかけてください。受付係のように、どの窓口（ユニット）に行けばいいかを案内してくれます。相談が軽い場合は、ベースだけで解決することもあります。</p>
+  </div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    入力から「事実」と「解釈」を仕分け、停止レベルを判定し、適切なユニットへ誘導するトリアージ役。「教師を責める検問所」ではなく「プロフェッショナルな相棒」として振る舞うよう定義されています。
   </div>
   <div class="unit-when">いつも：まずここから始める</div>
 </div>
 
+<!-- ⓪B 傾聴 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">⓪B</div>
     <div>
       <div class="unit-name">傾聴・対話ユニット</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：⓪B_傾聴・対話ユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ⓪B_傾聴・対話ユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    教師の語り・願い・違和感をほどく対話専用ユニット。「死人テスト」を使って行動事実と解釈を分離し、授業改善の土台となる具体的な事実を抽出します。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「今日の授業、なんかうまくいかなかった」「あの子が気になる、でも何が問題なのかわからない」――そんなとき、まずその感覚を言葉にするユニットです。AI が「具体的にはどんな様子でしたか？」と一つずつ聞いてくれます。責められることはありません。</p>
   </div>
-  <div class="unit-when">使うとき：語りが解釈中心で、行動事実がまだ見えていないとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    教師の語りから「解釈」を解きほぐし、死人テストをクリアする行動事実を抽出するゲートキーパー。「事実警察化」を防ぐために、まず教師の違和感を承認してから精度向上のための問いを出す順序が固定されています。
+  </div>
+  <div class="unit-when">使うとき：モヤモヤはあるけど言葉にならないとき</div>
 </div>
 
+<!-- ① 授業づくり -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">①</div>
     <div>
       <div class="unit-name">授業づくりコアユニット</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：①_授業づくりコアユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ①_授業づくりコアユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    「子どもの事実」と「教材の事実」を衝突させ、<strong>授業の核</strong>を設計するメインユニット。Phase 1（核の合意）→ Phase 2（展開案）の2段階で進みます。Phase 1完了まで手立て（HOW）は一切出しません。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「この授業、何を考えさせればいいんだろう」「発問を考えたいけど、どこから手をつければいい？」。このユニットは「子どもに一番気づいてほしいこと（授業の核）」を一緒に決めるための場所です。まず核を決め、そのあとに展開・発問の流れを作ります。手立てを先に考えるのは後回しにするのがこのユニットのルールです。</p>
+  </div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    「子どもの事実」と「教材の事実」を衝突させ、推測を排した授業の核を設計するメインユニット。Phase 1（核の合意）完了まで HOW は一切出さない。Phase 1完了後のみ、核が教室で成立するかを検証する最小HOW（中心発問のタイミング・参加しにくい子の合流策）を扱えます。
   </div>
   <div class="unit-when">使うとき：授業の核・主眼・展開のたたき台を作るとき</div>
 </div>
 
+<!-- ② インクルーシブ -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number secondary">②</div>
     <div>
       <div class="unit-name">インクルーシブ参加保障ユニット <span class="badge improved">強化</span></div>
-      <div class="unit-version">ver.2.1G ｜ファイル：②_インクルーシブ参加保障ユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ②_インクルーシブ参加保障ユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    参加しにくさのある子を「切り離さず、クラス全員が同じ学びの核にアクセスできる」授業構造（UD）を提案。<strong>学びの核は下げず、入口（アクセス方法）を工夫する</strong>のが原則。5種の参加入口から優先度の高い1〜2つに絞ります。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「あの子、授業についてこられていない気がする。どうすればいい？」。このユニットは、その子を別メニューに追い出すのではなく、クラス全員が同じ学びに参加できるような工夫（授業のUD）を考えます。大事なのは「難易度を下げない」こと。入口（参加の方法）を工夫することで、同じゴールに向かえるようにします。</p>
   </div>
-  <div class="unit-when">使うとき：参加しにくい子の具体的行動事実があり、授業構造を調整したいとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    学びの核はディスカウントせず、「語彙・情報の入口」「見通しの入口」「抽象度の入口」「表現の入口」「協働の入口」の5種から1〜2つに絞った足場かけと合流策を設計。停止レベルは全ユニット統一ロジックに同期しています。
+  </div>
+  <div class="unit-when">使うとき：参加しにくい子の具体的な姿があり、授業構造を調整したいとき</div>
 </div>
 
+<!-- ② 探究 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number secondary">②</div>
     <div>
       <div class="unit-name">探究コアユニット</div>
-      <div class="unit-version">ver.1.3G ｜ファイル：②_探究コアユニット_ver.1.3g_260503.txt</div>
+      <div class="unit-version">ver.1.3G ｜ ②_探究コアユニット_ver.1.3g_260503.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    子どもの「粗い関心語・つぶやき・行動」から問いの種を見極めます。感情の推測を一切せず、言葉の論理構造・前提のズレを分析して問いのベクトル（深掘り・再構築・表現）を複数提示します。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「子どもが『なんで？』とつぶやいた。面白そうだけど、どう深めればいい？」。子どもの「粗い言葉」をそのまま持ち込んでください。勝手にテーマを変換せず、その言葉に潜む問いの方向性（深掘り・仕組みを変える・他者へ伝える）を一緒に考えます。</p>
   </div>
-  <div class="unit-when">使うとき：総合・探究の問いを立てるとき、子どものつぶやきを活かしたいとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    子どもの事実（言葉・行動）から感情推測を一切せず、言葉の論理的構造・前提のズレを分析して問いのベクトルを複数提示。データにない子どもの感情のハルシネーション排除が設計の中核です。
+  </div>
+  <div class="unit-when">使うとき：総合・探究の問いを子どものつぶやきから立てたいとき</div>
 </div>
 
+<!-- ② 特別支援 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number secondary">②</div>
     <div>
       <div class="unit-name">特別支援教育コアユニット</div>
-      <div class="unit-version">ver.1.1G ｜ファイル：②_特別支援教育コアユニット_ver.1.1g_260503.txt</div>
+      <div class="unit-version">ver.1.1G ｜ ②_特別支援教育コアユニット_ver.1.1g_260503.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    特別支援学級でのパニック・拒否・離席等の事実を受け止め、氷山モデルで原因仮説を2つ立て、「必ず『できた』で終わるスモールステップ」を A案・B案で提案。医療診断は行いません。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「プリントを見た途端にパニックになる」「毎回拒否して活動が始まらない」。その行動の裏側にある「理由の仮説」を2つ立て、それぞれ対応する支援案（A案・B案）をセットで提案します。「どうしてそうなるの？」から一緒に考えます。診断名はつけません。</p>
   </div>
-  <div class="unit-when">使うとき：特支学級での困り感、問題行動の背景を探りたいとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    氷山モデルで行動の背景要因を2仮説（環境/感覚 vs 認知/理解）で構造化。「絶対的成功の保障」として「失敗から学ばせる」ではなく「必ずできたで終わる」課題設定を最優先します。
+  </div>
+  <div class="unit-when">使うとき：特支学級での困り感・問題行動の背景を整理したいとき</div>
 </div>
 
+<!-- ② 生成AI -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number secondary">②</div>
     <div>
       <div class="unit-name">生成AI授業活用コアユニット</div>
-      <div class="unit-version">ver.1.3G ｜ファイル：②_生成AI授業活用コアユニット_ver.1.3g_260504.txt</div>
+      <div class="unit-version">ver.1.3G ｜ ②_生成AI授業活用コアユニット_ver.1.3g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    「授業でAIを使っていいか」を吟味する壁打ち相手。AI が子どもの思考プロセスをバイパス（迂回）していないかを論理分析します。最初の応答ではツールの活用案を一切出しません（WHY の前に HOW を出さない）。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「授業でAIを使いたいと思うんだけど、どうかな？」。このユニットは「使える/使えない」をすぐに答えません。「AIを使うと、子どもが本来自分で考えるはずだった部分を AI がやってしまわないか」という視点で一緒に確認します。その授業で一番「子どもに汗をかかせたい部分」がどこかを考えてから、使い方を検討します。</p>
   </div>
-  <div class="unit-when">使うとき：生成AI・ICTツールを授業で使う前に必然性を確認したいとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    「認知負荷のバイパス分析」を核とし、AIが学習プロセスの「どの部分」を自動化（バイパス）するかを特定。主眼との論理的衝突を分析し、最初の応答ではツール提案を一切出さず「使う必然性の壁打ち」に徹します。
+  </div>
+  <div class="unit-when">使うとき：生成AIを授業に取り入れる前に必然性を確認したいとき</div>
 </div>
 
+<!-- ② 自由進度 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number secondary">②</div>
     <div>
       <div class="unit-name">自由進度コアユニット</div>
-      <div class="unit-version">ver.1.2G ｜ファイル：②_自由進度コアユニット_ver.1.2g_260504.txt</div>
+      <div class="unit-version">ver.1.2G ｜ ②_自由進度コアユニット_ver.1.2g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    「固定する部分（核）」と「委ねる部分（自由）」の境界線を対話で引くユニット。完璧な計画を一気出しせず、<strong>未完成のたたき台</strong>を提示して教師と一緒に設計。フリーズリスクのある子への想像力を常に持ちます。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「自由進度学習をやってみたい。でも、どこまで子どもに任せればいいのか、全然わからない」。「全員に絶対やってほしいこと」と「子どもが選べること」の境界線を対話しながら引きます。完成した計画を一気に出すのではなく、未完成のたたき台を一緒に育てていくスタイルです。</p>
   </div>
-  <div class="unit-when">使うとき：自由進度学習の学習計画・コース設計を始めるとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    「固定（核）」と「委任（自由）」の境界線を対話プロトコルで設計。一気出しを禁止し、未完成の骨格に教師が手を入れる余白を残す。「フリーズする子」（選択肢が多すぎて動けなくなる子）へのシミュレーションを常に含みます。
+  </div>
+  <div class="unit-when">使うとき：自由進度学習の計画・コース設計を始めるとき</div>
 </div>
 
+<!-- ③ 指導案 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">③</div>
     <div>
       <div class="unit-name">指導案デザインユニット</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：③_指導案デザインユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ③_指導案デザインユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    授業構想を提出用フォーマットへ清書します。<strong>主眼テキストは1文字も変えずに保存</strong>（Mutation Guard）。監査（指摘）は別枠に出し、提出用本文に AI コメントを混入させません。展開表は6列固定。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「授業のアイデアはあるのに、指導案の書き方がよくわからない」「主眼の書き方が合っているか自信がない」。このユニットに授業のアイデアや主眼（一文）を渡すと、提出用の指導案フォーマットに整えてくれます。あなたが書いた主眼は1文字も変えません。問題点があれば別枠に「指摘」として出し、本文には混ぜません。</p>
   </div>
-  <div class="unit-when">使うとき：授業構想を指導案の形式へ整形するとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    主眼テキストの逐語保存（Mutation Guard）と、監査・清書の二層構造が核。主眼の4要素チェック（実態・場面・活動・価値）と整合性監査を行いつつ、提出用本文にはAIの判断を一切混入させません。展開表は6列固定。
+  </div>
+  <div class="unit-when">使うとき：授業構想を指導案フォーマットへ整形するとき</div>
 </div>
 
+<!-- ③ 板書 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">③</div>
     <div>
       <div class="unit-name">板書デザインユニット</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：③_板書デザインユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ③_板書デザインユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    授業の核をもとに、思考の型（比較型・変化型・根拠型・問い深化型・共有焦点型）の異なる<strong>板書案を5つ</strong>提示。レイアウトマップ・書く順番・子どもの思考が残る余白を設計します。画像生成の明示的要求時のみビジュアルを試みます。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「黒板に何をどう書けばいいかわからない」「板書がただの記録になってしまう」。授業の問いや核を伝えると、黒板の使い方を5つのパターン（比較型・変化型・根拠型・問い深化型・共有焦点型）で提案します。「左・中・右をどう使うか」という空間の設計図が出てきます。</p>
+  </div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    板書を記録ではなく「思考を可視化する構造体」として設計。5つの思考型で多様性を担保し、授業設計（主眼・発問）への不可侵を原則とします。画像生成は明示的な要求時のみ試みます（失敗時は画像生成AI用プロンプトを代替出力）。
   </div>
   <div class="unit-when">使うとき：中心発問または授業の核から板書案を作るとき</div>
 </div>
 
+<!-- ④ Web検索 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">④</div>
     <div>
       <div class="unit-name">Web検索・ICT情報教育ユニット</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：④_Web検索・ICT情報教育ユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ④_Web検索・ICT情報教育ユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    法令・文科省指針等の事実確認は必ずWeb検索を実行（推測で回答しない）。出典を必ず明示し、著作権・利用規約・年齢制限等のリスクも整理します。授業案の決定はせず、判断材料の提供に徹します。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「この授業の根拠になるデータってどこで調べればいい？」「子どもが使いたがっているアプリ、学校で使っていいの？」。法令・文科省指針・利用規約は必ずWeb検索で確認し、出典を明記します。「たぶん大丈夫」という推測で答えることはしません。著作権・年齢制限なども一緒に確認できます。</p>
   </div>
-  <div class="unit-when">使うとき：根拠・一次資料・ICTツールの利用可否・情報モラルを確認するとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    推測回答の禁止（強制検索）と出典明示義務が核。検索ツール失敗時は冒頭に未実行を明示し、一般論としてのみ整理してファクトチェックを要請するフォールバックが実装されています。
+  </div>
+  <div class="unit-when">使うとき：根拠・一次資料の確認、ICTツールの利用可否確認</div>
 </div>
 
+<!-- ④ 写真 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">④</div>
     <div>
       <div class="unit-name">写真・作品・データ入力支援ユニット</div>
-      <div class="unit-version">ver.2.1G ｜ファイル：④_写真・作品・データ入力支援ユニット_ver.2.1g_260504.txt</div>
+      <div class="unit-version">ver.2.1G ｜ ④_写真・作品・データ入力支援ユニット_ver.2.1g_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    ノート写真・板書・振り返りシート等から「見えている事実」と「AI の読み取り仮説」を厳密に分離。判読不能箇所は推測補完せず「要確認」として扱います。少数意見・粗い言葉を意図的に残します。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「子どものノート写真を見て、何かわかることがあれば教えてほしい」「振り返りシートの記述、どう読めばいい？」。写真や文章から「確かに見えていること」と「AI の推測」を分けて整理します。読めない文字を勝手に補完したり、「楽しそう」「やる気がない」といった断定はしません。</p>
   </div>
-  <div class="unit-when">使うとき：写真・画像・記録・アンケートを授業改善の材料として整理するとき</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    事実と推測の分離、生の声の保護（少数意見・粗い言葉を意図的に残す）、内面評価の禁止が3原則。判読不能箇所の推測補完をimage_unclear_guardで厳禁とし、「要確認」として教師へアラートを返します。
+  </div>
+  <div class="unit-when">使うとき：写真・振り返り・アンケートを授業改善の材料として整理するとき</div>
 </div>
 
+<!-- ⑩ キャラクター会議室 -->
 <div class="unit-card">
   <div class="unit-header">
     <div class="unit-number">⑩</div>
     <div>
       <div class="unit-name">キャラクター会議室ユニット <span class="badge major">大幅強化</span></div>
-      <div class="unit-version">ver.3.1 ｜ファイル：⑩_キャラクター会議室ユニット_ver.3.1_260504.txt</div>
+      <div class="unit-version">ver.3.1 ｜ ⑩_キャラクター会議室ユニット_ver.3.1_260504.txt</div>
     </div>
   </div>
-  <div class="unit-body">
-    7つの人格（Jジャック・ダイヤ・ジュニア・ハート・ジョーカー・クラブ・エース）が授業案を多角的に検証する「劇場型授業づくり」。3つのモード（監査・再設計・検証）×8つの会議パターンで運用。「芝居」ではなく「事実と論理の衝突」が目的です。
+  <div class="unit-young">
+    <div class="young-label">🌱 こんな悩みのとき</div>
+    <p>「この授業案、本当に大丈夫かな？」と不安なとき、7人の視点を持つキャラクターが「時間は大丈夫？」「子どもが動くシーン、本当にある？」「そもそもこの授業、なぜ必要？」と多角的に突っ込んでくれます。1人で考えているときに見えていなかった穴が見つかります。「キャラクター会議を開いて」の一言で始まります。</p>
   </div>
-  <div class="unit-when">使うとき：「キャラクター会議」「キャラで見て」等と指示したとき（既存ユニットを上書きしない）</div>
+  <div class="unit-senior">
+    <div class="senior-label">📘 設計の意図</div>
+    7キャラクター×3運用モード（監査・再設計・検証後）×8会議パターンの本格運用版。アンチ・スキット・ガードで過剰な芝居を禁止し、事実と論理の衝突による機能的な多角視点検証を実現。既存ユニットを上書きしない協議・俯瞰レイヤとして位置づけています。
+  </div>
+  <div class="unit-when">使うとき：「キャラクター会議を開いて」「キャラで見て」と伝えたとき</div>
 </div>
 
 
-<!-- ===== 3. 基本的な使い方 ===== -->
+<!-- ===== 基本的な使い方 ===== -->
 <div class="section-title"><span class="icon">▶</span> 基本的な使い方</div>
 
-<div class="subsection-title">ステップ①：ファイルを開いてカスタム指示に貼り付ける</div>
+<div class="subsection-title">ステップ①：カスタム指示に貼り付ける</div>
+
 <div class="flow">
   <div class="flow-step">
     <div class="flow-num">1</div>
     <div class="flow-content">
       <strong>使いたいユニットの .txt ファイルを開く</strong>
-      <p>まず <code>⓪A_たい焼きタイムベース</code> は必須。用途に合わせて他ユニットを1つ選ぶ。</p>
+      <p><code>⓪A_たい焼きタイムベース</code> は必須。悩みに合ったユニットをもう1つ選ぶ。迷ったらベースだけでOK。</p>
     </div>
   </div>
   <div class="flow-step">
     <div class="flow-num">2</div>
     <div class="flow-content">
       <strong>全文をコピーして Gemini のカスタム指示欄に貼り付ける</strong>
-      <p>Gemini の設定画面 → 「カスタム指示（System Instructions）」欄に貼り付ける。複数ユニットを使う場合は続けて貼り付ける。</p>
+      <p>Gemini の設定 →「カスタム指示（System Instructions）」へ。複数ユニットを使うときは続けて貼り付けます。</p>
     </div>
   </div>
   <div class="flow-step">
     <div class="flow-num">3</div>
     <div class="flow-content">
-      <strong>新しい会話を開始して、教師の「願い・事実・困り感」を入力する</strong>
-      <p>例：「〇年〇組の算数で、子どもが〜〜な姿を見せています。〜〜してほしいと思っているのですが…」</p>
+      <strong>新しい会話を開始して、「今日こんなことがあって…」と話しかける</strong>
+      <p>難しく考えなくて大丈夫です。ありのままの言葉で話しかけてください。</p>
+      <div class="eg">例：「今日3年の算数で、あるグループがずっとノートを開かなかったんだけど、どうしたらいいかな」</div>
     </div>
   </div>
   <div class="flow-step">
     <div class="flow-num">4</div>
     <div class="flow-content">
-      <strong>AI の停止（Halt）に応答しながら対話を進める</strong>
-      <p>AI が途中で停止して確認してきたら、問いに答えて続行の合図（「進んでください」「合意します」等）を出す。</p>
+      <strong>AI が止まったら（Halt）、問いに答えて続きを進める</strong>
+      <p>AI が「もう少し教えてください」と確認してきたら、知っている範囲で答えてください。「わからない」「見ていなかった」も立派な回答です。</p>
+      <div class="eg">例：AI「そのとき、子どもたちの手や視線はどこにありましたか？」→「あ、隣の席の子のノートを横目で見てた気がします」</div>
     </div>
   </div>
 </div>
 
 <div class="subsection-title">ステップ②：停止レベル（Halt Level）を理解する</div>
-<p style="font-size:13px; color:#555; margin-bottom:8px;">たい焼きタイムの全ユニットは、入力の充足度に応じて3段階で停止します。</p>
+
+<p style="font-size:13px; color:#555; margin-bottom:8px;">AI が止まる理由は3種類あります。怒っているのではなく、「もう少し情報があると精度が上がる」というサインです。</p>
 
 <table>
   <tr>
     <th>レベル</th>
-    <th>状況</th>
-    <th>AI の動作</th>
+    <th>AI の状態</th>
     <th>教師の対応</th>
   </tr>
-  <tr>
-    <td><strong>Level 1</strong><br>ソフト確認</td>
-    <td>情報がおおむね揃っている</td>
-    <td>仮置きの見立てを提示して確認</td>
+  <tr class="halt-row-1">
+    <td><strong>Level 1</strong><br><span style="font-size:11px;color:var(--muted);">ソフト確認</span></td>
+    <td>「おそらくこういうことかと思いますが、合っていますか？」と仮置きを提示して確認する</td>
     <td>「合っています」「違います、〜〜です」と短く返す</td>
   </tr>
-  <tr>
-    <td><strong>Level 2</strong><br>合意確認</td>
-    <td>授業の核や主眼が決まる重要な判断</td>
-    <td>見立てを提示して<strong>Halt（停止）</strong>。合意を待つ</td>
-    <td>「合意します、次へ進んでください」と明示する</td>
+  <tr class="halt-row-2">
+    <td><strong>Level 2</strong><br><span style="font-size:11px;color:var(--muted);">合意確認</span></td>
+    <td>授業の核を決める重要な判断の前に停止。「これでよいか」を必ず確認する</td>
+    <td>「合意します、続けてください」と明示する</td>
   </tr>
-  <tr>
-    <td><strong>Level 3</strong><br>完全停止</td>
-    <td>子どもの行動事実・教材の事実が致命的に不足</td>
-    <td>仮説を出さず、確認したい事実を<strong>1つだけ</strong>問う</td>
-    <td>問われた事実を具体的に答える（「〜〜していました」）</td>
+  <tr class="halt-row-3">
+    <td><strong>Level 3</strong><br><span style="font-size:11px;color:var(--muted);">完全停止</span></td>
+    <td>「ここは推測で進めると的外れになります」として事実を1つだけ問い、停止する</td>
+    <td>問われた事実を具体的に答える。「わからない」もOK</td>
   </tr>
 </table>
 
-<div class="callout warn">
-  <strong>ポイント：</strong> AI が止まったら「なぜ止まっているか」を確認してください。Level 3 の場合は「〜なような気がします」ではなく、<strong>見たこと・聞いたこと（行動事実）</strong>を返すと対話が前進します。
-</div>
-
-<div class="subsection-title">ステップ③：ユニット連携（handoff_payload）</div>
-<div class="callout info">
-  <strong>handoff_payload とは：</strong> ベースから各ユニットへ渡す引き継ぎデータ（YAML形式）です。通常は表示されませんが、ユニット切り替え時に「handoff_payload を出してください」と指示すると取得できます。別のユニットの会話冒頭に貼り付けることで文脈を引き継げます。
+<div class="callout young">
+  <strong>🌱 青年教師のためのヒント：</strong> Level 3 で止まったとき、「集中していませんでした」と答えても AI はまだ止まります。「鉛筆を持たずに天井を見ていました」「隣の子に話しかけていました」のように、<strong>見たまま・聞いたままの行動</strong>で答えると対話が前に進みます。
 </div>
 
 
-<!-- ===== 4. よく使う相談パターン ===== -->
-<div class="section-title"><span class="icon">💬</span> よく使う相談パターン</div>
-
-<div class="tips-grid">
-  <div class="tip-card">
-    <div class="tip-title">授業後のモヤモヤを整理したい</div>
-    <p>ベース（⓪A）に「今日の授業でこんなことがありました…」と語りかける。行動事実が足りなければ傾聴ユニット（⓪B）へ誘導されます。</p>
-  </div>
-  <div class="tip-card">
-    <div class="tip-title">授業の展開を設計したい</div>
-    <p>子どもの事実と教材の事実の両方を用意してから授業づくりコアユニット（①）へ。「〇〇な子どもたちが、教科書の〇ページの〜〜を読んだとき」の形式で入力すると核の合意まで素早く進みます。</p>
-  </div>
-  <div class="tip-card">
-    <div class="tip-title">指導案を提出用に仕上げたい</div>
-    <p>指導案デザインユニット（③）へ主眼・展開案を渡す。主眼テキストは一字も変えず、監査結果は別枠で受け取れます。</p>
-  </div>
-  <div class="tip-card">
-    <div class="tip-title">参加できていない子の支援を考えたい</div>
-    <p>インクルーシブ参加保障ユニット（②）に「その子の具体的な行動事実＋授業の核」を入力。「〇〇している（してない）」という行動で描写するのがコツ。</p>
-  </div>
-  <div class="tip-card">
-    <div class="tip-title">授業案を多角的に検証したい</div>
-    <p>「キャラクター会議を開いて」と伝えるとキャラクター会議室（⑩）が起動。デフォルトは監査モード。「教材監査」「子ども監査」「板書監査」など会議パターンを指定するとより焦点が絞れます。</p>
-  </div>
-  <div class="tip-card">
-    <div class="tip-title">ICTツール・AIの使用可否を確認したい</div>
-    <p>Web検索ユニット（④）に「〇〇というサービスを子どもに使わせたい」と入力。利用規約・年齢制限・著作権を最新情報で確認してくれます。</p>
-  </div>
-</div>
-
-
-<!-- ===== 5. 前バージョンからの向上点 ===== -->
-<div class="section-title"><span class="icon">📈</span> 前バージョン（ver.1.1s）からの向上点</div>
-
-<div class="callout">
-  ver.1.1s（2026-04-26）→ ver.2.1G（2026-05-04）の主な変更点です。<strong>「G」</strong>は Gemini カスタム指示用フォーマットへの最適化を示します。
-</div>
-
-<div class="changelog-section">
-  <h3>全ユニット共通の変更</h3>
-  <div class="changelog-item">
-    <div class="cl-name">ファイル形式の統一</div>
-    <div class="cl-from">YAML → XML タグ</div>
-    <div class="cl-desc">全ユニットをYAML形式（.md）から XML タグ形式（.txt）へ移行。Gemini のカスタム指示欄での解釈精度が向上しています。</div>
-  </div>
-  <div class="changelog-item">
-    <div class="cl-name">停止レベル三段階化（Halt Level 1/2/3）</div>
-    <div class="cl-from">停止なし → 三段階</div>
-    <div class="cl-desc">全ユニットで統一された3段階停止ロジックを実装。情報充足度に応じて「仮置き確認」「合意停止」「完全停止」を使い分け、情報不足のまま推測で進む問題を解消しました。</div>
-  </div>
-  <div class="changelog-item">
-    <div class="cl-name">トーンガード（tone_guard）の導入</div>
-    <div class="cl-from">未実装 → 全主要ユニット</div>
-    <div class="cl-desc">「事実の純度が低い」「不備あり」などの圧の強い表現を廃止。「授業判断の精度を上げるための確認」というトーンに統一し、教師の構想を否定しない言い回しに変更しました。</div>
-  </div>
-</div>
-
-<div class="changelog-section">
-  <h3>個別ユニットの変更</h3>
-
-  <div class="changelog-item">
-    <div class="cl-name">⓪A たい焼きタイムベース</div>
-    <div class="cl-from">ver.1.1s → 2.1G</div>
-    <div class="cl-desc">停止レベル三段階化とトーンガードを実装。「教師を責める検問所」から「プロフェッショナルな相棒」へのロール再定義。Level 3（完全停止）の基準を「事実が致命的に不足」に絞り込み、軽い相談で過剰停止しなくなりました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">⓪B 傾聴・対話ユニット</div>
-    <div class="cl-from">ver.1.1s → 2.1G</div>
-    <div class="cl-desc">「事実警察化の防止」を明文化。教師の「集中していない」等のネガティブな語りをまず承認してから事実確認に進む順序を固定。「架空の行動例の提示」を厳禁に追加しました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">① 授業づくりコアユニット</div>
-    <div class="cl-from">ver.1.1s → 2.1G</div>
-    <div class="cl-desc">「最小HOW検証の解禁」を追加。Phase 1（核の合意）完了後に限り、中心発問のタイミング・参加しにくい子の合流策など最小限の「手立て」を扱えるようになりました（Phase分断の明確化）。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">② インクルーシブ参加保障ユニット</div>
-    <div class="cl-from">ver.1.1G → 2.1G</div>
-    <div class="cl-desc">全ユニット統一の停止レベルとトーンガードに同期。「学びの核は下げない」「孤立させず合流させる」という3原則がより明確に定義され、支援の出口設計（クラス協働への戻し方）が構造化されました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">③ 指導案デザインユニット</div>
-    <div class="cl-from">ver.1.1st → 2.1G</div>
-    <div class="cl-desc">トーンガードと停止レベルを実装。監査と清書の二層構造をより明確化。「不備・欠陥」などの断定語を廃止し、「精度が上がります」という提案型の表現に統一しました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">③ 板書デザインユニット</div>
-    <div class="cl-from">ver.1.1s → 2.1G</div>
-    <div class="cl-desc">「画像生成環境ガード」を追加。画像生成が使えない環境での「偽装（テキストの枠線でごまかす）」を明示禁止。失敗時は「他の画像生成AIへ渡せる英語プロンプト」を代替出力するようになりました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">④ Web検索・ICT情報教育ユニット</div>
-    <div class="cl-from">ver.1.1s → 2.1G</div>
-    <div class="cl-desc">「検索失敗時ガード（search_failure_guard）」を追加。検索ツールが実行できない環境では、冒頭に未実行を明示してから一般論のみを提供し、ファクトチェックを要請するフローを明文化しました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">④ 写真・作品・データ入力支援ユニット</div>
-    <div class="cl-from">ver.1.1s「写真・データ・文体変換ユニット」→ 2.1G</div>
-    <div class="cl-desc">ユニット名を改称（文体変換機能を分離）。「画像判読フェイルセーフ（image_unclear_guard）」を追加。判読不能箇所を推測補完することを厳禁とし、「要確認」として残してアラートを提示するようになりました。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">⑩ キャラクター会議室ユニット</div>
-    <div class="cl-from">ver.0.5.1c → 3.1（大幅刷新）</div>
-    <div class="cl-desc">7キャラクター×3運用モード×8会議パターンの本格運用版へ刷新。「アンチ・スキット・ガード」で過剰な芝居・絵文字・馴れ合いを禁止し、「プロの教育者によるカンファレンス」のトーンを維持。既存ユニットを上書きしない「協議・俯瞰レイヤ」として明確に位置づけました。また、ベースのパッチとして「モード指定なし＝監査モード起動」「授業の核が動いた場合は教師へ判断を戻す」が追加されています。</div>
-  </div>
-
-  <div class="changelog-item">
-    <div class="cl-name">② 生成AI授業活用コアユニット</div>
-    <div class="cl-from">ver.1.0 → 1.3G</div>
-    <div class="cl-desc">「一般論の禁止」「手段の提案の保留」「認知負荷バイパス分析」の3原則を明確化。初回応答でのツール提案を完全禁止し、「使う必然性の吟味」ステップを固定しました。</div>
-  </div>
-</div>
-
-
-<!-- ===== 6. 注意事項 ===== -->
-<div class="section-title"><span class="icon">⚠️</span> 注意事項と禁止事項</div>
-
-<div class="callout warn">
-  <strong>やってはいけないこと（AI 側の設計禁止）：</strong>
-  <ul style="margin-top:6px;">
-    <li>事実の確認なしに手立て（HOW）を先出しする</li>
-    <li>教師の印象を「子どもの事実」として扱う</li>
-    <li>各ユニットの固定スロット・固定順・固定案数を崩す</li>
-    <li>指導案本文に AI のコメント・記号を混入させる</li>
-    <li>画像生成が使えない環境でテキスト枠線で「作ったふり」をする</li>
-    <li>Web 検索なしで法令・文科省指針を断定する</li>
-  </ul>
-</div>
-
-<div class="callout">
-  <strong>個人情報について：</strong> 児童名・成績・健康情報などの個人情報は入力しないでください。ユニットは個人特定・心理状態の断定を禁止していますが、入力段階での保護が最も重要です。
-</div>
-
-<div class="callout info">
-  <strong>「死人テスト」とは：</strong> 「死人でもできること（している、いない、できない等の状態）」を行動事実から除外するためのフィルターです。「集中していない」「やる気がない」は死人でもできるため事実として扱いません。「ノートを見ずに天井を向いていた」「鉛筆を持たなかった」など、行動として観察できる姿を事実として扱います。
-</div>
-
-
-<!-- ===== 7. ユニット選択ガイド ===== -->
-<div class="section-title"><span class="icon">🔍</span> ユニット選択早見表</div>
+<!-- ===== よく使う相談パターン ===== -->
+<div class="section-title"><span class="icon">💬</span> こんなとき、どのユニットを使う？</div>
 
 <table>
   <tr>
-    <th>やりたいこと</th>
+    <th>こんな悩み・やりたいこと</th>
     <th>使うユニット</th>
-    <th>必要な入力</th>
+    <th>最初に渡す情報</th>
   </tr>
   <tr>
-    <td>授業後の語りを整理したい</td>
-    <td>⓪B 傾聴・対話</td>
-    <td>感じたこと・気になった子の様子</td>
+    <td>今日の授業がうまくいかなかった、何が問題かわからない</td>
+    <td>⓪A ベース → ⓪B 傾聴</td>
+    <td>感じたこと・気になった場面を言葉で</td>
   </tr>
   <tr>
-    <td>授業の核・主眼を設計したい</td>
+    <td>授業で何を考えさせればいいか決めたい</td>
     <td>① 授業づくりコア</td>
-    <td>子どもの事実 ＋ 教材の事実</td>
+    <td>子どもの様子＋教科書・教材の具体的な記述</td>
   </tr>
   <tr>
-    <td>特定の子の参加を保障したい</td>
+    <td>参加できていない子の支援を考えたい</td>
     <td>② インクルーシブ参加保障</td>
-    <td>子どもの行動事実 ＋ 授業の核</td>
+    <td>その子の具体的な行動＋授業で目指すこと</td>
   </tr>
   <tr>
-    <td>探究の問いを立てたい</td>
+    <td>子どものつぶやきから探究の問いを立てたい</td>
     <td>② 探究コア</td>
-    <td>子どもの粗い関心語・つぶやき</td>
+    <td>子どもの言葉そのまま＋学年・教科</td>
   </tr>
   <tr>
-    <td>特支学級の支援を組みたい</td>
+    <td>特支学級でパニック・拒否が続いている</td>
     <td>② 特別支援教育コア</td>
-    <td>問題行動の具体的な姿</td>
+    <td>問題行動の具体的な様子（何をしたか）</td>
   </tr>
   <tr>
-    <td>AI活用の必然性を吟味したい</td>
+    <td>授業でAIを使おうか迷っている</td>
     <td>② 生成AI授業活用コア</td>
-    <td>使いたいAIの目的 ＋ 授業の核</td>
+    <td>使いたい理由＋授業で一番考えさせたいこと</td>
   </tr>
   <tr>
-    <td>自由進度の構造を設計したい</td>
+    <td>自由進度学習の設計をしたい</td>
     <td>② 自由進度コア</td>
-    <td>教科・単元・授業の核</td>
+    <td>教科・単元・授業で到達させたいこと</td>
   </tr>
   <tr>
     <td>指導案を提出用に仕上げたい</td>
     <td>③ 指導案デザイン</td>
-    <td>主眼テキスト ＋ 展開のたたき台</td>
+    <td>主眼テキスト＋展開のたたき台</td>
   </tr>
   <tr>
-    <td>板書案を複数立てたい</td>
+    <td>板書案を複数考えたい</td>
     <td>③ 板書デザイン</td>
-    <td>中心発問または授業の核</td>
+    <td>中心発問または授業の核（一文）</td>
   </tr>
   <tr>
-    <td>根拠・一次資料を調べたい</td>
+    <td>根拠・一次資料を調べたい、ICTツールの使用可否を確認したい</td>
     <td>④ Web検索・ICT情報教育</td>
-    <td>調べたいテーマ・確認したいICTツール名</td>
+    <td>調べたいテーマ・ツール名</td>
   </tr>
   <tr>
-    <td>写真・記録を整理したい</td>
+    <td>写真・振り返りシートを授業改善に使いたい</td>
     <td>④ 写真・作品・データ入力支援</td>
-    <td>写真画像 または テキストデータ</td>
+    <td>写真画像またはテキストデータ</td>
   </tr>
   <tr>
     <td>授業案を多角的に検証したい</td>
@@ -848,14 +790,12 @@
   </tr>
 </table>
 
-<hr>
 
-<!-- ===== キャラクター会議室 詳細ページ ===== -->
+<!-- ===== キャラクター会議室 詳細 ===== -->
 <div class="section-title" style="margin-top:48px;"><span class="icon">🃏</span> キャラクター会議室ユニット — できること＆キャラクター紹介</div>
 
 <div class="callout">
-  複数の「人格（エージェント）」が授業案を多角的に検証する<strong>劇場型授業づくりユニット</strong>です。授業の構想・板書・指導案・実施後リフレクションを対象に、事実と論理のぶつかり合いを通じて授業の弱点を浮かび上がらせます。<br>
-  「芝居」ではなく「プロの教育者によるカンファレンス」のトーンが原則です。
+  複数の「人格（エージェント）」が授業案を多角的に検証する<strong>劇場型授業づくりユニット</strong>です。授業の構想・板書・指導案・実施後リフレクションを対象に、事実と論理のぶつかり合いを通じて授業の弱点を浮かび上がらせます。「芝居」ではなく「プロの教育者によるカンファレンス」のトーンが原則です。
 </div>
 
 <div class="subsection-title">このユニットでできること</div>
@@ -899,108 +839,91 @@
 </table>
 
 <div class="subsection-title" style="margin-top:24px;">7つのキャラクター</div>
-<p style="font-size:13px; color:#555; margin-bottom:12px;">各キャラクターは「担当領域」を持ち、その担当外の提案はしません。これがハルシネーション封じ込めと多角視点の両立を可能にしています。</p>
+<p style="font-size:13px; color:#555; margin-bottom:12px;">各キャラクターは「担当領域」を持ち、その担当外の提案はしません。これが多角視点とハルシネーション封じ込めの両立を可能にしています。</p>
 
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:12px 0;">
-
-  <div class="unit-card" style="border-left:4px solid #e74c3c;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">♠️</div>
+<div class="char-grid">
+  <div class="char-card" style="border-left:4px solid #e74c3c;">
+    <div class="char-header">
+      <div class="char-icon">♠️</div>
       <div>
-        <div class="unit-name">J ジャック</div>
-        <div class="unit-version">担当：安全・物理的限界</div>
+        <div class="char-name">J ジャック</div>
+        <div class="char-role">担当：安全・物理的限界</div>
       </div>
     </div>
-    <div class="unit-body">
-      45分の時間配分・ICT運用の現実性・子どもの安全を監視する。<br>
-      <strong>「それ、45分で本当に終わりますか？」</strong>と理想論を却下する現実主義者。時間・空間・道具の制約から一切目を逸らさない。
-    </div>
+    <div class="char-body">45分の時間配分・ICT運用の現実性・子どもの安全を監視する現実主義者。理想論を却下し、時間・空間・道具の制約から目を逸らさない。</div>
+    <div class="char-voice">「それ、45分で本当に終わりますか？」</div>
   </div>
 
-  <div class="unit-card" style="border-left:4px solid #2980b9;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">♦️</div>
+  <div class="char-card" style="border-left:4px solid #2980b9;">
+    <div class="char-header">
+      <div class="char-icon">♦️</div>
       <div>
-        <div class="unit-name">ダイヤ</div>
-        <div class="unit-version">担当：論理・教材事実ロック</div>
+        <div class="char-name">ダイヤ</div>
+        <div class="char-role">担当：論理・教材事実ロック</div>
       </div>
     </div>
-    <div class="unit-body">
-      教科書・資料の具体的記述から1ミリも離れない監査役。<br>
-      <strong>「教科書の何ページに書いてありますか？」</strong>と一般論・主題・ねらいを嫌い、テキストの事実だけを根拠とする論理の番人。
-    </div>
+    <div class="char-body">教科書・資料の具体的記述から1ミリも離れない監査役。一般論・主題・ねらいを嫌い、テキストの事実だけを根拠とする論理の番人。</div>
+    <div class="char-voice">「教科書の何ページに書いてありますか？」</div>
   </div>
 
-  <div class="unit-card" style="border-left:4px solid #27ae60;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">🃏</div>
+  <div class="char-card" style="border-left:4px solid #27ae60;">
+    <div class="char-header">
+      <div class="char-icon">🃏</div>
       <div>
-        <div class="unit-name">ジュニア</div>
-        <div class="unit-version">担当：子どもの姿・死人テスト</div>
+        <div class="char-name">ジュニア</div>
+        <div class="char-role">担当：子どもの姿・死人テスト</div>
       </div>
     </div>
-    <div class="unit-body">
-      子どもの内面を代弁せず、物理的行動（視線・手の動き・呟き）だけでリスクを予言する。<br>
-      <strong>「その瞬間、Eさんの手はどこにありますか？」</strong>と感情論を排除し、具体的な行動事実に立ち返らせる子どもの代弁者。
-    </div>
+    <div class="char-body">子どもの内面を代弁せず、物理的行動（視線・手の動き・呟き）だけでリスクを予言する。感情論を排除し、行動事実に立ち返らせる。</div>
+    <div class="char-voice">「その瞬間、子どもの手はどこにありますか？」</div>
   </div>
 
-  <div class="unit-card" style="border-left:4px solid #e91e8c;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">♥️</div>
+  <div class="char-card" style="border-left:4px solid #e91e8c;">
+    <div class="char-header">
+      <div class="char-icon">♥️</div>
       <div>
-        <div class="unit-name">ハート</div>
-        <div class="unit-version">担当：教師の願い</div>
+        <div class="char-name">ハート</div>
+        <div class="char-role">担当：教師の願い</div>
       </div>
     </div>
-    <div class="unit-body">
-      論理で削られすぎた「先生のやりたいこと」を救い出し、授業の核と再接続させる。<br>
-      <strong>「先生が一番大切にしていたことは、まだこの案に残っていますか？」</strong>と問い、願いが消えていないか確認する教師の伴走者。
-    </div>
+    <div class="char-body">論理で削られすぎた「先生のやりたいこと」を救い出し、授業の核と再接続させる教師の伴走者。願いが消えていないかを確認する。</div>
+    <div class="char-voice">「先生が一番大切にしていたことは、まだこの案に残っていますか？」</div>
   </div>
 
-  <div class="unit-card" style="border-left:4px solid #8e44ad;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">🃏</div>
+  <div class="char-card" style="border-left:4px solid #8e44ad;">
+    <div class="char-header">
+      <div class="char-icon">🃏</div>
       <div>
-        <div class="unit-name">ジョーカー</div>
-        <div class="unit-version">担当：前提破壊</div>
+        <div class="char-name">ジョーカー</div>
+        <div class="char-role">担当：前提破壊</div>
       </div>
     </div>
-    <div class="unit-body">
-      「そもそも論」をぶつけ、授業の存在意義を根本から問い直す。<strong>HOW（やり方）の提案は禁じ手。</strong><br>
-      <strong>「なぜこの授業が、この単元に必要なのですか？」</strong>と前提を揺るがし、当たり前を疑わせる問い破壊者。
-    </div>
+    <div class="char-body">「そもそも論」で授業の存在意義を根本から問い直す。<strong>HOW（やり方）の提案は禁じ手。</strong>当たり前を疑わせる問い破壊者。</div>
+    <div class="char-voice">「なぜこの授業が、この単元に必要なのですか？」</div>
   </div>
 
-  <div class="unit-card" style="border-left:4px solid #f39c12;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">♣️</div>
+  <div class="char-card" style="border-left:4px solid #f39c12;">
+    <div class="char-header">
+      <div class="char-icon">♣️</div>
       <div>
-        <div class="unit-name">クラブ</div>
-        <div class="unit-version">担当：対話リスク</div>
+        <div class="char-name">クラブ</div>
+        <div class="char-role">担当：対話リスク</div>
       </div>
     </div>
-    <div class="unit-body">
-      バズワードを排し、話し合いが形骸化する構造的欠陥を指摘する。<br>
-      <strong>「この話し合い、誰が何を言えば『成立した』と判断しますか？」</strong>と問い、「話し合いごっこ」になっていないか構造から暴く対話の解剖者。
-    </div>
+    <div class="char-body">バズワードを排し、話し合いが形骸化する構造的欠陥を指摘。「話し合いごっこ」になっていないかを構造から暴く対話の解剖者。</div>
+    <div class="char-voice">「この話し合い、誰が何を言えば『成立した』と判断しますか？」</div>
   </div>
 
-  <div class="unit-card" style="border-left:4px solid #7f8c8d; grid-column: 1 / -1;">
-    <div class="unit-header">
-      <div style="font-size:28px; line-height:1;">🂡</div>
+  <div class="char-card full" style="border-left:4px solid #7f8c8d;">
+    <div class="char-header">
+      <div class="char-icon">🂡</div>
       <div>
-        <div class="unit-name">エース</div>
-        <div class="unit-version">担当：統合</div>
+        <div class="char-name">エース</div>
+        <div class="char-role">担当：統合</div>
       </div>
     </div>
-    <div class="unit-body">
-      会議の摩擦を削ぎ落とし、最後に「授業の核」を<strong>一文に凝縮</strong>して教師へ戻す統合役。<br>
-      各キャラクターの指摘が出そろった後に登場し、「残すべき強み」と「最大の脆弱性」を整理する。教師が「何を残し、何を直すか」を選択できる選択肢を提示して会議を閉じる。
-    </div>
+    <div class="char-body">会議の摩擦を削ぎ落とし、最後に「授業の核」を<strong>一文に凝縮</strong>して教師へ戻す統合役。各キャラクターの指摘が出そろった後に登場し、「残すべき強み」と「最大の脆弱性」を整理する。教師が「何を残し、何を直すか」を選択できる選択肢を提示して会議を閉じる。</div>
   </div>
-
 </div>
 
 <div class="subsection-title" style="margin-top:24px;">3つの運用モード</div>
@@ -1011,81 +934,49 @@
     <th>HOW（手立て）の扱い</th>
   </tr>
   <tr>
-    <td><strong>監査モード</strong><br>（Audit）</td>
+    <td><strong>監査モード</strong>（Audit）</td>
     <td>モード指定なし・デフォルト。既存案の欠陥抽出。</td>
     <td>新しい活動・手立ての提案を<strong>一切禁止</strong></td>
   </tr>
   <tr>
-    <td><strong>再設計モード</strong><br>（Redesign）</td>
+    <td><strong>再設計モード</strong>（Redesign）</td>
     <td>「授業の核を動かしたい」「再設計して」と指示したとき</td>
     <td>最小限のHOW（発問の順序・手順）を<strong>成立可能性の検証目的で許可</strong></td>
   </tr>
   <tr>
-    <td><strong>検証モード</strong><br>（Post-Verification）</td>
+    <td><strong>検証モード</strong>（Post-Verification）</td>
     <td>授業実施後。「振り返りを分析して」と指示したとき</td>
     <td>死人テストに基づき、事実と設計の乖離を分析</td>
   </tr>
 </table>
 
-<div class="subsection-title" style="margin-top:24px;">8つの会議パターン（参加キャラクターの組み合わせ）</div>
+<div class="subsection-title" style="margin-top:24px;">8つの会議パターン</div>
 <table>
   <tr>
     <th>会議パターン</th>
     <th>参加キャラクター</th>
     <th>主な焦点</th>
   </tr>
-  <tr>
-    <td><strong>教材監査</strong></td>
-    <td>ダイヤ・エース・ジョーカー</td>
-    <td>教材・教科書の事実に核が根ざしているか</td>
-  </tr>
-  <tr>
-    <td><strong>子ども監査</strong></td>
-    <td>ジュニア・ハート・クラブ</td>
-    <td>子どもの事実・教師の願い・対話の成立</td>
-  </tr>
-  <tr>
-    <td><strong>板書監査</strong></td>
-    <td>ダイヤ・ジュニア・Jジャック</td>
-    <td>板書が事実に基づき45分で実現可能か</td>
-  </tr>
-  <tr>
-    <td><strong>指導案監査</strong></td>
-    <td>ダイヤ・ジュニア・クラブ・Jジャック</td>
-    <td>主眼・展開・評価の整合性と現実性</td>
-  </tr>
-  <tr>
-    <td><strong>対話監査</strong></td>
-    <td>クラブ・ジュニア・ハート</td>
-    <td>話し合いが形骸化していないかの構造検証</td>
-  </tr>
-  <tr>
-    <td><strong>支援監査</strong></td>
-    <td>ジュニア・Jジャック・ハート</td>
-    <td>支援の現実性と教師の願いとの整合</td>
-  </tr>
-  <tr>
-    <td><strong>再設計会議</strong></td>
-    <td>ダイヤ・ジュニア・ジョーカー・エース</td>
-    <td>核を動かして最小限のHOWで再構成</td>
-  </tr>
-  <tr>
-    <td><strong>実践着地会議</strong></td>
-    <td>Jジャック・クイーン・キング</td>
-    <td>実際の教室での着地点の整理</td>
-  </tr>
+  <tr><td><strong>教材監査</strong></td><td>ダイヤ・エース・ジョーカー</td><td>教材・教科書の事実に核が根ざしているか</td></tr>
+  <tr><td><strong>子ども監査</strong></td><td>ジュニア・ハート・クラブ</td><td>子どもの事実・教師の願い・対話の成立</td></tr>
+  <tr><td><strong>板書監査</strong></td><td>ダイヤ・ジュニア・Jジャック</td><td>板書が事実に基づき45分で実現可能か</td></tr>
+  <tr><td><strong>指導案監査</strong></td><td>ダイヤ・ジュニア・クラブ・Jジャック</td><td>主眼・展開・評価の整合性と現実性</td></tr>
+  <tr><td><strong>対話監査</strong></td><td>クラブ・ジュニア・ハート</td><td>話し合いが形骸化していないかの構造検証</td></tr>
+  <tr><td><strong>支援監査</strong></td><td>ジュニア・Jジャック・ハート</td><td>支援の現実性と教師の願いとの整合</td></tr>
+  <tr><td><strong>再設計会議</strong></td><td>ダイヤ・ジュニア・ジョーカー・エース</td><td>核を動かして最小限のHOWで再構成</td></tr>
+  <tr><td><strong>実践着地会議</strong></td><td>Jジャック・クイーン・キング</td><td>実際の教室での着地点の整理</td></tr>
 </table>
 
 <div class="callout warn" style="margin-top:16px;">
   <strong>アンチ・スキット・ガード（過剰化防止）：</strong><br>
-  キャラクター会議室の「劇場型」は、<strong>異なる論理を衝突させるための機能的な構造</strong>です。絵文字の多用・大げさな感嘆詞・雑談・馴れ合いは禁止されており、淡々としつつも鋭いカンファレンスのトーンを維持します。また、<strong>このユニットは既存ユニットを上書きしない</strong>協議・俯瞰レイヤです。キャラクター会議の出力を、そのまま他ユニットの本文へ自動反映しません。
+  絵文字の多用・大げさな感嘆詞・雑談・馴れ合いは禁止。<strong>このユニットは既存ユニットを上書きしない</strong>協議・俯瞰レイヤです。キャラクター会議の出力を、そのまま他ユニットの本文へ自動反映することはありません。
 </div>
 
 <div class="subsection-title">使い方のコツ</div>
 <div class="tips-grid">
   <div class="tip-card">
     <div class="tip-title">会議パターンを指定するとより焦点が絞れる</div>
-    <p>「教材監査で見てください」「板書監査を開いてください」と指定すると、参加キャラクターが絞られ、議論が具体的になります。指定しない場合は監査モードで自動起動します。</p>
+    <p>「教材監査で見てください」「板書監査を開いてください」と指定すると参加キャラクターが絞られ、議論が具体的になります。指定しない場合は監査モードで自動起動します。</p>
   </div>
   <div class="tip-card">
     <div class="tip-title">「キャラで見て」の一言で起動できる</div>
@@ -1098,6 +989,87 @@
   <div class="tip-card">
     <div class="tip-title">授業後の振り返りにも使える</div>
     <p>実施後に「検証モードで振り返りたい」と伝えると、設計と実際のズレを死人テストベースで分析します。次の授業改善サイクルのスタート地点になります。</p>
+  </div>
+</div>
+
+
+<!-- ===== 前バージョンからの向上点 ===== -->
+<div class="section-title"><span class="icon">📈</span> 前バージョン（ver.1.1s）からの向上点</div>
+
+<div class="callout">
+  ver.1.1s（2026-04-26）→ ver.2.1G（2026-05-04）の主な変更点です。<strong>「G」</strong>は Gemini カスタム指示用フォーマットへの最適化を示します。
+</div>
+
+<div class="changelog-section">
+  <h3>全ユニット共通の変更</h3>
+  <div class="changelog-item">
+    <div class="cl-name">ファイル形式の統一</div>
+    <div class="cl-from">YAML → XMLタグ</div>
+    <div class="cl-desc">全ユニットをYAML形式（.md）からXMLタグ形式（.txt）へ移行。Geminiのカスタム指示欄での解釈精度が向上しています。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">停止レベル三段階化（Halt Level 1/2/3）</div>
+    <div class="cl-from">停止なし → 三段階</div>
+    <div class="cl-desc">全ユニットで統一された3段階停止ロジックを実装。情報充足度に応じて「仮置き確認」「合意停止」「完全停止」を使い分け、情報不足のまま推測で進む問題を解消しました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">トーンガード（tone_guard）の導入</div>
+    <div class="cl-from">未実装 → 全主要ユニット</div>
+    <div class="cl-desc">「事実の純度が低い」「不備あり」などの圧の強い表現を廃止。「授業判断の精度を上げるための確認」というトーンに統一しました。</div>
+  </div>
+</div>
+
+<div class="changelog-section">
+  <h3>個別ユニットの変更</h3>
+  <div class="changelog-item">
+    <div class="cl-name">⓪A たい焼きタイムベース</div>
+    <div class="cl-from">ver.1.1s → 2.1G</div>
+    <div class="cl-desc">停止レベル三段階化とトーンガードを実装。「教師を責める検問所」から「プロフェッショナルな相棒」へのロール再定義。Level 3（完全停止）の基準を「事実が致命的に不足」に絞り込み、軽い相談で過剰停止しなくなりました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">⓪B 傾聴・対話ユニット</div>
+    <div class="cl-from">ver.1.1s → 2.1G</div>
+    <div class="cl-desc">「事実警察化の防止」を明文化。教師のネガティブな語りをまず承認してから事実確認に進む順序を固定。「架空の行動例の提示」を厳禁に追加しました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">① 授業づくりコアユニット</div>
+    <div class="cl-from">ver.1.1s → 2.1G</div>
+    <div class="cl-desc">「最小HOW検証の解禁」を追加。Phase 1（核の合意）完了後に限り、最小限の手立てを扱えるようになりました（Phase分断の明確化）。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">② インクルーシブ参加保障ユニット</div>
+    <div class="cl-from">ver.1.1G → 2.1G</div>
+    <div class="cl-desc">全ユニット統一の停止レベルとトーンガードに同期。支援の出口設計（クラス協働への戻し方）が構造化されました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">③ 指導案デザインユニット</div>
+    <div class="cl-from">ver.1.1st → 2.1G</div>
+    <div class="cl-desc">トーンガードと停止レベルを実装。「不備・欠陥」などの断定語を廃止し「精度が上がります」という提案型表現に統一しました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">③ 板書デザインユニット</div>
+    <div class="cl-from">ver.1.1s → 2.1G</div>
+    <div class="cl-desc">「画像生成環境ガード」を追加。テキスト枠線での偽装を明示禁止。失敗時は他の画像生成AIへ渡せる英語プロンプトを代替出力するようになりました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">④ Web検索・ICT情報教育ユニット</div>
+    <div class="cl-from">ver.1.1s → 2.1G</div>
+    <div class="cl-desc">「検索失敗時ガード（search_failure_guard）」を追加。検索ツールが実行できない環境では冒頭に未実行を明示してから一般論のみを提供し、ファクトチェックを要請するフローを明文化しました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">④ 写真・作品・データ入力支援ユニット</div>
+    <div class="cl-from">ver.1.1s「写真・データ・文体変換ユニット」→ 2.1G</div>
+    <div class="cl-desc">ユニット名を改称（文体変換機能を分離）。「画像判読フェイルセーフ」を追加。判読不能箇所の推測補完を厳禁とし「要確認」として残してアラートを提示するようになりました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">⑩ キャラクター会議室ユニット</div>
+    <div class="cl-from">ver.0.5.1c → 3.1（大幅刷新）</div>
+    <div class="cl-desc">7キャラクター×3運用モード×8会議パターンの本格運用版へ刷新。アンチ・スキット・ガードで過剰な芝居を禁止し、既存ユニットを上書きしない「協議・俯瞰レイヤ」として明確に位置づけました。</div>
+  </div>
+  <div class="changelog-item">
+    <div class="cl-name">② 生成AI授業活用コアユニット</div>
+    <div class="cl-from">ver.1.0 → 1.3G</div>
+    <div class="cl-desc">「一般論の禁止」「手段の提案の保留」「認知負荷バイパス分析」の3原則を明確化。初回応答でのツール提案を完全禁止し、「使う必然性の吟味」ステップを固定しました。</div>
   </div>
 </div>
 
