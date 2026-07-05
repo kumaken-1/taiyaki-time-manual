@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>たい焼きタイム　はじめての活用マニュアル</title>
+<style>
+/* ── リセット & ベース ─────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:  #1B2A4A;
+  --blue:  #2E86DE;
+  --lblue: #D6EAF8;
+  --xblue: #EBF5FB;
+  --gold:  #E8A020;
+  --lgold: #FEF9E7;
+  --teal:  #148F77;
+  --lteal: #D5F5E3;
+  --purp:  #7D3C98;
+  --lpurp: #F5EEF8;
+  --gray:  #F4F6F7;
+  --dg:    #2C3E50;
+  --mid:   #7F8C8D;
+  --white: #FFFFFF;
+}
+body {
+  font-family: "Meiryo UI", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ ProN", sans-serif;
+  font-size: 15px;
+  color: var(--dg);
+  background: #F0F2F5;
+  line-height: 1.7;
+}
+a { color: var(--blue); }
+
+/* ── レイアウト ────────────────────────── */
+.page-wrap { max-width: 860px; margin: 0 auto; background: var(--white); }
+section { padding: 52px 52px 40px; }
+section:nth-child(odd):not(.cover) { background: var(--white); }
+section:nth-child(even):not(.cover) { background: #FAFBFC; }
+
+/* ── 表紙 ───────────────────────────────── */
+.cover {
+  background: var(--navy);
+  padding: 72px 52px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: rgba(46,134,222,.15);
+}
+.cover::after {
+  content: "";
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(232,160,32,.10);
+}
+.cover-eyebrow {
+  font-size: 12px; letter-spacing: .18em;
+  color: #7FB3D3; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.cover-title {
+  font-size: 48px; font-weight: 900;
+  color: var(--white); line-height: 1.15;
+  margin-bottom: 10px;
+}
+.cover-sub {
+  font-size: 22px; font-weight: 700;
+  color: #B8D4F0; margin-bottom: 24px;
+}
+.cover-bar {
+  width: 60px; height: 5px;
+  background: var(--gold); border-radius: 3px;
+  margin-bottom: 24px;
+}
+.cover-tagline {
+  font-size: 15px; color: #7FB3D3;
+  font-style: italic; margin-bottom: 44px;
+}
+.cover-checklist {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 44px;
+}
+.cover-check {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #D6EAF8; font-size: 14px;
+}
+.cover-check::before { content: "✅ "; }
+.cover-version {
+  font-size: 12px; color: #5D7A99;
+  letter-spacing: .05em;
+}
+
+/* ── セクション見出し ──────────────────── */
+.sec-header {
+  display: flex; align-items: center;
+  gap: 14px; margin-bottom: 28px;
+}
+.sec-num {
+  background: var(--navy); color: var(--white);
+  font-size: 13px; font-weight: 700;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sec-title {
+  font-size: 22px; font-weight: 800;
+  color: var(--navy); letter-spacing: -.01em;
+}
+.sec-note {
+  font-size: 14px; color: var(--mid);
+  margin-top: 4px; margin-bottom: 24px;
+}
+
+/* ── 授業観 ───────────────────────────── */
+.belief-box {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 28px 30px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.belief-box::before {
+  content: "";
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(46,134,222,.12);
+}
+.belief-eyebrow {
+  font-size: 11px; letter-spacing: .16em;
+  color: #7FB3D3; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.belief-main {
+  font-size: 17px; font-weight: 800;
+  color: var(--white); line-height: 1.7;
+  margin-bottom: 18px;
+}
+.belief-list {
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+.belief-item {
+  display: flex; gap: 10px;
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px; color: #D6EAF8;
+  line-height: 1.6;
+}
+.belief-item b { color: var(--white); font-weight: 700; }
+
+/* ── はじめに ─────────────────────────── */
+.intro-lead {
+  font-size: 16px; line-height: 1.8;
+  margin-bottom: 20px;
+}
+.callout {
+  border-left: 5px solid var(--gold);
+  background: var(--lgold);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+  margin-top: 16px;
+}
+.callout-title {
+  font-weight: 700; color: var(--navy);
+  font-size: 14px; margin-bottom: 8px;
+  letter-spacing: .04em;
+}
+.callout p { font-size: 14px; color: var(--dg); margin-bottom: 4px; }
+.callout-em {
+  font-weight: 700; color: var(--blue);
+  font-size: 15px; margin-top: 8px;
+}
+
+/* ── 定食＋副食 ───────────────────────── */
+.teishoku-box {
+  background: var(--lteal);
+  border: 2px solid var(--teal);
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin-bottom: 22px;
+}
+.teishoku-label {
+  font-size: 13px; font-weight: 800;
+  color: var(--teal); letter-spacing: .04em;
+  margin-bottom: 10px;
+}
+.teishoku-items {
+  display: flex; flex-wrap: wrap;
+  gap: 10px; margin-bottom: 12px;
+}
+.teishoku-chip {
+  background: var(--white);
+  border: 1px solid var(--teal);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px; font-weight: 700;
+  color: var(--navy);
+}
+.teishoku-desc {
+  font-size: 14px; color: var(--dg);
+}
+.fukushoku-box {
+  background: var(--lgold);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin-bottom: 22px;
+}
+.fukushoku-label {
+  font-size: 13px; font-weight: 800;
+  color: #B9770E; letter-spacing: .04em;
+  margin-bottom: 10px;
+}
+.fukushoku-desc {
+  font-size: 14px; color: var(--dg); margin-bottom: 4px;
+}
+.fukushoku-table {
+  display: flex; flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #E5E9ED;
+  margin-bottom: 18px;
+}
+.fukushoku-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+  gap: 10px;
+  padding: 10px 16px;
+  align-items: center;
+  border-bottom: 1px solid #EEF0F3;
+  background: var(--white);
+  font-size: 13px;
+}
+.fukushoku-row.head {
+  background: var(--navy);
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,.75);
+}
+.fukushoku-row:last-child { border-bottom: none; }
+.fukushoku-row .fk-name { font-weight: 700; color: var(--navy); }
+.fukushoku-row .fk-when { color: var(--dg); }
+.fukushoku-row .fk-prep { color: var(--mid); }
+.combo-grid {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.combo-card {
+  background: var(--xblue);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+}
+.combo-title {
+  font-size: 14px; font-weight: 800;
+  color: var(--navy); margin-bottom: 4px;
+}
+.combo-files {
+  font-size: 13px; color: var(--blue); margin-bottom: 6px;
+}
+.combo-desc { font-size: 13px; color: var(--dg); line-height: 1.6; }
+
+/* ── Geminiでの始め方 ──────────────────── */
+.setup-method {
+  border: 1px solid #E5E9ED;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.setup-method-head {
+  padding: 14px 20px;
+  background: var(--xblue);
+  display: flex; align-items: baseline; gap: 10px;
+}
+.setup-method-tag {
+  font-size: 11px; font-weight: 800;
+  color: var(--white); background: var(--blue);
+  border-radius: 12px; padding: 3px 10px;
+  flex-shrink: 0;
+}
+.setup-method-title { font-size: 16px; font-weight: 800; color: var(--navy); }
+.setup-steps {
+  padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.setup-step {
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.setup-step-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--navy); color: var(--white);
+  font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.setup-step-text { font-size: 14px; color: var(--dg); line-height: 1.7; }
+.setup-step-text b { color: var(--navy); }
+.tip-box {
+  border-left: 5px solid var(--teal);
+  background: var(--lteal);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+}
+.tip-title {
+  font-weight: 800; color: var(--navy);
+  font-size: 13px; margin-bottom: 6px;
+}
+.tip-box p { font-size: 13px; color: var(--dg); line-height: 1.7; margin-bottom: 4px; }
+.faq-mini {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 18px;
+}
+.faq-mini-item {
+  background: var(--gray);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px; color: var(--dg);
+}
+.faq-mini-item b { color: var(--navy); }
+
+/* ── 使用フロー（図解） ────────────────── */
+.flow-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.flow-step {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+}
+.flow-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 64px;
+  flex-shrink: 0;
+}
+.flow-circle {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px; font-weight: 700;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  line-height: 1.1;
+}
+.flow-circle span { font-size: 20px; font-weight: 900; line-height: 1; }
+.flow-connector {
+  width: 3px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--navy), var(--lblue));
+  margin: 0 auto;
+  min-height: 20px;
+}
+.flow-last .flow-connector { display: none; }
+.flow-body {
+  flex: 1;
+  padding: 0 0 28px 20px;
+}
+.flow-card {
+  background: var(--xblue);
+  border-radius: 12px;
+  padding: 18px 22px;
+  border-left: 4px solid var(--blue);
+}
+.flow-card-title {
+  font-size: 16px; font-weight: 800;
+  color: var(--navy); margin-bottom: 6px;
+}
+.flow-card-desc {
+  font-size: 14px; color: var(--dg); line-height: 1.7;
+}
+.flow-card-ex {
+  margin-top: 10px;
+  background: rgba(255,255,255,.7);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px; color: var(--mid);
+  font-style: italic;
+}
+.flow-card-ex::before { content: "💬 例："; font-style: normal; font-weight: 600; color: var(--blue); }
+
+/* ステップカラー */
+.step1 .flow-circle { background: var(--navy); }
+.step1 .flow-card   { border-color: var(--navy); background: #EBF0F8; }
+.step2 .flow-circle { background: #1A5276; }
+.step2 .flow-card   { border-color: #1A5276; background: #EBF5FB; }
+.step3 .flow-circle { background: #1F618D; }
+.step3 .flow-card   { border-color: #1F618D; background: #EBF5FB; }
+.step4 .flow-circle { background: var(--teal); }
+.step4 .flow-card   { border-color: var(--teal); background: var(--lteal); }
+.step5 .flow-circle { background: var(--gold); }
+.step5 .flow-card   { border-color: var(--gold); background: var(--lgold); }
+
+/* ── ユニット一覧 ─────────────────────── */
+.unit-group-label {
+  grid-column: 1 / -1;
+  font-size: 12px; font-weight: 800;
+  color: var(--mid); letter-spacing: .08em;
+  margin: 10px 0 -2px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed #DDE3ED;
+}
+.unit-group-label:first-child { margin-top: 0; }
+.fukushoku-group-label {
+  grid-column: 1 / -1;
+  font-size: 12px; font-weight: 800;
+  color: var(--white); letter-spacing: .06em;
+  padding: 8px 16px;
+  background: var(--navy);
+}
+.fukushoku-table { display: grid; grid-template-columns: 1fr; }
+.fukushoku-table .fukushoku-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+}
+.unit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.unit-card {
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid #E5E9ED;
+}
+.unit-badge {
+  width: 70px; flex-shrink: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 12px 6px;
+  text-align: center;
+}
+.unit-num {
+  font-size: 15px; font-weight: 900;
+  color: var(--white); line-height: 1;
+  margin-bottom: 4px;
+}
+.unit-name {
+  font-size: 11px; font-weight: 700;
+  color: rgba(255,255,255,.85);
+  line-height: 1.2;
+}
+.unit-body {
+  flex: 1; padding: 12px 14px;
+  background: var(--gray);
+}
+.unit-tag {
+  font-size: 11px; font-weight: 700;
+  color: var(--blue); letter-spacing: .05em;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.unit-desc { font-size: 13px; color: var(--dg); line-height: 1.6; }
+
+/* ── キャラクター ─────────────────────── */
+.char-grid {
+  display: flex; flex-direction: column;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #DDE3ED;
+}
+.char-header {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  background: var(--navy);
+  padding: 10px 16px;
+  gap: 12px;
+}
+.char-header span {
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .08em;
+}
+.char-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  gap: 12px;
+  padding: 11px 16px;
+  align-items: center;
+  border-bottom: 1px solid #EEF0F3;
+  background: var(--white);
+  transition: background .15s;
+}
+.char-row:last-child { border-bottom: none; }
+.char-row:hover { background: var(--xblue); }
+.char-name {
+  font-size: 14px; font-weight: 800;
+  padding: 3px 0;
+}
+.char-role { font-size: 13px; color: var(--dg); }
+.char-ex {
+  font-size: 12px; color: var(--blue);
+  font-style: italic;
+}
+.char-ex::before { content: "「"; }
+.char-ex::after { content: "」"; }
+.char-note {
+  font-size: 13px; color: var(--mid);
+  margin-top: 14px; padding: 10px 14px;
+  background: var(--gray); border-radius: 8px;
+}
+
+/* ── 対話事例 ─────────────────────────── */
+.case-grid {
+  display: flex; flex-direction: column;
+  gap: 14px;
+}
+.case-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #E5E9ED;
+}
+.case-head {
+  padding: 10px 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.case-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--white);
+  font-size: 13px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.case-title { font-size: 15px; font-weight: 800; color: var(--white); }
+.case-body { padding: 14px 18px; background: var(--white); }
+.case-teacher {
+  font-size: 13px; color: var(--dg);
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: var(--gray);
+  border-radius: 6px;
+}
+.case-teacher::before { content: "先生："; font-weight: 700; color: var(--navy); }
+.case-ai {
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.case-ai::before { content: "AIのポイント："; font-weight: 700; }
+
+/* ── おわりに ─────────────────────────── */
+.outro-box {
+  background: var(--xblue);
+  border-top: 5px solid var(--navy);
+  border-bottom: 5px solid var(--navy);
+  border-radius: 4px;
+  padding: 36px 40px;
+  text-align: center;
+}
+.outro-main {
+  font-size: 20px; font-weight: 800;
+  color: var(--navy); margin-bottom: 12px;
+}
+.outro-sub { font-size: 15px; color: var(--dg); margin-bottom: 8px; }
+.outro-em {
+  font-size: 18px; font-weight: 800;
+  color: var(--blue); margin-bottom: 20px;
+}
+.outro-cta {
+  font-size: 17px; color: var(--navy);
+  font-weight: 700;
+}
+.version-line {
+  text-align: right; font-size: 12px;
+  color: var(--mid); margin-top: 24px;
+}
+
+/* ── 印刷対応 ────────────────────────── */
+@media print {
+  body { background: white; font-size: 12px; }
+  .page-wrap { max-width: 100%; }
+  section { padding: 32px 40px; }
+  .cover { padding: 48px 40px; }
+  .flow-card, .unit-card, .char-grid, .case-card { break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  section { padding: 36px 24px; }
+  .cover { padding: 48px 24px; }
+  .cover-checklist, .unit-grid { grid-template-columns: 1fr; }
+  .char-header, .char-row { grid-template-columns: 80px 1fr; }
+  .char-header span:last-child, .char-ex { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ══════════════════════════ 表紙 ══════════════════════════ -->
+<section class="cover">
+  <p class="cover-eyebrow">小学校教職員向け　AI授業づくりツール</p>
+  <h1 class="cover-title">たい焼きタイム</h1>
+  <p class="cover-sub">はじめての活用マニュアル</p>
+  <div class="cover-bar"></div>
+  <p class="cover-tagline">AIが苦手でも大丈夫。授業づくりの相談相手として使える。</p>
+  <div class="cover-checklist">
+    <div class="cover-check">ユニットの分類（必須＋6分類）</div>
+    <div class="cover-check">Geminiでの始め方（操作手順）</div>
+    <div class="cover-check">使用フロー（5ステップ）</div>
+    <div class="cover-check">全20ユニットの解説</div>
+    <div class="cover-check">10キャラクターへの話しかけ方</div>
+    <div class="cover-check">代表的な使い方18例</div>
+    <div class="cover-check" style="margin-top:8px; border-top:1px solid rgba(255,255,255,.15); padding-top:8px;">
+      <a href="https://kumaken-1.github.io/taiyaki-time-manual/manga-viewer.html" target="_blank" rel="noopener" style="color:#f0c040; text-decoration:none; font-weight:bold;">📖 漫画で読むマニュアル（全10ページ）→</a>
+    </div>
+  </div>
+  <p class="cover-version">ver.3.2 ／ 2026年6月</p>
+</section>
+
+<!-- ══════════════════════════ はじめに ══════════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">0</div>
+    <h2 class="sec-title">はじめに</h2>
+  </div>
+
+  <div class="belief-box">
+    <p class="belief-eyebrow">たい焼きタイムの授業観</p>
+    <p class="belief-main">授業とは、教師の願いを実現する場ではなく、子どもの今の見方が、教材や友だちの考えとの出会いによって動き出す場である。</p>
+    <div class="belief-list">
+      <div class="belief-item"><b>①</b> 子どもの事実と、先生の解釈・願いを分けて読む。子どもの内面を決めつけない。</div>
+      <div class="belief-item"><b>②</b> 子どもの粗い言葉、迷い、未解釈の事実を、きれいな言葉に整理して消さない。</div>
+      <div class="belief-item"><b>③</b> 活動や項目を増やすことで、授業の核をぼかさない。出てくるのはいつも「たたき台」。決めるのは先生。</div>
+    </div>
+  </div>
+
+  <p class="intro-lead">
+    たい焼きタイムは、授業づくりをAIと一緒に考えるためのツールです。<br>
+    日本語で話しかけるだけ。難しい操作は一切不要です。
+  </p>
+  <div class="callout">
+    <p class="callout-title">📌 大事なポイント</p>
+    <p>たい焼きタイムは「授業を代わりに作るツール」ではありません。</p>
+    <p>「先生の思考を整理して、次の一歩を進めやすくするツール」です。</p>
+    <p class="callout-em">出てくるのは「たたき台」。選ぶのは、いつも先生です。</p>
+  </div>
+
+  <div style="margin-top:24px; background:#1B2A4A; border-radius:8px; padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+    <div>
+      <p style="color:#f0c040; font-weight:bold; font-size:15px; margin-bottom:4px;">📖 漫画で読むマニュアル（全10ページ）</p>
+      <p style="color:#B8D4F0; font-size:13px;">文章より絵で把握したい方はこちら。たい焼きタイムの使い方を漫画形式で説明しています。</p>
+    </div>
+    <a href="https://kumaken-1.github.io/taiyaki-time-manual/manga-viewer.html" target="_blank" rel="noopener"
+       style="background:#f0c040; color:#1B2A4A; font-weight:bold; font-size:14px; padding:10px 20px; border-radius:6px; text-decoration:none; white-space:nowrap; flex-shrink:0;">
+      漫画を読む →
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════ ユニットの分類 ══════════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">1</div>
+    <h2 class="sec-title">ユニットの分類</h2>
+  </div>
+  <p class="sec-note">20ユニットを毎回全部使うわけではありません。「必須3点」＋「目的に合わせた6分類」で考えると分かりやすくなります。</p>
+
+  <div class="teishoku-box">
+    <p class="teishoku-label">🍱 必須（毎回必ず添付する3点）</p>
+    <div class="teishoku-items">
+      <div class="teishoku-chip">① ベース</div>
+      <div class="teishoku-chip">② 傾聴・対話</div>
+      <div class="teishoku-chip">③ 授業づくりコア</div>
+    </div>
+    <p class="teishoku-desc">この3点だけで授業の核をじっくり一緒に考えられます。何を相談したいか分からないときも、まずこの3点だけ添付して話しかければOKです。</p>
+  </div>
+
+  <p class="sec-note" style="margin-bottom:10px;">必須3点に、目的に合わせて次の6分類から選んで追加します。何個でも組み合わせ可能。迷ったときは追加せずに話しかければ、ベースが提案してくれます。</p>
+
+  <div class="fukushoku-table">
+    <div class="fukushoku-group-label">📐 授業デザイン ― 授業・単元の構造を決める</div>
+    <div class="fukushoku-row">
+      <div class="fk-name">④ 単元デザイン</div>
+      <div class="fk-when">今日の授業を単元全体の流れの中に位置づけたい</div>
+      <div class="fk-prep">単元名・時数・本時が何時間目か</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑤ 言語活動デザイン</div>
+      <div class="fk-when">何を書かせ、何を話させるか具体的に決めたい</div>
+      <div class="fk-prep">授業の核（一文）</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑥ 探究コア</div>
+      <div class="fk-when">子どものつぶやきから探究の問いを立てたい</div>
+      <div class="fk-prep">子どもの言葉そのまま＋学年・教科</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑦ 自由進度コア</div>
+      <div class="fk-when">自由進度学習の設計をしたい</div>
+      <div class="fk-prep">教科・単元・到達させたいこと</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑧ 生成AI活用</div>
+      <div class="fk-when">授業でのAI活用の必然性を確認したい</div>
+      <div class="fk-prep">使いたい理由＋一番考えさせたいこと</div>
+    </div>
+
+    <div class="fukushoku-group-label">🧩 個別最適 ― 一人一人に合わせる</div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑨ インクルーシブ参加保障</div>
+      <div class="fk-when">授業についてこれない子の支援を考えたい</div>
+      <div class="fk-prep">その子の具体的な行動＋授業で目指すこと</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑩ 特別支援教育</div>
+      <div class="fk-when">特支学級でのパニック・拒否の背景を整理したい</div>
+      <div class="fk-prep">行動の具体的な様子（何をしたか）</div>
+    </div>
+
+    <div class="fukushoku-group-label">📥 インプット ― 記録・情報を取り込む</div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑪ 授業記録受け取り</div>
+      <div class="fk-when">つぶやき・写真・成果物・音声を分析せず受け取っておきたい</div>
+      <div class="fk-prep">記録したいもの（分析は不要と伝える）</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑫ スレッド移行</div>
+      <div class="fk-when">会話が長くなり、次の会話へ記録を持ち越したい</div>
+      <div class="fk-prep">授業記録受け取りユニットで受け取った記録</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑬ Web検索・ICT</div>
+      <div class="fk-when">法令・文科省指針・ICTツールの利用可否を確認したい</div>
+      <div class="fk-prep">調べたいテーマ・ツール名</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑭ 写真・変換</div>
+      <div class="fk-when">写真・振り返りシートを授業改善に活用したい</div>
+      <div class="fk-prep">写真画像またはテキストデータ</div>
+    </div>
+
+    <div class="fukushoku-group-label">📤 アウトプット ― 最終形に整える</div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑮ 指導案デザイン</div>
+      <div class="fk-when">授業構想を指導案フォーマットへ整形したい</div>
+      <div class="fk-prep">主眼テキスト＋展開のたたき台</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑯ 子どもの学びを萬画で描く</div>
+      <div class="fk-when">指導案に萬画欄（子どもの学びの場面）を加えたい</div>
+      <div class="fk-prep">確定した指導案（主眼・展開・評価）</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑰ 板書デザイン</div>
+      <div class="fk-when">中心発問から板書案を複数作りたい</div>
+      <div class="fk-prep">中心発問または授業の核（一文）</div>
+    </div>
+
+    <div class="fukushoku-group-label">🔁 振り返り ― 授業後に見取りを言葉にする</div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑱ フィードバック支援</div>
+      <div class="fk-when">授業後の子どもの記述・作品から見取りを整理したい</div>
+      <div class="fk-prep">発話・記述・作品・活動記録</div>
+    </div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑲ 評価コメント</div>
+      <div class="fk-when">見取りを児童コメント・保護者所見・通知表素材に整えたい</div>
+      <div class="fk-prep">フィードバック支援で整理した見取り</div>
+    </div>
+
+    <div class="fukushoku-group-label">🎭 検討 ― 呼んだときだけ動く</div>
+    <div class="fukushoku-row">
+      <div class="fk-name">⑳ キャラクター会議室</div>
+      <div class="fk-when">授業案を多角的な視点で検証したい</div>
+      <div class="fk-prep">授業案（核・展開・板書など）</div>
+    </div>
+  </div>
+
+  <p class="sec-note" style="margin-bottom:14px;">よく使う組み合わせの例：</p>
+  <div class="combo-grid">
+    <div class="combo-card">
+      <div class="combo-title">研究授業の準備セット</div>
+      <div class="combo-files">①②③（必須）＋⑮ 指導案デザイン</div>
+      <div class="combo-desc">子どもの様子と教材の事実を伝えて③で授業の核を決める。核が固まったら「指導案にして」と頼むだけで⑮が受け取って整形する。核の決定から下書きまで同じ会話の中で完結する。</div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-title">授業後の振り返りセット</div>
+      <div class="combo-files">①②③（必須）＋⑱ フィードバック支援＋⑲ 評価コメント</div>
+      <div class="combo-desc">授業後にノートや作品の様子を伝えると⑱が見取りを整理してくれる。そのまま「コメントにして」と頼めば⑲が保護者・児童に届く言葉へ整えてくれる。</div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-title">総合的な学習・長期記録セット</div>
+      <div class="combo-files">①②③（必須）＋⑪ 授業記録受け取り（＋必要なら⑫ スレッド移行）</div>
+      <div class="combo-desc">毎時間の記録は⑪にそのまま入れるだけ（分析せず「受け取りました」のみ返る）。数週間分まとまったら「まとめて」と頼めば、目的に応じて整理してくれる。会話が長くなったら⑫で次の会話へ引き継げる。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ Geminiでの始め方 ══════════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">2</div>
+    <h2 class="sec-title">Geminiでの始め方</h2>
+  </div>
+  <p class="sec-note">ここが一番最初の不安なポイントだと思います。難しい操作はありません。順番に進めれば大丈夫です。</p>
+
+  <div class="setup-method">
+    <div class="setup-method-head">
+      <div class="setup-method-tag">方法A・おすすめ</div>
+      <div class="setup-method-title">そのつど、会話にファイルを添付する</div>
+    </div>
+    <div class="setup-steps">
+      <div class="setup-step">
+        <div class="setup-step-num">1</div>
+        <div class="setup-step-text">ブラウザで <b>gemini.google.com</b> を開き、いつも使っているGoogleアカウントでログインする。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">2</div>
+        <div class="setup-step-text">画面下にある入力欄の近くに、<b>＋（プラス）またはクリップのアイコン</b>があります。ここをクリックする。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">3</div>
+        <div class="setup-step-text">「パソコンからアップロード」を選び、たい焼きタイムのフォルダから <b>①必須01_ベース／②必須02_傾聴対話／③必須03_授業づくりコア</b> の3つの.txtファイルを選ぶ（複数選択は、Windowsなら<b>Ctrlキー</b>、Macなら<b>⌘キー</b>を押しながらクリック）。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">4</div>
+        <div class="setup-step-text">3つのファイルが添付された状態（画面に3つのファイル名が表示される）になったら、入力欄に相談したいことをそのまま日本語で書いて送信する。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">5</div>
+        <div class="setup-step-text">板書や指導案など、追加でやりたいことが出てきたら、対応する分類のファイル（例：⑮アウトプット01_指導案デザイン）を、同じ会話に追加で添付してから「指導案にして」のように伝える。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="setup-method">
+    <div class="setup-method-head" style="background:var(--lgold)">
+      <div class="setup-method-tag" style="background:var(--gold)">方法B・慣れてきたら</div>
+      <div class="setup-method-title">「Gem」として保存し、毎回ファイルを選ばずに使う</div>
+    </div>
+    <div class="setup-steps">
+      <div class="setup-step">
+        <div class="setup-step-num">1</div>
+        <div class="setup-step-text">Geminiの画面の左側にあるメニューから「Gem」（Gemマネージャーと表示される場合もあります）を開く。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">2</div>
+        <div class="setup-step-text">「新しいGemを作成」を選び、名前に「たい焼きタイム」と入力する。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">3</div>
+        <div class="setup-step-text">「指示」の入力欄に、<b>①必須01_ベース</b>の.txtファイルの内容をすべて開いてコピーし、貼り付ける。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">4</div>
+        <div class="setup-step-text">「ナレッジ」や「参照ファイル」を追加できる欄があれば、②③と、よく使う目的別ファイルをそこにアップロードしておく。無い場合は、相談のたびに会話の中で添付すればよい。</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-step-num">5</div>
+        <div class="setup-step-text">保存して、できあがった「たい焼きタイム」Gemを開いて話しかける。次回からはファイルを選ぶ手間が減る。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <p class="tip-title">💡 使い方の裏技・目安</p>
+    <p>一度の会話に添付するファイルが多すぎると、Geminiが読み込みにくくなったり、判断が混乱しやすくなったりします。たい焼きタイムでは、<b>必須3点＋目的別ファイルを合わせて、多くても10個程度まで</b>にしておくのがおすすめです。</p>
+    <p>普段の相談は、必須3点だけ、または必須3点＋1〜2個で十分です。たくさん添付すればよい結果が出る、というわけではありません。</p>
+  </div>
+
+  <div class="faq-mini">
+    <div class="faq-mini-item"><b>Q. ファイルを間違えて添付してしまった。</b><br>送信する前なら、添付ファイルの「×」印で外せます。送信した後でも、新しい会話を始め直せば大丈夫です。</div>
+    <div class="faq-mini-item"><b>Q. 毎回ファイルを選ぶのが大変。</b><br>慣れてきたら方法Bの「Gem」を検討してください。最初は方法Aで十分です。</div>
+    <div class="faq-mini-item"><b>Q. 操作を間違えて、おかしな返答が来た。</b><br>「さっきのは違うので、もう一度教えてください」のようにそのまま伝えればOKです。やり直しは何度でもできます。壊れることはありません。</div>
+    <div class="faq-mini-item"><b>Q. Gemini の画面表示が、ここに書いてあるのと少し違う。</b><br>Geminiの画面デザインは時期によって更新されます。「ファイルを追加」「アップロード」「Gem」などの言葉で探してみてください。</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ 使用フロー ══════════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">3</div>
+    <h2 class="sec-title">使用フロー（会話が始まったあと）</h2>
+  </div>
+  <p class="sec-note">ここからは、ファイルを添付して話しかけた「あと」の流れです。どのステップから入っても大丈夫です。「板書だけ作りたい」も、ベースに伝えればOK。</p>
+
+  <div class="flow-wrap">
+
+    <div class="flow-step step1">
+      <div class="flow-left">
+        <div class="flow-circle">STEP<span>1</span></div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-card">
+          <div class="flow-card-title">まず「ベース」に話しかける（入口はここ）</div>
+          <div class="flow-card-desc">何をしたいか分からなくてOK。困っていることをそのまま話す。</div>
+          <div class="flow-card-ex">3年生の理科、単元の終わりに何をやるか決まってなくて…</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-step step2">
+      <div class="flow-left">
+        <div class="flow-circle">STEP<span>2</span></div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-card">
+          <div class="flow-card-title">ベースが「今日何をするか」を整理してくれる</div>
+          <div class="flow-card-desc">願いと困り感を分けて、「今日は何を考えるといいか」を示してくれる。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-step step3">
+      <div class="flow-left">
+        <div class="flow-circle">STEP<span>3</span></div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-card">
+          <div class="flow-card-title">必要なユニットへ自動でつなぐ</div>
+          <div class="flow-card-desc">授業の核を考えたいなら授業づくりユニットへ。板書なら板書ユニットへ。単元全体の相談なら単元デザインユニットへ。<strong>自分でユニットを選ぶ必要はない。</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-step step4">
+      <div class="flow-left">
+        <div class="flow-circle">STEP<span>4</span></div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-card">
+          <div class="flow-card-title">たたき台を受け取る</div>
+          <div class="flow-card-desc">AIが出してくれるのは「たたき台」。先生が選び直せる素材として受け取る。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-step step5 flow-last">
+      <div class="flow-left">
+        <div class="flow-circle">STEP<span>5</span></div>
+        <div class="flow-connector"></div>
+      </div>
+      <div class="flow-body">
+        <div class="flow-card">
+          <div class="flow-card-title">もっと深く考えたいときは「キャラクター会議室」へ</div>
+          <div class="flow-card-desc">10人のキャラクターが、授業を違う角度から見てくれる。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ ユニット ══════════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">4</div>
+    <h2 class="sec-title">各ユニットでできること</h2>
+  </div>
+  <p class="sec-note">20の機能が連携しています。自分で選ぶ必要はなく、ベースが振り分けてくれます。</p>
+  <div class="unit-grid">
+
+    <div class="unit-group-label">必須</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#1B2A4A">
+        <div class="unit-num">①</div>
+        <div class="unit-name">ベース</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">入口</div>
+        <div class="unit-desc">何でも最初に話しかける場所。困り感・願い・出力したいものを整理して、「今日は何を考えるといいか」を教えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#1A5276">
+        <div class="unit-num">②</div>
+        <div class="unit-name">傾聴・対話</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">聴く</div>
+        <div class="unit-desc">モヤモヤした気持ちを一緒にほどいてくれる。急いで解決策を出さず、先生が本当に気にしていることを引き出してくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#148F77">
+        <div class="unit-num">③</div>
+        <div class="unit-name">授業づくりコア</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">核を作る</div>
+        <div class="unit-desc">授業の核（一番大事なこと）・発問・活動の流れのたたき台を作る。子どもがどう動くかを中心に置く。</div>
+      </div>
+    </div>
+
+    <div class="unit-group-label">📐 授業デザイン</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#0E6655">
+        <div class="unit-num">④</div>
+        <div class="unit-name">単元デザイン</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">単元に位置づける</div>
+        <div class="unit-desc">「今日の授業」を単元全体の流れの中に位置づける相談相手。前の時間から何を受け継ぎ、次の時間に何を残すかを整理する。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#884EA0">
+        <div class="unit-num">⑤</div>
+        <div class="unit-name">言語活動デザイン</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">言葉を動かす</div>
+        <div class="unit-desc">何を書かせ、何を話させ、どう言い直させるかを具体的に設計する相談相手。活動を増やすのではなく、子どもの言葉が動く場面を考える。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#1D8348">
+        <div class="unit-num">⑥</div>
+        <div class="unit-name">探究コア</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">問いを育てる</div>
+        <div class="unit-desc">総合的な学習や探究的な学びを設計するときの相談相手。子どもの問いをどう育てるかを一緒に考えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#7E5109">
+        <div class="unit-num">⑦</div>
+        <div class="unit-name">自由進度コア</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">自分で選ぶ</div>
+        <div class="unit-desc">子どもが自分でペースを選ぶ授業の設計を手伝ってくれる。選択肢の作り方・見取りの工夫を一緒に考えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#117A65">
+        <div class="unit-num">⑧</div>
+        <div class="unit-name">生成AI活用</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">AIを使う授業</div>
+        <div class="unit-desc">子どもにAIを使わせる授業を設計するときの相談相手。情報モラル・問いの立て方・活動の設計を一緒に考えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-group-label">🧩 個別最適</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#B9770E">
+        <div class="unit-num">⑨</div>
+        <div class="unit-name">インクルーシブ参加保障</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">参加の入口をつくる</div>
+        <div class="unit-desc">クラスの中で参加しにくい子を、別の学びに分けずに、同じ学びへ合流させる入口を一緒に考えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#6C3483">
+        <div class="unit-num">⑩</div>
+        <div class="unit-name">特別支援教育</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">一人一人へ</div>
+        <div class="unit-desc">個別最適な支援や配慮事項の整理を手伝ってくれる。子どもの実態に合わせた手立てのたたき台を作る。</div>
+      </div>
+    </div>
+
+    <div class="unit-group-label">📥 インプット</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#922B21">
+        <div class="unit-num">⑪</div>
+        <div class="unit-name">授業記録受け取り</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">分析せず受け取る</div>
+        <div class="unit-desc">授業中・授業後のつぶやき・写真・成果物・音声を、指示があるまで分析せずに受け取る。入れると「受け取りました」としか返ってこない。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#7B241C">
+        <div class="unit-num">⑫</div>
+        <div class="unit-name">スレッド移行</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">会話を引き継ぐ</div>
+        <div class="unit-desc">会話が長くなり、新しいスレッドへ移るときに、蓄積した記録を次の会話へ持ち越す引き継ぎメモを作る。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#1A5276">
+        <div class="unit-num">⑬</div>
+        <div class="unit-name">Web検索・ICT</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">情報を調べる</div>
+        <div class="unit-desc">授業に使える情報を調べて整理してくれる。「よくある定番案」と「このクラスに合わない点」を分けて教えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#512E5F">
+        <div class="unit-num">⑭</div>
+        <div class="unit-name">写真・変換</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">素材を整える</div>
+        <div class="unit-desc">手書きメモ・写真・記録を文章に変換したり、保護者向け・職員会議向けに書き直したりしてくれる。</div>
+      </div>
+    </div>
+
+    <div class="unit-group-label">📤 アウトプット</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#1B4F72">
+        <div class="unit-num">⑮</div>
+        <div class="unit-name">指導案デザイン</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">形にする</div>
+        <div class="unit-desc">授業案を指導案の形式に整えてくれる。抜けているところは「TODO」として残してくれるので慌てなくていい。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#21618C">
+        <div class="unit-num">⑯</div>
+        <div class="unit-name">子どもの学びを萬画で描く</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">萬画欄を設計する</div>
+        <div class="unit-desc">確定した指導案をもとに、子どもの学びの場面（A→Bの変化）を萬画欄として設計する。完成画像は生成しない。参観者が見取るべき姿を場面・コマ・吹き出しとして描き起こす（発展途上の機能）。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#154360">
+        <div class="unit-num">⑰</div>
+        <div class="unit-name">板書デザイン</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">板書を設計</div>
+        <div class="unit-desc">発問と授業の核をもとに、板書の構成案を5パターン出してくれる。子どもの思考の流れを見せる板書を設計できる。</div>
+      </div>
+    </div>
+
+    <div class="unit-group-label">🔁 振り返り</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#117864">
+        <div class="unit-num">⑱</div>
+        <div class="unit-name">フィードバック支援</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">授業を振り返る</div>
+        <div class="unit-desc">子どもの発言・記述・作品などの事実から、授業のどこが効いてどこが届かなかったかを見直し、次の時間に活かす一手を一緒に考える。</div>
+      </div>
+    </div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#0B5345">
+        <div class="unit-num">⑲</div>
+        <div class="unit-name">評価コメント</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">見取りを言葉にする</div>
+        <div class="unit-desc">整理した見取りを、児童への返し・保護者向け・通知表用の言葉に整える。評定そのものは決めない。</div>
+      </div>
+    </div>
+
+    <div class="unit-group-label">🎭 検討（呼んだときだけ）</div>
+
+    <div class="unit-card">
+      <div class="unit-badge" style="background:#1B2A4A">
+        <div class="unit-num">⑳</div>
+        <div class="unit-name">キャラクター会議室</div>
+      </div>
+      <div class="unit-body">
+        <div class="unit-tag">多角的に見る</div>
+        <div class="unit-desc">10人のキャラクターが授業案を違う角度から見てくれる劇場型のユニット。呼んだときだけ動く。先生の気づかない視点を安全に出してくれる。</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ キャラクター ══════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">5</div>
+    <h2 class="sec-title">10キャラクターへの話しかけ方</h2>
+  </div>
+  <p class="sec-note">名前を呼んで話しかけるだけで、その役割で応答してくれます。</p>
+  <div class="char-grid">
+    <div class="char-header">
+      <span>キャラクター</span>
+      <span>役割</span>
+      <span>話しかけ方の例</span>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#E8A020">エース</div>
+      <div class="char-role">授業の核・教師の願いを一文にする</div>
+      <div class="char-ex">エース、この授業の一番大事なことを一言でまとめて</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#C0392B">ハート</div>
+      <div class="char-role">教師の願い・教室の空気・関係性を見る</div>
+      <div class="char-ex">ハート、このクラスの雰囲気を大切にした展開にするには？</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#2E86DE">ダイヤ</div>
+      <div class="char-role">論理・構造・整合性を確認する</div>
+      <div class="char-ex">ダイヤ、この授業の流れに無理や矛盾はない？</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#148F77">ジュニア</div>
+      <div class="char-role">子どもの受け取り・反応・つまずきを仮説化</div>
+      <div class="char-ex">ジュニア、この発問、子どもたちはどう受け取ると思う？</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#2C3E50">スペード</div>
+      <div class="char-role">問い・ズレ・学びの弱さを突く</div>
+      <div class="char-ex">スペード、この授業の一番弱いところを教えて</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#117A65">クラブ</div>
+      <div class="char-role">協働・対話・子ども同士の動きを見る</div>
+      <div class="char-ex">クラブ、子どもたちが自然に対話したくなる場面はどこ？</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#7D3C98">クイーン</div>
+      <div class="char-role">語り口・相手意識・文体を整える</div>
+      <div class="char-ex">クイーン、この説明文を保護者向けに書き直して</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#1B2A4A">キング</div>
+      <div class="char-role">共有文書・学年会資料に整える</div>
+      <div class="char-ex">キング、これを学年会で使えるレジュメにして</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#E67E22">ジョーカー</div>
+      <div class="char-role">視点転換・再解釈・問い直しを出す</div>
+      <div class="char-ex">ジョーカー、全然違う角度から見たらどうなる？</div>
+    </div>
+    <div class="char-row">
+      <div class="char-name" style="color:#922B21">Jジャック</div>
+      <div class="char-role">安全・逸脱・問題点を止める</div>
+      <div class="char-ex">ジャック、この案に問題や見落としはない？</div>
+    </div>
+  </div>
+  <p class="char-note">キャラクター会議室は呼ばれたときだけ動きます。「キャラクター会議室を開いて」「○○で見て」のように、名前か会議名を出してください。何も言わずに授業相談をしているときは、キャラクターは出てきません。</p>
+</section>
+
+<!-- ══════════════════════════ 対話事例 ══════════════════════ -->
+<section>
+  <div class="sec-header">
+    <div class="sec-num">6</div>
+    <h2 class="sec-title">代表的な使い方18例</h2>
+  </div>
+  <p class="sec-note">この通りに入力しなくてOK。参考にしてください。</p>
+  <div class="case-grid">
+
+    <div class="case-card">
+      <div class="case-head" style="background:#1B2A4A">
+        <div class="case-num" style="color:#1B2A4A">1</div>
+        <div class="case-title">授業の悩みを話すだけでOK</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">3年生の理科、子どもたちが実験はするんだけど、何を考えたらいいか分かってないみたいで…</div>
+        <div class="case-ai" style="background:#EBF0F8; color:#1B2A4A">まず傾聴。「どんな場面ですか？」と聞いてくれる。解決策より先に先生の語りを整理してくれる。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#148F77">
+        <div class="case-num" style="color:#148F77">2</div>
+        <div class="case-title">発問を考えてもらう</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">国語で登場人物の気持ちを考えさせたいんだけど、いい発問が思いつかない</div>
+        <div class="case-ai" style="background:#D5F5E3; color:#1B2A4A">授業の核を確認してから、発問候補を3〜5個出してくれる。選ぶのは先生。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#0E6655">
+        <div class="case-num" style="color:#0E6655">3</div>
+        <div class="case-title">単元の中でこの時間がどこにあるか考える</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">この単元は全部で8時間あるんだけど、今日の5時間目はどういう位置づけにすればいい？</div>
+        <div class="case-ai" style="background:#E8F8F5; color:#0E6655">前の時間までに積み上がったことと、次の時間に残したいことを整理してくれる。今日だけで完結させようとしない。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#2E86DE">
+        <div class="case-num" style="color:#2E86DE">4</div>
+        <div class="case-title">探究単元の計画をゼロから作る</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">総合で5年生が地域の農業を調べる単元を作りたいんだけど、どこから始めたらいい？</div>
+        <div class="case-ai" style="background:#EBF5FB; color:#1B2A4A">子どもの問いをどう育てるかから一緒に考えてくれる。活動計画・見取りのポイントまで整理。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#7E5109">
+        <div class="case-num" style="color:#7E5109">5</div>
+        <div class="case-title">自由進度の授業を組み立てる</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">算数の練習問題、子どもに自分のペースで進めさせたいけど、何を固定して何を任せればいいか分からない</div>
+        <div class="case-ai" style="background:#FDEBD0; color:#1B2A4A">守る学びの核を確認してから、固定すること・委ねることを分けて、未完成のたたき台として出してくれる。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#B9770E">
+        <div class="case-num" style="color:#B9770E">6</div>
+        <div class="case-title">参加しにくい子の入口を考える</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">話し合いの場面で、いつも入れない子がいる。別の課題にするしかないかな…</div>
+        <div class="case-ai" style="background:#FEF5E7; color:#1B2A4A">別課題にする前に、授業構造のどこがバリアになっているかを一緒に見る。同じ学びへ合流する入口を考えてくれる。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#6C3483">
+        <div class="case-num" style="color:#6C3483">7</div>
+        <div class="case-title">特別支援の配慮事項を整理する</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">支援が必要な子が2人いて、この授業でどう対応するかまとめたい</div>
+        <div class="case-ai" style="background:#F5EEF8; color:#1B2A4A">子どもの実態を確認してから、手立てのたたき台と見取りのポイントを整理する。断定はしない。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#884EA0">
+        <div class="case-num" style="color:#884EA0">8</div>
+        <div class="case-title">何を書かせ、何を話させるかを具体的に考える</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">授業の核は決まったけど、子どもに何を書かせて、どう話し合わせればいいか分からない</div>
+        <div class="case-ai" style="background:#F4ECF7; color:#1B2A4A">自分との対話・友だちとの対話・言い直しという流れで、子どもの言葉が動く場面を一緒に設計してくれる。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#1B4F72">
+        <div class="case-num" style="color:#1B4F72">9</div>
+        <div class="case-title">指導案のたたき台を作る</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">研究授業まであと3日。4年生の算数、面積の授業。何か形にしてほしい</div>
+        <div class="case-ai" style="background:#EBF0F8; color:#1B2A4A">情報を整理して、指導案の枠組みとTODO付きたたき台を出してくれる。空欄はTODOのまま残る。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#21618C">
+        <div class="case-num" style="color:#21618C">10</div>
+        <div class="case-title">参観者向けに見やすい指導案にする</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">指導案ができたんだけど、研究会の参観者にもっと見やすい紙面にしたい</div>
+        <div class="case-ai" style="background:#EBF5FB; color:#1B2A4A">A4縦一枚の漫画付き紙面のたたき台を作る。主眼は一字一句変えずに保持してくれる（現在も調整中の機能）。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#154360">
+        <div class="case-num" style="color:#154360">11</div>
+        <div class="case-title">板書の構成を考えてもらう</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">中心発問はこれ。板書どうしようか迷ってる</div>
+        <div class="case-ai" style="background:#D6EAF8; color:#1B2A4A">5パターンの板書案を出してくれる。レイアウト・書く順・焦点の置き方まで示してくれる。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#117864">
+        <div class="case-num" style="color:#117864">12</div>
+        <div class="case-title">授業を振り返って次に活かす</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">今日の授業、子どものノートを見たら思っていたより理解が浅かった。次どうしよう</div>
+        <div class="case-ai" style="background:#E8F8F5; color:#1B2A4A">子どもの記述という事実から、どこが効いてどこが届かなかったかを見直し、次の時間で直す一点に絞ってくれる。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#0B5345">
+        <div class="case-num" style="color:#0B5345">13</div>
+        <div class="case-title">通知表の所見・コメントの言葉を整える</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">この子の理科の様子、見取ったことを通知表の言葉にしたい</div>
+        <div class="case-ai" style="background:#E9F7EF; color:#1B2A4A">見取った事実をもとに、断定しすぎず、保護者にも子どもにも届く言葉に整えてくれる。評定は先生が決める。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#117A65">
+        <div class="case-num" style="color:#117A65">14</div>
+        <div class="case-title">子どもにAIを使わせる授業を作る</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">来週、子どもたちにAIを使った調べ学習をやらせてみたい。どう設計する？</div>
+        <div class="case-ai" style="background:#D5F5E3; color:#1B2A4A">情報の確かめ方・問いの立て方・振り返りの設計を一緒に考えてくれる。情報モラルも自動で入る。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#E8A020">
+        <div class="case-num" style="color:#E8A020">15</div>
+        <div class="case-title">手書きメモを文章に変換する</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">この授業記録（手書きのメモ）を文章に直してほしい</div>
+        <div class="case-ai" style="background:#FEF9E7; color:#1B2A4A">写真・変換ユニットが整理してくれる。解釈は加えず、見えることだけを変換する。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#1B2A4A">
+        <div class="case-num" style="color:#1B2A4A">16</div>
+        <div class="case-title">複数キャラクターに授業を見てもらう</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">キャラクター会議室で、この授業案を見てほしい</div>
+        <div class="case-ai" style="background:#EBF0F8; color:#1B2A4A">キャラクターが会話形式で意見を出し合い、改善点を3つに絞って提案する。呼ばれたときだけ動く。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#922B21">
+        <div class="case-num" style="color:#922B21">17</div>
+        <div class="case-title">毎時間の記録をとにかく溜めておく</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">今日の総合の様子、写真と子どものつぶやきを記録として入れます。分析しないでください。</div>
+        <div class="case-ai" style="background:#FDEDEC; color:#1B2A4A">「受け取りました」だけ返ってくる。何枚入れても、まとめてと言うまでは分析・評価・提案をしない。</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-head" style="background:#7B241C">
+        <div class="case-num" style="color:#7B241C">18</div>
+        <div class="case-title">会話が長くなったので次のスレッドへ移る</div>
+      </div>
+      <div class="case-body">
+        <div class="case-teacher">ここまでの記録、次の会話に持ち越したいので移行メモを作って</div>
+        <div class="case-ai" style="background:#FAE5E3; color:#1B2A4A">件数・気になる言葉・未解釈のまま残すことをそのまま残した引き継ぎメモを作る。次の会話の最初に貼り付けるだけでよい。</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ おわりに ══════════════════════ -->
+<section>
+  <div class="outro-box">
+    <p class="outro-main">たい焼きタイムは、授業を代わりに作るツールではありません。</p>
+    <p class="outro-sub">「先生の思考を整理して、次の一歩を進めやすくするツール」です。</p>
+    <p class="outro-em">出てくるのは「たたき台」。選ぶのは、いつも先生です。</p>
+    <p class="outro-cta">まずは「今日一番困っていること」をそのまま話しかけてみてください。</p>
+  </div>
+  <p class="version-line">ver.3.2　2026年6月　小学校教職員向け</p>
+</section>
+
+</div>
+</body>
+</html>
