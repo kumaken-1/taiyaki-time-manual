@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>たい焼きタイム マニュアル漫画</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1a1a;
+    color: #eee;
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  }
+  header {
+    background: #2a2a2a;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #e74c3c;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 {
+    font-size: 1.1rem;
+    color: #f0c040;
+    font-weight: bold;
+  }
+  header p {
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+  .back-link {
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border: 1px solid #e74c3c;
+    border-radius: 4px;
+  }
+  .back-link:hover { background: #e74c3c; color: #fff; }
+
+  .page-nav {
+    text-align: center;
+    padding: 16px 0 8px;
+    font-size: 0.8rem;
+    color: #888;
+  }
+  .page-nav a {
+    color: #f0c040;
+    text-decoration: none;
+    margin: 0 4px;
+  }
+  .page-nav a:hover { text-decoration: underline; }
+
+  .manga-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .page-wrapper {
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .page-label {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 6px;
+  }
+  .page-wrapper img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+  .page-anchor {
+    display: block;
+    position: absolute;
+    top: -70px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px;
+    font-size: 0.8rem;
+    color: #555;
+    border-top: 1px solid #333;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 480px) {
+    .manga-container { padding: 8px; }
+    header h1 { font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>たい焼きタイム マニュアル漫画</h1>
+    <p>全10ページ｜ファイル順 = ページ順</p>
+  </div>
+  <a class="back-link" href="index.html">← 目次へ</a>
+</header>
+
+<div class="page-nav">
+ページジャンプ:
+<a href="#p01">1</a>
+<a href="#p02">2</a>
+<a href="#p03">3</a>
+<a href="#p04">4</a>
+<a href="#p05">5</a>
+<a href="#p06">6</a>
+<a href="#p07">7</a>
+<a href="#p08">8</a>
+<a href="#p09">9</a>
+<a href="#p10">10</a>
+</div>
+
+<div class="manga-container">
+  <div class="page-wrapper"><a class="page-anchor" id="p01"></a><div class="page-label">p.1</div><img src="manga/01.png" alt="マニュアル漫画 1ページ目" loading="eager"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p02"></a><div class="page-label">p.2</div><img src="manga/02.png" alt="マニュアル漫画 2ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p03"></a><div class="page-label">p.3</div><img src="manga/03.png" alt="マニュアル漫画 3ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p04"></a><div class="page-label">p.4</div><img src="manga/04.png" alt="マニュアル漫画 4ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p05"></a><div class="page-label">p.5</div><img src="manga/05.png" alt="マニュアル漫画 5ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p06"></a><div class="page-label">p.6</div><img src="manga/06.png" alt="マニュアル漫画 6ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p07"></a><div class="page-label">p.7</div><img src="manga/07.png" alt="マニュアル漫画 7ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p08"></a><div class="page-label">p.8</div><img src="manga/08.png" alt="マニュアル漫画 8ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p09"></a><div class="page-label">p.9</div><img src="manga/09.png" alt="マニュアル漫画 9ページ目" loading="lazy"></div>
+  <div class="page-wrapper"><a class="page-anchor" id="p10"></a><div class="page-label">p.10</div><img src="manga/10.png" alt="マニュアル漫画 10ページ目" loading="lazy"></div>
+</div>
+
+<footer>
+  たい焼きタイム ver.2.3 マニュアル漫画｜<a href="index.html" style="color:#e74c3c">目次に戻る</a>
+</footer>
+</body>
+</html>
