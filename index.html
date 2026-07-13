@@ -31,6 +31,9 @@ body {
   line-height: 1.7;
 }
 a { color: var(--blue); }
+.cover-check-link { text-decoration: none; display: block; }
+.cover-check-link .cover-check { height: 100%; border-color: rgba(232,160,32,.42); background: rgba(232,160,32,.13); }
+.cover-check-link .cover-check::before { content: "📰 "; }
 
 /* ── レイアウト ────────────────────────── */
 .page-wrap { max-width: 860px; margin: 0 auto; background: var(--white); }
@@ -408,6 +411,7 @@ section:nth-child(even):not(.cover) { background: #FAFBFC; }
     <div class="cover-check">各ユニット12種の解説</div>
     <div class="cover-check">10キャラクターへの話しかけ方</div>
     <div class="cover-check">初心者向け対話事例10選</div>
+    <a class="cover-check-link" href="mext-news-board.html"><div class="cover-check">文科省ニュース掲示板</div></a>
   </div>
   <p class="cover-version">ver.1.1 ／ 2026年4月</p>
 </section>

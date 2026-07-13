@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文科省ニュース・学習指導要領ウォッチ掲示板</title>
+  <style>
+    :root {
+      --navy: #14213d;
+      --blue: #2563eb;
+      --sky: #e0f2fe;
+      --gold: #f59e0b;
+      --green: #10b981;
+      --red: #ef4444;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #dbe4ef;
+      --paper: #ffffff;
+      --bg: #f5f7fb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Meiryo UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(37, 99, 235, .12), transparent 32rem),
+        radial-gradient(circle at 92% 5%, rgba(245, 158, 11, .16), transparent 28rem),
+        var(--bg);
+      line-height: 1.75;
+    }
+
+    a { color: var(--blue); }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      gap: .4rem;
+      align-items: center;
+      margin-bottom: 18px;
+      color: var(--navy);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 42px;
+      color: white;
+      background: linear-gradient(135deg, #14213d 0%, #1e3a8a 54%, #0f766e 100%);
+      box-shadow: 0 22px 60px rgba(20, 33, 61, .22);
+    }
+
+    .hero::after {
+      content: "文科省 WATCH";
+      position: absolute;
+      right: -26px;
+      bottom: -20px;
+      color: rgba(255, 255, 255, .08);
+      font-size: clamp(52px, 10vw, 128px);
+      font-weight: 900;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      padding: .35rem .8rem;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .10);
+      font-weight: 800;
+      letter-spacing: .08em;
+      font-size: .82rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 20px 0 12px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.13;
+      letter-spacing: -.04em;
+    }
+
+    .lead {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0;
+      color: #dbeafe;
+      font-size: 1.05rem;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .status-card {
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .11);
+      backdrop-filter: blur(8px);
+    }
+
+    .status-label { color: #bfdbfe; font-size: .78rem; font-weight: 800; }
+    .status-value { display: block; margin-top: 2px; font-size: 1.45rem; font-weight: 900; }
+
+    .panel {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 16px 42px rgba(20, 33, 61, .08);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: .82rem;
+      font-weight: 900;
+    }
+
+    input, select, button {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    button {
+      min-width: 170px;
+      border: 0;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), #0f766e);
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, .22);
+    }
+
+    button:disabled { opacity: .62; cursor: progress; }
+
+    .note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .keyword-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: .25rem .65rem;
+      background: white;
+      color: #334155;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .board-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 22px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 1.35rem;
+      letter-spacing: -.02em;
+    }
+
+    .items {
+      display: grid;
+      gap: 14px;
+    }
+
+    .news-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: var(--paper);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+    }
+
+    .news-card.priority-high { border-left: 7px solid var(--red); }
+    .news-card.priority-mid { border-left: 7px solid var(--gold); }
+    .news-card.priority-low { border-left: 7px solid var(--green); }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: .18rem .55rem;
+      background: #eef2ff;
+      color: #3730a3;
+    }
+
+    .priority-high .badge.score { background: #fee2e2; color: #991b1b; }
+    .priority-mid .badge.score { background: #fef3c7; color: #92400e; }
+    .priority-low .badge.score { background: #dcfce7; color: #166534; }
+
+    .news-title {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    .news-title a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .news-title a:hover { color: var(--blue); text-decoration: underline; }
+
+    .reason {
+      margin: 10px 0 0;
+      border-radius: 14px;
+      padding: 11px 13px;
+      background: #f8fafc;
+      color: #475569;
+      font-size: .9rem;
+    }
+
+    .side-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: white;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+    }
+
+    .side-card + .side-card { margin-top: 14px; }
+    .side-card h3 { margin: 0 0 10px; color: var(--navy); }
+    .side-card ul { margin: 0; padding-left: 1.2rem; }
+    .side-card li + li { margin-top: 8px; }
+
+    .empty {
+      border: 2px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .72);
+    }
+
+    .toast {
+      margin-top: 14px;
+      border-radius: 16px;
+      padding: 12px 14px;
+      background: var(--sky);
+      color: #075985;
+      font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 30px 24px; }
+      .status-grid, .toolbar, .board-layout { grid-template-columns: 1fr; }
+      button { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="back-link" href="index.html">← たい焼きタイム マニュアルへ戻る</a>
+
+    <header class="hero">
+      <span class="eyebrow">📰 MEXT DAILY RESEARCH BOARD</span>
+      <h1>文部科学省ニュース<br>学習指導要領ウォッチ掲示板</h1>
+      <p class="lead">文部科学省の「新着情報 最新1か月分の一覧」を取得し、学習指導要領改訂・教育課程部会・教科別ワーキンググループなどに関係しそうな記事を自動でピックアップします。</p>
+      <div class="status-grid" aria-label="掲示板ステータス">
+        <div class="status-card"><span class="status-label">取得記事</span><span class="status-value" id="totalCount">--</span></div>
+        <div class="status-card"><span class="status-label">重点候補</span><span class="status-value" id="hotCount">--</span></div>
+        <div class="status-card"><span class="status-label">最終更新</span><span class="status-value" id="updatedAt">未取得</span></div>
+        <div class="status-card"><span class="status-label">監視対象</span><span class="status-value">指導要領</span></div>
+      </div>
+    </header>
+
+    <section class="panel" aria-label="ニュース取得設定">
+      <div class="toolbar">
+        <div>
+          <label for="sourceUrl">取得元</label>
+          <input id="sourceUrl" type="url" value="https://www.mext.go.jp/b_menu/news/index.html">
+        </div>
+        <div>
+          <label for="filterLevel">表示する関連度</label>
+          <select id="filterLevel">
+            <option value="all">すべての候補</option>
+            <option value="high">最重要だけ</option>
+            <option value="medium">中以上</option>
+          </select>
+        </div>
+        <button id="refreshButton" type="button">今日のニュースを取得</button>
+      </div>
+      <p class="note">※ブラウザのCORS制限で直接取得できない場合は公開プロキシ経由を試します。失敗時も使い方を確認できるよう、2026年6月4日に確認した文科省新着情報のサンプルを表示します。</p>
+      <div class="keyword-row" id="keywordRow"></div>
+      <div id="message" class="toast" hidden></div>
+    </section>
+
+    <main class="board-layout">
+      <section>
+        <h2 class="section-title">📌 ピックアップ掲示板 <span id="visibleCount" class="chip">0件</span></h2>
+        <div id="newsItems" class="items"></div>
+      </section>
+
+      <aside>
+        <div class="side-card">
+          <h3>判定の見方</h3>
+          <ul>
+            <li><strong>最重要</strong>：学習指導要領、教育課程、総則・評価、教科別ワーキンググループ等を強く含む記事。</li>
+            <li><strong>関連</strong>：学力調査、評価、CBT、学校種別など改訂議論に接続しやすい記事。</li>
+            <li><strong>周辺</strong>：教育政策として追跡価値はあるが、改訂そのものからは距離がある記事。</li>
+          </ul>
+        </div>
+        <div class="side-card">
+          <h3>先生向けチェック観点</h3>
+          <ul>
+            <li>会議の「開催」か「配付資料」か「議事録」かを確認する。</li>
+            <li>教科名・学校種・評価・授業時数に関する資料名を優先して読む。</li>
+            <li>気になる記事は文科省ページを開き、添付PDFや議事録の本文で一次情報を確認する。</li>
+          </ul>
+        </div>
+        <div class="side-card">
+          <h3>一次情報リンク</h3>
+          <ul>
+            <li><a href="https://www.mext.go.jp/b_menu/news/index.html" target="_blank" rel="noopener">文部科学省 新着情報</a></li>
+            <li><a href="https://www.mext.go.jp/rss.html" target="_blank" rel="noopener">文部科学省 RSS（新着情報）</a></li>
+            <li><a href="https://www.mext.go.jp/a_menu/shotou/new-cs/index.htm" target="_blank" rel="noopener">学習指導要領「生きる力」</a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const KEYWORDS = [
+      { word: '学習指導要領', points: 9, reason: '学習指導要領そのものへの言及があります。' },
+      { word: '教育課程部会', points: 8, reason: '次期教育課程・指導要領改訂の中心的な審議体です。' },
+      { word: '総則', points: 7, reason: '総則は各教科を横断する改訂論点に直結します。' },
+      { word: '評価', points: 6, reason: '学習評価の見直しは指導要領改訂と関係が深い論点です。' },
+      { word: 'ワーキンググループ', points: 5, reason: '教科別・領域別の具体的な改訂論点が扱われる可能性があります。' },
+      { word: '国語', points: 3, reason: '教科別の改訂議論として追跡対象です。' },
+      { word: '情報・技術', points: 4, reason: '情報活用能力・技術分野は近年の重要論点です。' },
+      { word: '理科', points: 3, reason: '教科別の改訂議論として追跡対象です。' },
+      { word: '社会・地理歴史・公民', points: 3, reason: '教科別の改訂議論として追跡対象です。' },
+      { word: '外国語', points: 3, reason: '教科別の改訂議論として追跡対象です。' },
+      { word: '体育・保健体育', points: 3, reason: '教科別の改訂議論として追跡対象です。' },
+      { word: '幼児教育', points: 3, reason: '幼児教育と小学校以降の接続は改訂論点になり得ます。' },
+      { word: '特別支援教育', points: 3, reason: '特別支援教育の教育課程に関わる可能性があります。' },
+      { word: '配付資料', points: 2, reason: '審議内容を確認できる一次資料が公開されています。' },
+      { word: '議事録', points: 2, reason: '発言内容や論点の流れを確認できます。' },
+      { word: 'CBT', points: 2, reason: '評価・学力調査の方法に関係する周辺論点です。' },
+      { word: '学力調査', points: 2, reason: '学習評価や教育課程改善の参考情報になり得ます。' }
+    ];
+
+    const FALLBACK_ITEMS = [
+      { date: '令和8年6月3日', category: '教育 審議会情報', title: '中央教育審議会初等中等教育分科会教育課程部会芸術ワーキンググループ（第7回）の議事録を掲載しました', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年6月2日', category: '教育 審議会情報 報道発表', title: '教育課程部会 情報・技術ワーキンググループ（第10回）の開催について', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年5月29日', category: '教育 審議会情報 報道発表', title: '教育課程部会 体育・保健体育、健康、安全ワーキンググループ（第10回）の開催について', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年5月29日', category: '教育 審議会情報 報道発表', title: '中央教育審議会初等中等教育分科会教育課程部会国語ワーキンググループの配付資料を掲載しました', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年5月28日', category: '教育 審議会情報', title: '教育・学習の質向上に向けた新たな評価の在り方ワーキンググループ（第12回） 配付資料', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年5月25日', category: '教育 審議会情報 報道発表', title: '中央教育審議会初等中等教育分科会教育課程部会総則・評価特別部会（第9回）を開催します', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年5月22日', category: '教育 審議会情報', title: '教育課程部会 理科ワーキンググループ（第9回） 配付資料', url: 'https://www.mext.go.jp/b_menu/news/index.html' },
+      { date: '令和8年5月22日', category: '教育 審議会情報 報道発表', title: '中央教育審議会初等中等教育分科会教育課程部会外国語ワーキンググループ（第12回）を開催します', url: 'https://www.mext.go.jp/b_menu/news/index.html' }
+    ];
+
+    const state = { items: [] };
+    const sourceUrl = document.getElementById('sourceUrl');
+    const filterLevel = document.getElementById('filterLevel');
+    const refreshButton = document.getElementById('refreshButton');
+    const newsItems = document.getElementById('newsItems');
+    const message = document.getElementById('message');
+
+    function showMessage(text) {
+      message.hidden = false;
+      message.textContent = text;
+    }
+
+    function absoluteUrl(href, base) {
+      try { return new URL(href, base).href; } catch { return base; }
+    }
+
+    async function fetchWithFallback(url) {
+      try {
+        const direct = await fetch(url, { cache: 'no-store' });
+        if (!direct.ok) throw new Error(`HTTP ${direct.status}`);
+        return await direct.text();
+      } catch (directError) {
+        const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        const proxied = await fetch(proxy, { cache: 'no-store' });
+        if (!proxied.ok) throw new Error(`直接取得とプロキシ取得に失敗しました: ${directError.message}`);
+        return await proxied.text();
+      }
+    }
+
+    function parseMextNews(html, baseUrl) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const headings = [...doc.querySelectorAll('h3')].filter(h => /令和\d+年\d+月\d+日/.test(h.textContent));
+      const items = [];
+
+      headings.forEach(heading => {
+        const date = heading.textContent.trim();
+        let node = heading.nextElementSibling;
+        let pendingCategory = '';
+
+        while (node && node.tagName !== 'H3') {
+          const links = [...node.querySelectorAll('a')];
+          if (links.length === 0) {
+            const text = node.textContent.replace(/\s+/g, ' ').trim();
+            if (text) pendingCategory = text;
+          }
+          links.forEach(link => {
+            const title = link.textContent.replace(/\s+/g, ' ').trim();
+            if (!title) return;
+            items.push({
+              date,
+              category: pendingCategory || '文部科学省 新着情報',
+              title,
+              url: absoluteUrl(link.getAttribute('href'), baseUrl)
+            });
+          });
+          node = node.nextElementSibling;
+        }
+      });
+
+      return items;
+    }
+
+    function scoreItem(item) {
+      const text = `${item.title} ${item.category}`;
+      const hits = KEYWORDS.filter(keyword => text.includes(keyword.word));
+      const score = hits.reduce((sum, hit) => sum + hit.points, 0);
+      const level = score >= 10 ? 'high' : score >= 5 ? 'mid' : 'low';
+      const label = score >= 10 ? '最重要' : score >= 5 ? '関連' : '周辺';
+      const reasons = [...new Set(hits.map(hit => hit.reason))].slice(0, 3);
+      return { ...item, score, level, label, hits: hits.map(hit => hit.word), reasons };
+    }
+
+    function visibleByFilter(item) {
+      if (filterLevel.value === 'high') return item.level === 'high';
+      if (filterLevel.value === 'medium') return item.level === 'high' || item.level === 'mid';
+      return item.score > 0;
+    }
+
+    function render(items) {
+      const picked = items.map(scoreItem)
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score || a.date.localeCompare(b.date, 'ja'));
+      const visible = picked.filter(visibleByFilter);
+
+      document.getElementById('totalCount').textContent = String(items.length);
+      document.getElementById('hotCount').textContent = String(picked.filter(item => item.level === 'high').length);
+      document.getElementById('visibleCount').textContent = `${visible.length}件`;
+      document.getElementById('updatedAt').textContent = new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date());
+
+      if (visible.length === 0) {
+        newsItems.innerHTML = '<div class="empty">条件に合うニュースはありません。表示する関連度を変更するか、文科省ページで直接確認してください。</div>';
+        return;
+      }
+
+      newsItems.innerHTML = visible.map(item => `
+        <article class="news-card priority-${item.level}">
+          <div class="meta">
+            <span class="badge score">${item.label}・${item.score}点</span>
+            <span>${item.date}</span>
+            <span>${item.category}</span>
+          </div>
+          <h3 class="news-title"><a href="${item.url}" target="_blank" rel="noopener">${item.title}</a></h3>
+          <div class="keyword-row">${item.hits.map(hit => `<span class="chip">${hit}</span>`).join('')}</div>
+          <p class="reason">${item.reasons.length ? item.reasons.join(' ') : '関連キーワードに基づいて抽出しました。'}</p>
+        </article>
+      `).join('');
+    }
+
+    async function refresh() {
+      refreshButton.disabled = true;
+      refreshButton.textContent = '取得中...';
+      showMessage('文部科学省の新着情報を確認しています。');
+
+      try {
+        const html = await fetchWithFallback(sourceUrl.value);
+        const parsed = parseMextNews(html, sourceUrl.value);
+        if (parsed.length === 0) throw new Error('ニュース項目を読み取れませんでした。');
+        state.items = parsed;
+        render(state.items);
+        showMessage('最新の文部科学省新着情報を読み込みました。リンク先で一次資料を確認してください。');
+      } catch (error) {
+        state.items = FALLBACK_ITEMS;
+        render(state.items);
+        showMessage(`取得に失敗したためサンプルを表示しています。理由: ${error.message}`);
+      } finally {
+        refreshButton.disabled = false;
+        refreshButton.textContent = '今日のニュースを取得';
+      }
+    }
+
+    function initKeywords() {
+      document.getElementById('keywordRow').innerHTML = KEYWORDS.slice(0, 12).map(keyword => `<span class="chip">${keyword.word}</span>`).join('');
+    }
+
+    refreshButton.addEventListener('click', refresh);
+    filterLevel.addEventListener('change', () => render(state.items));
+    initKeywords();
+    state.items = FALLBACK_ITEMS;
+    render(state.items);
+  </script>
+</body>
+</html>
